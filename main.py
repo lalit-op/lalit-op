@@ -6,29 +6,29 @@ import yfinance as yf
 import feedparser
 import google.generativeai as genai
 
-=========================
+# =========================
 
-ENV VARIABLES
+# ENV VARIABLES
 
-=========================
+# =========================
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-=========================
+# =========================
 
-GEMINI CONFIG
+# GEMINI CONFIG
 
-=========================
+# =========================
 
 genai.configure(api_key=GEMINI_API_KEY)
 
-=========================
+# =========================
 
-MARKET DATA
+# MARKET DATA
 
-=========================
+# =========================
 
 nifty = yf.Ticker("^NSEI")
 sensex = yf.Ticker("^BSESN")
@@ -49,11 +49,11 @@ float(sensex.history(period="1d")["Close"].iloc[-1]),
 except:
 sensex_close = "Unavailable"
 
-=========================
+# =========================
 
-NEWS SOURCES
+# NEWS SOURCES
 
-=========================
+# =========================
 
 sources = [
 "https://www.moneycontrol.com/rss/business.xml",
@@ -71,11 +71,11 @@ sources = [
 "https://www.sebi.gov.in/sebirss.xml"
 ]
 
-=========================
+# =========================
 
-FETCH HEADLINES
+# FETCH HEADLINES
 
-=========================
+# =========================
 
 headlines = []
 
@@ -94,11 +94,11 @@ except Exception as e:
 
 news_text = "\n".join(headlines[:100])
 
-=========================
+# =========================
 
-MASTER PROMPT
+# MASTER PROMPT
 
-=========================
+# =========================
 
 master_prompt = """
 You are India's most trusted stock market analyst, financial journalist, and YouTube news anchor.
@@ -157,11 +157,11 @@ LATEST MARKET HEADLINES
 {news_text}
 """
 
-=========================
+# =========================
 
-GENERATE SCRIPT
+# GENERATE SCRIPT
 
-=========================
+# =========================
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
@@ -169,11 +169,11 @@ response = model.generate_content(prompt)
 
 script = response.text
 
-=========================
+# =========================
 
 SEND TO TELEGRAM
 
-=========================
+# =========================
 
 for i in range(0, len(script), 3500):
 requests.post(
