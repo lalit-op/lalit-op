@@ -13,3 +13,8 @@ schedule
 tqdm
 aiohttp
 fake-useragent
+python-telegram-bot==21.6
+google-generativeai
+requests
+yfinance
+feedparser
