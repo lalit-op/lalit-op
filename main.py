@@ -7,9 +7,7 @@ import feedparser
 import google.generativeai as genai
 
 # =========================
-
 # ENV VARIABLES
-
 # =========================
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -17,17 +15,13 @@ CHAT_ID = os.getenv("CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # =========================
-
 # GEMINI CONFIG
-
 # =========================
 
 genai.configure(api_key=GEMINI_API_KEY)
 
 # =========================
-
 # MARKET DATA
-
 # =========================
 
 nifty = yf.Ticker("^NSEI")
@@ -38,7 +32,7 @@ try:
         float(nifty.history(period="1d")["Close"].iloc[-1]),
         2
     )
-except:
+except Exception:
     nifty_close = "Unavailable"
 
 try:
@@ -46,58 +40,52 @@ try:
         float(sensex.history(period="1d")["Close"].iloc[-1]),
         2
     )
-except:
-sensex_close = "Unavailable"
+except Exception:
+    sensex_close = "Unavailable"
 
 # =========================
-
 # NEWS SOURCES
-
 # =========================
 
 sources = [
-"https://www.moneycontrol.com/rss/business.xml",
-"https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-"https://economictimes.indiatimes.com/rssfeedsdefault.cms",
-"https://www.business-standard.com/rss/markets-106.rss",
-"https://www.livemint.com/rss/markets",
-"https://www.financialexpress.com/market/feed/",
-"https://www.cnbctv18.com/commonfeeds/v1/eng/rss/business.xml",
-"https://www.zeebiz.com/india-markets/rss",
-"https://www.reutersagency.com/feed/?best-topics=business-finance",
-"https://finance.yahoo.com/rss/",
-"https://feeds.content.dowjones.io/public/rss/mw_marketpulse",
-"https://www.investing.com/rss/news.rss",
-"https://www.sebi.gov.in/sebirss.xml"
+    "https://www.moneycontrol.com/rss/business.xml",
+    "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
+    "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+    "https://www.business-standard.com/rss/markets-106.rss",
+    "https://www.livemint.com/rss/markets",
+    "https://www.financialexpress.com/market/feed/",
+    "https://www.cnbctv18.com/commonfeeds/v1/eng/rss/business.xml",
+    "https://www.zeebiz.com/india-markets/rss",
+    "https://www.reutersagency.com/feed/?best-topics=business-finance",
+    "https://finance.yahoo.com/rss/",
+    "https://feeds.content.dowjones.io/public/rss/mw_marketpulse",
+    "https://www.investing.com/rss/news.rss",
+    "https://www.sebi.gov.in/sebirss.xml"
 ]
 
 # =========================
-
 # FETCH HEADLINES
-
 # =========================
 
 headlines = []
 
 for source in sources:
-try:
-feed = feedparser.parse(source)
+    try:
+        feed = feedparser.parse(source)
 
-    for item in feed.entries[:15]:
-        title = item.title.strip()
+        for item in feed.entries[:15]:
+            title = item.title.strip()
 
-        if title not in headlines:
-            headlines.append(title)
+            if title not in headlines:
+                headlines.append(title)
 
-except Exception as e:
-    print(f"Error reading {source}: {e}")
+    except Exception as e:
+        print(f"Error reading {source}: {e}")
 
 news_text = "\n".join(headlines[:100])
 
 # =========================
-
 # MASTER PROMPT
-
 # =========================
 
 master_prompt = """
@@ -108,29 +96,48 @@ Create a complete 18–20 minute YouTube market news video.
 Generate:
 
 1. Opening Hook
+
 2. Market Overview
+
 3. Top 10 Headlines
+
 4. Sector Analysis
+
 5. Top Gainers Analysis
+
 6. Top Losers Analysis
+
 7. Corporate News
+
 8. Global Market Impact
+
 9. FII/DII Activity
+
 10. Technical Market View
+
 11. Tomorrow's Market Triggers
+
 12. Investor Takeaways
+
 13. Conclusion
+
 14. Disclaimer
 
 Also Generate:
 
-- SEO Optimized Title
-- Thumbnail Text
-- 300+ Word Description
-- 20 SEO Hashtags
-- Pinned Comment
-- Chapter Timestamps
-- Top Search Keywords
+SEO Optimized Title
+
+Thumbnail Text
+
+300+ Word Description
+
+20 SEO Hashtags
+
+Pinned Comment
+
+Chapter Timestamps
+
+Top Search Keywords
 
 Requirements:
 
@@ -141,7 +148,7 @@ Requirements:
 - No clickbait
 - No fake information
 - Use only supplied market data and headlines
-  """
+"""
 
 prompt = f"""
 {master_prompt}
@@ -158,9 +165,7 @@ LATEST MARKET HEADLINES
 """
 
 # =========================
-
 # GENERATE SCRIPT
-
 # =========================
 
 model = genai.GenerativeModel("gemini-2.5-flash")
@@ -170,18 +175,16 @@ response = model.generate_content(prompt)
 script = response.text
 
 # =========================
-
-SEND TO TELEGRAM
-
+# SEND TO TELEGRAM
 # =========================
 
 for i in range(0, len(script), 3500):
-requests.post(
-f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-data={
-"chat_id": CHAT_ID,
-"text": script[i:i + 3500]
-}
-)
+    requests.post(
+        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+        data={
+            "chat_id": CHAT_ID,
+            "text": script[i:i + 3500]
+        }
+    )
 
 print("Market report sent successfully.")
