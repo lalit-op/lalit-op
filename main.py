@@ -24,20 +24,19 @@ genai.configure(api_key=GEMINI_API_KEY)
 # MARKET DATA
 # =========================
 
-nifty = yf.Ticker("^NSEI")
-sensex = yf.Ticker("^BSESN")
-
 try:
+    nifty = yf.Ticker("^NSEI")
     nifty_close = round(
-        float(nifty.history(period="1d")["Close"].iloc[-1]),
+        float(nifty.history(period="5d")["Close"].iloc[-1]),
         2
     )
 except Exception:
     nifty_close = "Unavailable"
 
 try:
+    sensex = yf.Ticker("^BSESN")
     sensex_close = round(
-        float(sensex.history(period="1d")["Close"].iloc[-1]),
+        float(sensex.history(period="5d")["Close"].iloc[-1]),
         2
     )
 except Exception:
@@ -56,7 +55,6 @@ sources = [
     "https://www.financialexpress.com/market/feed/",
     "https://www.cnbctv18.com/commonfeeds/v1/eng/rss/business.xml",
     "https://www.zeebiz.com/india-markets/rss",
-    "https://www.reutersagency.com/feed/?best-topics=business-finance",
     "https://finance.yahoo.com/rss/",
     "https://feeds.content.dowjones.io/public/rss/mw_marketpulse",
     "https://www.investing.com/rss/news.rss",
@@ -85,102 +83,92 @@ for source in sources:
 news_text = "\n".join(headlines[:100])
 
 # =========================
-# MASTER PROMPT
+# HINDI PROMPT
 # =========================
 
 master_prompt = """
-You are India's most trusted stock market analyst, financial journalist, and YouTube news anchor.
+आप भारत के सबसे भरोसेमंद शेयर बाजार विश्लेषक और यूट्यूब न्यूज एंकर हैं।
 
-Create a complete 18–20 minute YouTube market news video.
+आज के बाजार डेटा और खबरों के आधार पर 18-20 मिनट की विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार करें।
 
-Generate:
+शामिल करें:
 
-1. Opening Hook
+1. दमदार ओपनिंग हुक
+2. मार्केट ओवरव्यू
+3. निफ्टी और सेंसेक्स विश्लेषण
+4. टॉप 10 बड़ी खबरें
+5. सेक्टर विश्लेषण
+6. टॉप गेनर्स
+7. टॉप लूजर्स
+8. कॉर्पोरेट अपडेट
+9. ग्लोबल मार्केट प्रभाव
+10. FII और DII गतिविधि
+11. कल के ट्रिगर्स
+12. निवेशकों के लिए सीख
+13. निष्कर्ष
+14. डिस्क्लेमर
 
-2. Market Overview
+साथ में दें:
 
-3. Top 10 Headlines
+- SEO Title
+- Thumbnail Text
+- Description
+- 20 Hashtags
+- Pinned Comment
+- Chapter Timestamps
 
-4. Sector Analysis
+पूरी स्क्रिप्ट हिंदी में लिखें।
 
-5. Top Gainers Analysis
+लंबाई:
+3000 से 3500 शब्द।
 
-6. Top Losers Analysis
-
-7. Corporate News
-
-8. Global Market Impact
-
-9. FII/DII Activity
-
-10. Technical Market View
-
-11. Tomorrow's Market Triggers
-
-12. Investor Takeaways
-
-13. Conclusion
-
-14. Disclaimer
-
-Also Generate:
-
-SEO Optimized Title
-
-Thumbnail Text
-
-300+ Word Description
-
-20 SEO Hashtags
-
-Pinned Comment
-
-Chapter Timestamps
-
-Top Search Keywords
-
-Requirements:
-
-- 3000–3500 words
-- Professional financial anchor style
-- Beginner friendly
-- Explain financial terms simply
-- No clickbait
-- No fake information
-- Use only supplied market data and headlines
+केवल उपलब्ध बाजार डेटा और हेडलाइंस का उपयोग करें।
+कोई झूठी जानकारी न दें।
 """
 
 prompt = f"""
 {master_prompt}
 
-TODAY'S MARKET DATA
+आज का बाजार डेटा
 
 Nifty Close: {nifty_close}
 
 Sensex Close: {sensex_close}
 
-LATEST MARKET HEADLINES
+आज की प्रमुख खबरें:
 
 {news_text}
 """
 
 # =========================
-# GENERATE SCRIPT
+# GEMINI GENERATION
 # =========================
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
-response = model.generate_content(prompt)
+try:
+    response = model.generate_content(prompt)
 
-script = response.text
+    today = datetime.now().strftime("%d-%m-%Y")
+
+    script = f"""
+📅 स्क्रिप्ट दिनांक: {today}
+
+{response.text}
+"""
+
+except Exception as e:
+    script = f"Gemini Error: {e}"
 
 # =========================
 # SEND TO TELEGRAM
 # =========================
 
+telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
 for i in range(0, len(script), 3500):
     requests.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+        telegram_url,
         data={
             "chat_id": CHAT_ID,
             "text": script[i:i + 3500]
