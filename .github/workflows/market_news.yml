@@ -1,31 +1,29 @@
 name: Daily Market Script
 
 on:
-schedule:
-- cron: '45 10 * * 1-5'
-workflow_dispatch:
+  schedule:
+    - cron: '45 10 * * 1-5'
+  workflow_dispatch:
 
 jobs:
-market-news:
-runs-on: ubuntu-latest
+  market-news:
+    runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-  - name: Setup Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: "3.11"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-  - name: Install Dependencies
-    run: |
-      pip install -r requirements.txt
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
 
-  - name: Run Market Script
-    env:
-      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      CHAT_ID: ${{ secrets.CHAT_ID }}
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-    run: |
-      python main.py
+      - name: Run Script
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python main.py
