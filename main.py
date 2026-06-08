@@ -24,7 +24,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 =========================
 
-MARKET DATA
+# MARKET DATA
 
 =========================
 
