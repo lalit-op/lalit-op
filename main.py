@@ -1,4 +1,6 @@
 import os
+from datetime import datetime
+
 import requests
 import yfinance as yf
 import feedparser
@@ -6,7 +8,7 @@ import google.generativeai as genai
 
 =========================
 
-# ENV VARIABLES
+ENV VARIABLES
 
 =========================
 
@@ -16,7 +18,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 =========================
 
-#GEMINI CONFIG
+GEMINI CONFIG
 
 =========================
 
@@ -24,7 +26,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 =========================
 
-# MARKET DATA
+MARKET DATA
 
 =========================
 
@@ -33,21 +35,23 @@ sensex = yf.Ticker("^BSESN")
 
 try:
 nifty_close = round(
-float(nifty.history(period="1d")["Close"].iloc[-1]), 2
+float(nifty.history(period="1d")["Close"].iloc[-1]),
+2
 )
 except:
 nifty_close = "Unavailable"
 
 try:
 sensex_close = round(
-float(sensex.history(period="1d")["Close"].iloc[-1]), 2
+float(sensex.history(period="1d")["Close"].iloc[-1]),
+2
 )
 except:
 sensex_close = "Unavailable"
 
 =========================
 
-# NEWS SOURCES
+NEWS SOURCES
 
 =========================
 
@@ -69,7 +73,7 @@ sources = [
 
 =========================
 
-# FETCH HEADLINES
+FETCH HEADLINES
 
 =========================
 
@@ -92,57 +96,70 @@ news_text = "\n".join(headlines[:100])
 
 =========================
 
-PROMPT
+MASTER PROMPT
 
 =========================
 
 master_prompt = """
-Create a professional 18-20 minute Indian stock market YouTube video.
+You are India's most trusted stock market analyst, financial journalist, and YouTube news anchor.
 
-Include:
+Create a complete 18–20 minute YouTube market news video.
+
+Generate:
 
 1. Opening Hook
 2. Market Overview
 3. Top 10 Headlines
 4. Sector Analysis
-5. Top Gainers
-6. Top Losers
+5. Top Gainers Analysis
+6. Top Losers Analysis
 7. Corporate News
 8. Global Market Impact
 9. FII/DII Activity
-10. Technical View
-11. Tomorrow Triggers
+10. Technical Market View
+11. Tomorrow's Market Triggers
 12. Investor Takeaways
 13. Conclusion
 14. Disclaimer
 
-Generate:
+Also Generate:
 
-- 3000-3500 word script
-- SEO Title
+- SEO Optimized Title
 - Thumbnail Text
-- Description
-- Hashtags
+- 300+ Word Description
+- 20 SEO Hashtags
 - Pinned Comment
-- Timestamps
-- Keywords
+- Chapter Timestamps
+- Top Search Keywords
+
+Requirements:
+
+- 3000–3500 words
+- Professional financial anchor style
+- Beginner friendly
+- Explain financial terms simply
+- No clickbait
+- No fake information
+- Use only supplied market data and headlines
   """
 
 prompt = f"""
 {master_prompt}
 
+TODAY'S MARKET DATA
+
 Nifty Close: {nifty_close}
 
 Sensex Close: {sensex_close}
 
-Headlines:
+LATEST MARKET HEADLINES
 
 {news_text}
 """
 
 =========================
 
-GEMINI
+GENERATE SCRIPT
 
 =========================
 
@@ -154,7 +171,7 @@ script = response.text
 
 =========================
 
-TELEGRAM
+SEND TO TELEGRAM
 
 =========================
 
@@ -163,7 +180,7 @@ requests.post(
 f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
 data={
 "chat_id": CHAT_ID,
-"text": script[i:i+3500]
+"text": script[i:i + 3500]
 }
 )
 
