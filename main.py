@@ -6,7 +6,7 @@ import google.generativeai as genai
 
 =========================
 
-ENV VARIABLES
+# ENV VARIABLES
 
 =========================
 
@@ -16,7 +16,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 =========================
 
-GEMINI CONFIG
+#GEMINI CONFIG
 
 =========================
 
@@ -24,7 +24,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 =========================
 
-MARKET DATA
+# MARKET DATA
 
 =========================
 
@@ -47,7 +47,7 @@ sensex_close = "Unavailable"
 
 =========================
 
-NEWS SOURCES
+# NEWS SOURCES
 
 =========================
 
@@ -69,7 +69,7 @@ sources = [
 
 =========================
 
-FETCH HEADLINES
+# FETCH HEADLINES
 
 =========================
 
