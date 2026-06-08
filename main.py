@@ -34,18 +34,18 @@ nifty = yf.Ticker("^NSEI")
 sensex = yf.Ticker("^BSESN")
 
 try:
-nifty_close = round(
-float(nifty.history(period="1d")["Close"].iloc[-1]),
-2
-)
+    nifty_close = round(
+        float(nifty.history(period="1d")["Close"].iloc[-1]),
+        2
+    )
 except:
-nifty_close = "Unavailable"
+    nifty_close = "Unavailable"
 
 try:
-sensex_close = round(
-float(sensex.history(period="1d")["Close"].iloc[-1]),
-2
-)
+    sensex_close = round(
+        float(sensex.history(period="1d")["Close"].iloc[-1]),
+        2
+    )
 except:
 sensex_close = "Unavailable"
 
