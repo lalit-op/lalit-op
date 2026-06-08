@@ -1,0 +1,15 @@
+google-generativeai
+yfinance
+feedparser
+requests
+pandas
+numpy
+beautifulsoup4
+lxml
+html5lib
+python-dateutil
+pytz
+schedule
+tqdm
+aiohttp
+fake-useragent
