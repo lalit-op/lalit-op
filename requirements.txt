@@ -18,3 +18,8 @@ google-generativeai
 requests
 yfinance
 feedparser
+requests
+yfinance
+feedparser
+google-generativeai
+pandas
