@@ -203,7 +203,7 @@ Sensex Close: {sensex_close}
 # GEMINI GENERATION
 # =========================
 
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 try:
 
