@@ -1,4 +1,9 @@
 google-generativeai
+requests
+yfinance
+feedparser
+google-generativeai
+google-auth
 yfinance
 feedparser
 requests
