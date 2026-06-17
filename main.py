@@ -1,3 +1,4 @@
+import json
 import os
 from datetime import datetime
 
@@ -14,6 +15,11 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video")
+
+BLOG_ID = os.getenv("BLOG_ID")
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+REFRESH_TOKEN = os.getenv("REFRESH_TOKEN")
 
 # =========================
 # GEMINI CONFIG
@@ -90,7 +96,6 @@ news_text = "\n".join(headlines[:100])
 if CONTENT_TYPE == "short":
 
     master_prompt = """
-
 आप भारत के सबसे भरोसेमंद शेयर बाजार न्यूज़ एंकर हैं।
 
 आज की खबरों और बाजार डेटा के आधार पर
@@ -122,7 +127,6 @@ Description
 else:
 
     master_prompt = """
-
 आप भारत के सबसे भरोसेमंद शेयर बाजार विश्लेषक और यूट्यूब न्यूज एंकर हैं।
 
 आज के बाजार डेटा और खबरों के आधार पर
@@ -199,6 +203,15 @@ Sensex Close: {sensex_close}
 {news_text}
 """
 
+
+def publish_to_blogger(title, content):
+    """
+    Blogger publishing function.
+    Implement Blogger API logic here.
+    """
+    print(f"Preparing blog post: {title}")
+
+
 # =========================
 # GEMINI GENERATION
 # =========================
@@ -206,13 +219,11 @@ Sensex Close: {sensex_close}
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 try:
-
     response = model.generate_content(prompt)
 
     today = datetime.now().strftime("%d-%m-%Y")
 
     script = f"""
-
 📅 दिनांक: {today}
 
 📊 Content Type: {CONTENT_TYPE.upper()}
@@ -220,10 +231,16 @@ try:
 {response.text}
 """
 
+    title = f"Daily Stock Market Script - {today}"
+
+    publish_to_blogger(
+        title=title,
+        content=script
+    )
+
 except Exception as e:
 
     script = f"""
-
 ❌ Gemini Error
 
 {e}
@@ -236,7 +253,6 @@ except Exception as e:
 telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
 for i in range(0, len(script), 3500):
-
     requests.post(
         telegram_url,
         data={
