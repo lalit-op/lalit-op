@@ -87,18 +87,309 @@ news_text = "\n".join(headlines[:100])
 # SAVE POST
 # =========================
 
+
 def save_post(title, content):
     os.makedirs("posts", exist_ok=True)
 
     filename = datetime.now().strftime("%Y-%m-%d") + ".html"
-
     filepath = os.path.join("posts", filename)
 
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(f"# {title}\n\n")
-        f.write(content)
+    html_content = f"""
+<!DOCTYPE html>
 
-    print(f"Saved: {filepath}")
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{title}</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{{
+    --bg:#020617;
+    --card:#0f172a;
+    --border:#1e293b;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+}}
+
+*{{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}}
+
+body{{
+    font-family:'Inter',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+    radial-gradient(circle at top right,#06b6d433,transparent 40%),
+    #020617;
+
+    color:var(--text);
+    min-height:100vh;
+}}
+
+.container{{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}}
+
+.header{{
+    text-align:center;
+    padding:40px;
+    border-radius:24px;
+    margin-bottom:25px;
+
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+}}
+
+.badge{{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:999px;
+
+    background:#0ea5e920;
+    border:1px solid #38bdf830;
+
+    color:#38bdf8;
+    margin-bottom:15px;
+}}
+
+.header h1{{
+    font-size:48px;
+    font-weight:700;
+
+    background:linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #facc15
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}}
+
+.header p{{
+    margin-top:10px;
+    color:#94a3b8;
+}}
+
+.tagline{{
+font-size:18px;
+color:#38bdf8;
+margin-top:10px;
+}}
+
+.toolbar{{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:20px;
+}}
+
+.copy-btn{{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    color:white;
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+    font-weight:600;
+}}
+
+.copy-btn:hover{{
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(6,182,212,.5);
+}}
+
+.card{{
+    background:rgba(15,23,42,.85);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+}}
+
+.card-top{{
+    display:flex;
+    align-items:center;
+    padding:15px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}}
+
+.dots{{
+    display:flex;
+    gap:8px;
+}}
+
+.dot{{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+}}
+
+.red{{
+    background:#ff5f57;
+}}
+
+.yellow{{
+    background:#ffbd2e;
+}}
+
+.green{{
+    background:#28c840;
+}}
+
+.file-name{{
+    margin-left:15px;
+    color:#94a3b8;
+    font-size:14px;
+}}
+
+pre{{
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    padding:30px;
+    line-height:1.9;
+    font-size:16px;
+    color:#e2e8f0;
+}}
+
+.footer{{
+    text-align:center;
+    margin-top:30px;
+    color:#64748b;
+}}
+
+.toast{{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    background:#22c55e;
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    display:none;
+}}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<div class="badge">
+🚀 AI Generated Market Report
+</div>
+
+<h1>📈 Stock Samvad AI</h1>
+
+<p class="tagline">
+Daily Market Intelligence Platform
+</p>
+
+</div>
+
+<div class="toolbar">
+
+<button class="copy-btn" onclick="copyScript()">
+📋 Copy Full Script
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="card-top">
+
+<div class="dots">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+</div>
+
+<div class="file-name">
+📊 Daily Market Analysis
+</div>
+
+</div>
+
+<pre id="script">{content}</pre>
+
+</div>
+
+<div class="footer">
+🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+</div>
+
+</div>
+
+<div id="toast" class="toast">
+Script Copied Successfully ✅
+</div>
+
+<script>
+
+function copyScript(){{
+    const text =
+    document.getElementById("script").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.style.display="block";
+
+    setTimeout(() => {{
+        toast.style.display="none";
+    }},2000);
+}}
+
+</script>
+
+</body>
+</html>
+"""
+
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(html_content)
+
+    print("Saved:", filepath)
 
 # =========================
 # CONTENT TYPE
