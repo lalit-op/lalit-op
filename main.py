@@ -1,295 +1,228 @@
 import os
-
 from datetime import datetime
 
 import requests
-
 import yfinance as yf
-
 import feedparser
-
 import google.generativeai as genai
 
-# ==================================================
-
+# =========================
 # ENV VARIABLES
-
-# ==================================================
+# =========================
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-
 CHAT_ID = os.getenv("CHAT_ID")
-
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-
 CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video")
 
-BLOG_ID = os.getenv("BLOG_ID")
-
-CLIENT_ID = os.getenv("CLIENT_ID")
-
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-
-REFRESH_TOKEN = os.getenv("REFRESH_TOKEN")
-
-# ==================================================
-
+# =========================
 # GEMINI CONFIG
-
-# ==================================================
+# =========================
 
 genai.configure(api_key=GEMINI_API_KEY)
 
-# ==================================================
-
+# =========================
 # MARKET DATA
+# =========================
 
-# ==================================================
+try:
+    nifty = yf.Ticker("^NSEI")
+    nifty_close = round(
+        float(nifty.history(period="5d")["Close"].iloc[-1]),
+        2
+    )
+except Exception:
+    nifty_close = "Unavailable"
 
-def get_market_data():
+try:
+    sensex = yf.Ticker("^BSESN")
+    sensex_close = round(
+        float(sensex.history(period="5d")["Close"].iloc[-1]),
+        2
+    )
+except Exception:
+    sensex_close = "Unavailable"
 
-    try:
-
-        nifty = yf.Ticker("^NSEI")
-
-        nifty_close = round(
-
-            float(nifty.history(period="5d")["Close"].iloc[-1]),
-
-            2
-
-        )
-
-    except Exception:
-
-        nifty_close = "Unavailable"
-
-
-
-    try:
-
-        sensex = yf.Ticker("^BSESN")
-
-        sensex_close = round(
-
-            float(sensex.history(period="5d")["Close"].iloc[-1]),
-
-            2
-
-        )
-
-    except Exception:
-
-        sensex_close = "Unavailable"
-
-
-
-    return nifty_close, sensex_close
-
-# ==================================================
-
+# =========================
 # NEWS SOURCES
+# =========================
 
-# ==================================================
-
-SOURCES = [
-
+sources = [
     "https://www.moneycontrol.com/rss/business.xml",
-
     "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-
     "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
-
     "https://www.business-standard.com/rss/markets-106.rss",
-
     "https://www.livemint.com/rss/markets",
-
     "https://www.financialexpress.com/market/feed/",
-
     "https://www.cnbctv18.com/commonfeeds/v1/eng/rss/business.xml",
-
     "https://www.zeebiz.com/india-markets/rss",
-
     "https://finance.yahoo.com/rss/",
-
     "https://feeds.content.dowjones.io/public/rss/mw_marketpulse",
-
     "https://www.investing.com/rss/news.rss",
-
     "https://www.sebi.gov.in/sebirss.xml"
-
 ]
 
-# ==================================================
-
+# =========================
 # FETCH NEWS
+# =========================
 
-# ==================================================
+headlines = []
 
-def fetch_news():
+for source in sources:
+    try:
+        feed = feedparser.parse(source)
 
-    headlines = []
+        for item in feed.entries[:15]:
+            title = item.title.strip()
 
+            if title not in headlines:
+                headlines.append(title)
 
+    except Exception as e:
+        print(f"Error reading {source}: {e}")
 
-    for source in SOURCES:
+news_text = "\n".join(headlines[:100])
 
-        try:
+# =========================
+# SAVE POST
+# =========================
 
-            feed = feedparser.parse(source)
+def save_post(title, content):
+    os.makedirs("posts", exist_ok=True)
 
+    filename = datetime.now().strftime("%Y-%m-%d") + ".md"
 
+    filepath = os.path.join("posts", filename)
 
-            for item in feed.entries[:15]:
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(f"# {title}\n\n")
+        f.write(content)
 
-                title = item.title.strip()
+    print(f"Saved: {filepath}")
 
+# =========================
+# CONTENT TYPE
+# =========================
 
+if CONTENT_TYPE == "short":
 
-                if title not in headlines:
+    master_prompt = """
 
-                    headlines.append(title)
+    आप भारत के सबसे भरोसेमंद शेयर बाजार न्यूज़ एंकर हैं।
 
+    आज की खबरों और बाजार डेटा के आधार पर
+    45-60 सेकंड का वायरल YouTube Short बनाइए।
 
+    Format:
 
-        except Exception as e:
+    1. दमदार Hook
 
-            print(f"Error reading {source}: {e}")
 
+    2. मुख्य खबर
 
 
-    return "\n".join(headlines[:100])
+    3. निवेशकों पर प्रभाव
 
-# ==================================================
 
-# CONTENT PROMPT
+    4. Conclusion
 
-# ==================================================
 
-def build_prompt(nifty_close, sensex_close, news_text):
 
-    if CONTENT_TYPE.lower() == "short":
+    साथ में Generate करें:
 
+    Shorts Title
 
+    Thumbnail Text
 
-        master_prompt = """
+    Description
 
-आप भारत के सबसे भरोसेमंद शेयर बाजार न्यूज़ एंकर हैं।
+    10 Hashtags
 
-आज की खबरों और बाजार डेटा के आधार पर
+    पूरी स्क्रिप्ट हिंदी में हो।
+    """
 
-45-60 सेकंड का वायरल YouTube Short बनाइए।
+else:
 
-Format:
+    master_prompt = """
 
-1. दमदार Hook
+    आप भारत के सबसे भरोसेमंद शेयर बाजार विश्लेषक और यूट्यूब न्यूज एंकर हैं।
 
+    आज के बाजार डेटा और खबरों के आधार पर
+    18-20 मिनट की विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार करें।
 
-2. मुख्य खबर
+    शामिल करें:
 
+    1. दमदार ओपनिंग हुक
 
-3. निवेशकों पर प्रभाव
 
+    2. मार्केट ओवरव्यू
 
-4. Conclusion
 
+    3. निफ्टी और सेंसेक्स विश्लेषण
 
 
-Generate:
+    4. टॉप 10 बड़ी खबरें
 
-Shorts Title
 
-Thumbnail Text
+    5. सेक्टर विश्लेषण
 
-Description
 
-10 Hashtags
+    6. टॉप गेनर्स
 
-पूरी स्क्रिप्ट हिंदी में हो।
 
-"""
+    7. टॉप लूजर्स
 
-    else:
 
+    8. कॉर्पोरेट अपडेट
 
 
-        master_prompt = """
+    9. ग्लोबल मार्केट प्रभाव
 
-आप भारत के सबसे भरोसेमंद शेयर बाजार विश्लेषक और यूट्यूब न्यूज एंकर हैं।
 
-आज के बाजार डेटा और खबरों के आधार पर
+    10. FII और DII गतिविधि
 
-18-20 मिनट की विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार करें।
 
-शामिल करें:
+    11. कल के ट्रिगर्स
 
-1. दमदार ओपनिंग हुक
 
+    12. निवेशकों के लिए सीख
 
-2. मार्केट ओवरव्यू
 
+    13. निष्कर्ष
 
-3. निफ्टी और सेंसेक्स विश्लेषण
 
+    14. डिस्क्लेमर
 
-4. टॉप 10 बड़ी खबरें
 
 
-5. सेक्टर विश्लेषण
+    साथ में दें:
 
+    SEO Title
 
-6. टॉप गेनर्स
+    Thumbnail Text
 
+    Description
 
-7. टॉप लूजर्स
+    20 Hashtags
 
+    Pinned Comment
 
-8. कॉर्पोरेट अपडेट
+    Chapter Timestamps
 
+    पूरी स्क्रिप्ट हिंदी में लिखें।
 
-9. ग्लोबल मार्केट प्रभाव
+    लंबाई:
+    3000-3500 शब्द।
 
+    केवल उपलब्ध बाजार डेटा और हेडलाइंस का उपयोग करें।
+    कोई झूठी जानकारी न दें।
+    """
 
-10. FII और DII गतिविधि
+# =========================
+# FINAL PROMPT
+# =========================
 
-
-11. कल के ट्रिगर्स
-
-
-12. निवेशकों के लिए सीख
-
-
-13. निष्कर्ष
-
-
-14. डिस्क्लेमर
-
-
-
-साथ में दें:
-
-SEO Title
-
-Thumbnail Text
-
-Description
-
-20 Hashtags
-
-Pinned Comment
-
-Chapter Timestamps
-
-3000-3500 शब्द।
-
-केवल उपलब्ध बाजार डेटा और हेडलाइंस का उपयोग करें।
-
-कोई झूठी जानकारी न दें।
-
-"""
-
-    return f"""
-
+prompt = f"""
 {master_prompt}
 
 आज का बाजार डेटा
@@ -301,234 +234,59 @@ Sensex Close: {sensex_close}
 आज की प्रमुख खबरें:
 
 {news_text}
-
 """
 
-# ==================================================
-# BLOGGER PUBLISH
-# ==================================================
+# =========================
+# GEMINI GENERATION
+# =========================
 
-def publish_to_blogger(title, content):
+model = genai.GenerativeModel("gemini-2.5-flash")
 
-    try:
+try:
 
-        print("Starting Blogger publish...")
+    response = model.generate_content(prompt)
 
-        # Get access token
-        token_response = requests.post(
-            "https://oauth2.googleapis.com/token",
-            data={
-                "client_id": CLIENT_ID,
-                "client_secret": CLIENT_SECRET,
-                "refresh_token": REFRESH_TOKEN,
-                "grant_type": "refresh_token"
-            },
-            timeout=30
-        )
+    today = datetime.now().strftime("%d-%m-%Y")
 
-        print("Token Status:", token_response.status_code)
-        print("Token Response:", token_response.text)
+    script = f"""
 
-        token_response.raise_for_status()
+    📅 दिनांक: {today}
 
-        access_token = token_response.json()["access_token"]
+    📊 Content Type: {CONTENT_TYPE.upper()}
 
-        # Create Blogger post
-        post_data = {
-            "kind": "blogger#post",
-            "title": title,
-            "content": content.replace("\n", "<br>")
+    {response.text}
+    """
+
+    title = f"Daily Stock Market Script - {today}"
+
+    save_post(
+        title=title,
+        content=script
+    )
+
+except Exception as e:
+
+    script = f"""
+
+    ❌ Gemini Error
+
+    {e}
+    """
+
+# =========================
+# SEND TO TELEGRAM
+# =========================
+
+telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+for i in range(0, len(script), 3500):
+
+    requests.post(
+        telegram_url,
+        data={
+            "chat_id": CHAT_ID,
+            "text": script[i:i + 3500]
         }
-
-        response = requests.post(
-            f"https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts/",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "Content-Type": "application/json"
-            },
-            json=post_data,
-            timeout=30
-        )
-
-        print("Blogger Status:", response.status_code)
-        print("Blogger Response:", response.text)
-
-        response.raise_for_status()
-
-        print("✅ Blogger Post Published Successfully")
-
-        try:
-            post_url = response.json().get("url")
-            print("Post URL:", post_url)
-        except:
-            pass
-
-    except Exception as e:
-
-        print("❌ Blogger Publish Error")
-        print(str(e))
-# ==================================================
-
-# TELEGRAM SEND
-
-# ==================================================
-
-def send_to_telegram(message):
-
-    telegram_url = (
-
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-
     )
 
-
-
-    for i in range(0, len(message), 3500):
-
-        requests.post(
-
-            telegram_url,
-
-            data={
-
-                "chat_id": CHAT_ID,
-
-                "text": message[i:i + 3500]
-
-            },
-
-            timeout=30
-
-        )
-
-# ==================================================
-
-# MAIN
-
-# ==================================================
-
-def main():
-
-    print("BLOG_ID:", BLOG_ID)
-    print("CLIENT_ID exists:", bool(CLIENT_ID))
-    print("CLIENT_SECRET exists:", bool(CLIENT_SECRET))
-    print("REFRESH_TOKEN exists:", bool(REFRESH_TOKEN))
-    print("BOT_TOKEN exists:", bool(BOT_TOKEN))
-    print("CHAT_ID exists:", bool(CHAT_ID))
-
-    required_vars = [
-
-        BOT_TOKEN,
-
-        CHAT_ID,
-
-        GEMINI_API_KEY,
-
-        BLOG_ID,
-
-        CLIENT_ID,
-
-        CLIENT_SECRET,
-
-        REFRESH_TOKEN
-
-    ]
-
-
-
-    if not all(required_vars):
-
-        print("❌ One or more environment variables are missing.")
-
-        return
-
-
-
-    nifty_close, sensex_close = get_market_data()
-
-
-
-    news_text = fetch_news()
-
-
-
-    prompt = build_prompt(
-
-        nifty_close,
-
-        sensex_close,
-
-        news_text
-
-    )
-
-
-
-    model = genai.GenerativeModel("gemini-2.5-flash")
-
-
-
-    try:
-
-        response = model.generate_content(prompt)
-
-
-
-        today = datetime.now().strftime("%d-%m-%Y")
-
-
-
-        script = f"""
-
-📅 दिनांक: {today}
-
-📊 Content Type: {CONTENT_TYPE.upper()}
-
-{response.text}
-
-"""
-
-        title = f"Daily Stock Market Script - {today}"
-
-
-
-        publish_to_blogger(
-
-            title=title,
-
-            content=script
-
-        )
-
-
-
-        send_to_telegram(script)
-
-
-
-    except Exception as e:
-
-
-
-        script = f"""
-
-❌ Gemini Error
-
-{e}
-
-"""
-
-        send_to_telegram(script)
-
-
-
-    print("Market report sent successfully.")
-
-# ==================================================
-
-# RUN SCRIPT
-
-# ==================================================
-
-if __name__ == "__main__":
-    main()
+print("Market report sent successfully.")
