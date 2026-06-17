@@ -409,6 +409,13 @@ def send_to_telegram(message):
 
 def main():
 
+    print("BLOG_ID:", BLOG_ID)
+    print("CLIENT_ID exists:", bool(CLIENT_ID))
+    print("CLIENT_SECRET exists:", bool(CLIENT_SECRET))
+    print("REFRESH_TOKEN exists:", bool(REFRESH_TOKEN))
+    print("BOT_TOKEN exists:", bool(BOT_TOKEN))
+    print("CHAT_ID exists:", bool(CHAT_ID))
+
     required_vars = [
 
         BOT_TOKEN,
