@@ -90,7 +90,7 @@ news_text = "\n".join(headlines[:100])
 def save_post(title, content):
     os.makedirs("posts", exist_ok=True)
 
-    filename = datetime.now().strftime("%Y-%m-%d") + ".md"
+    filename = datetime.now().strftime("%Y-%m-%d") + ".html"
 
     filepath = os.path.join("posts", filename)
 
