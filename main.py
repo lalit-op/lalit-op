@@ -305,121 +305,68 @@ Sensex Close: {sensex_close}
 """
 
 # ==================================================
-
 # BLOGGER PUBLISH
-
 # ==================================================
 
 def publish_to_blogger(title, content):
 
     try:
 
-        # Get fresh access token
+        print("Starting Blogger publish...")
 
+        # Get access token
         token_response = requests.post(
-
             "https://oauth2.googleapis.com/token",
-
             data={
-
                 "client_id": CLIENT_ID,
-
                 "client_secret": CLIENT_SECRET,
-
                 "refresh_token": REFRESH_TOKEN,
-
                 "grant_type": "refresh_token"
-
             },
-
             timeout=30
-
         )
 
-
+        print("Token Status:", token_response.status_code)
+        print("Token Response:", token_response.text)
 
         token_response.raise_for_status()
 
+        access_token = token_response.json()["access_token"]
 
-
-        token_data = token_response.json()
-
-
-
-        if "access_token" not in token_data:
-
-            print("Token Error:", token_data)
-
-            return
-
-
-
-        access_token = token_data["access_token"]
-
-
-
-        # Blogger post payload
-
+        # Create Blogger post
         post_data = {
-
             "kind": "blogger#post",
-
             "title": title,
-
             "content": content.replace("\n", "<br>")
-
         }
 
-
-
-        # Publish post to Blogger
-
         response = requests.post(
-
-            f"https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts",
-
+            f"https://www.googleapis.com/blogger/v3/blogs/{BLOG_ID}/posts/",
             headers={
-
                 "Authorization": f"Bearer {access_token}",
-
                 "Content-Type": "application/json"
-
             },
-
             json=post_data,
-
             timeout=30
-
         )
 
-
-
         print("Blogger Status:", response.status_code)
-
         print("Blogger Response:", response.text)
 
         response.raise_for_status()
 
+        print("✅ Blogger Post Published Successfully")
 
-
-        if response.status_code not in [200, 201]:
-
-            print("❌ Blogger Post Failed")
-
-            print("Response:", response.text)
-
-        else:
-
-            print("✅ Blogger Post Published")
-
-            print("Post URL:", response.json().get("url", "Not Available"))
-
-
+        try:
+            post_url = response.json().get("url")
+            print("Post URL:", post_url)
+        except:
+            pass
 
     except Exception as e:
 
-        print("Blogger Publish Error:", e)
-
+        print("❌ Blogger Publish Error")
+        print(str(e))
 # ==================================================
 
 # TELEGRAM SEND
