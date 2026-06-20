@@ -1,12 +1,10 @@
 import os
 from datetime import datetime
-
+import feedparser
 import requests
 import yfinance as yf
 import google.generativeai as genai
 
-!pip install feedparser -q
-import feedparser
 
 # =========================
 # ENV VARIABLES
