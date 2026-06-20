@@ -3,8 +3,10 @@ from datetime import datetime
 
 import requests
 import yfinance as yf
-import feedparser
 import google.generativeai as genai
+
+!pip install feedparser -q
+import feedparser
 
 # =========================
 # ENV VARIABLES
@@ -87,6 +89,62 @@ news_text = "\n".join(headlines[:100])
 # SAVE POST
 # =========================
 
+def generate_index():
+    os.makedirs("posts", exist_ok=True)
+
+    files = [
+        f for f in os.listdir("posts")
+        if f.endswith(".html") and f != "index.html"
+    ]
+
+    files.sort(reverse=True)
+
+    cards = ""
+
+    for file in files:
+        date_str = file.replace(".html", "")
+
+        cards += f"""
+        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-5 md:p-8 mb-5">
+            <a href="{file}" class="block text-sky-400 hover:text-green-400 text-xl md:text-3xl font-bold mb-3">
+                🔥 Daily Market Script - {date_str}
+            </a>
+
+            <div class="text-slate-300">
+                📅 Published on {date_str}
+            </div>
+        </article>
+        """
+
+    html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Daily Market Reports</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white">
+
+<div class="max-w-4xl mx-auto p-8">
+
+<h1 class="text-5xl font-bold text-center mb-8">
+📈 Daily Market Reports
+</h1>
+
+{cards}
+
+</div>
+
+</body>
+</html>
+"""
+
+    with open("posts/index.html", "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print("Updated posts/index.html")
 
 def save_post(title, content):
     os.makedirs("posts", exist_ok=True)
@@ -554,6 +612,8 @@ try:
         title=title,
         content=script
     )
+
+    generate_index()
 
 except Exception as e:
 
