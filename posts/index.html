@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,31 +15,49 @@
 📈 Daily Market Reports
 </h1>
 
-<div id="reports"></div>
+
+        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-5 md:p-8 mb-5">
+            <a href="2026-06-20.html" class="block text-sky-400 hover:text-green-400 text-xl md:text-3xl font-bold mb-3">
+                🔥 Daily Market Script - 2026-06-20
+            </a>
+
+            <div class="text-slate-300">
+                📅 Published on 2026-06-20
+            </div>
+        </article>
+        
+        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-5 md:p-8 mb-5">
+            <a href="2026-06-19.html" class="block text-sky-400 hover:text-green-400 text-xl md:text-3xl font-bold mb-3">
+                🔥 Daily Market Script - 2026-06-19
+            </a>
+
+            <div class="text-slate-300">
+                📅 Published on 2026-06-19
+            </div>
+        </article>
+        
+        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-5 md:p-8 mb-5">
+            <a href="2026-06-18.html" class="block text-sky-400 hover:text-green-400 text-xl md:text-3xl font-bold mb-3">
+                🔥 Daily Market Script - 2026-06-18
+            </a>
+
+            <div class="text-slate-300">
+                📅 Published on 2026-06-18
+            </div>
+        </article>
+        
+        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-5 md:p-8 mb-5">
+            <a href="2026-06-17.html" class="block text-sky-400 hover:text-green-400 text-xl md:text-3xl font-bold mb-3">
+                🔥 Daily Market Script - 2026-06-17
+            </a>
+
+            <div class="text-slate-300">
+                📅 Published on 2026-06-17
+            </div>
+        </article>
+        
 
 </div>
-
-<script>
-const reports = [
-  "2026-06-19.html",
-  "2026-06-18.html",
-  "2026-06-17.html"
-];
-
-const container = document.getElementById("reports");
-
-reports.forEach(file => {
-  const date = file.replace(".html","");
-
-  container.innerHTML += `
-    <article class="bg-white/10 p-6 rounded-xl mb-4">
-      <a href="${file}" class="text-sky-400 text-2xl font-bold">
-        🔥 Daily Market Script - ${date}
-      </a>
-    </article>
-  `;
-});
-</script>
 
 </body>
 </html>
