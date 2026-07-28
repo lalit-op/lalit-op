@@ -331,7 +331,7 @@ Sensex Close: {sensex_close}
         return
 
     print("Generating AI Script with Gemini...")
-    model = genai.GenerativeModel("gemini-2.5-flash-lite")
+    model = genai.GenerativeModel("gemini-3.6-flash")
     
     try:
         response = model.generate_content(prompt)
