@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Stock Market Script - 28-07-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Inter',sans-serif;
+    background: radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+                radial-gradient(circle at top right,#06b6d433,transparent 40%),
+                #020617;
+    color:var(--text); min-height:100vh;
+}
+.container { max-width:1200px; margin:auto; padding:30px; }
+.header {
+    text-align:center; padding:40px; border-radius:24px; margin-bottom:25px;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.08);
+}
+.badge {
+    display:inline-block; padding:8px 16px; border-radius:999px;
+    background:#0ea5e920; border:1px solid #38bdf830; color:#38bdf8; margin-bottom:15px; font-size:14px;
+}
+.header h1 {
+    font-size:48px; font-weight:700;
+    background:linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height: 1.2;
+}
+.header p { margin-top:10px; color:#94a3b8; }
+.tagline { font-size:18px; color:#38bdf8; margin-top:10px; }
+.toolbar { display:flex; justify-content:flex-end; margin-bottom:20px; }
+.copy-btn {
+    background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; border:none;
+    padding:14px 24px; border-radius:14px; cursor:pointer; font-weight:600; transition: all 0.2s;
+}
+.copy-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(6,182,212,.5); }
+.card {
+    background:rgba(15,23,42,.85); border:1px solid rgba(255,255,255,.08);
+    border-radius:24px; overflow:hidden; backdrop-filter:blur(20px); box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+.card-top { display:flex; align-items:center; padding:15px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dots { display:flex; gap:8px; }
+.dot { width:14px; height:14px; border-radius:50%; }
+.red { background:#ff5f57; } .yellow { background:#ffbd2e; } .green { background:#28c840; }
+.file-name { margin-left:15px; color:#94a3b8; font-size:14px; }
+pre {
+    white-space:pre-wrap; word-wrap:break-word; padding:30px; line-height:1.8;
+    font-size:16px; color:#e2e8f0; font-family:'Inter', sans-serif;
+}
+.footer { text-align:center; margin-top:30px; color:#64748b; font-size: 14px; padding-bottom: 20px; }
+.toast {
+    position:fixed; bottom:25px; right:25px; background:#22c55e; color:white;
+    padding:12px 20px; border-radius:12px; display:none; z-index: 50; box-shadow:0 10px 30px rgba(34,197,94,.3);
+}
+
+/* ========================================= */
+/* MOBILE OPTIMIZATION (@media query added)  */
+/* ========================================= */
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 15px; border-radius: 20px; }
+    .header h1 { font-size: 32px; }
+    .tagline { font-size: 15px; }
+    .toolbar { justify-content: center; }
+    .copy-btn { width: 100%; padding: 16px; font-size: 16px; }
+    .card { border-radius: 16px; }
+    .card-top { flex-direction: row; justify-content: space-between; }
+    .file-name { margin-left: 10px; font-size: 12px; }
+    pre { padding: 20px 15px; font-size: 15px; }
+    .toast { left: 50%; right: auto; transform: translateX(-50%); width: 90%; text-align: center; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">🚀 AI Generated Market Report</div>
+        <h1>📈 Stock Samvad AI</h1>
+        <p class="tagline">Daily Market Intelligence Platform</p>
+    </div>
+    <div class="toolbar">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Full Script</button>
+    </div>
+    <div class="card">
+        <div class="card-top">
+            <div class="dots">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="file-name">📊 Daily Market Analysis</div>
+        </div>
+        <pre id="script">
+📅 दिनांक: 28-07-2026
+📊 Content Type: VIDEO
+
+यहाँ आज के बाजार डेटा और खबरों पर आधारित **18-20 मिनट की विस्तृत, पेशेवर और प्रामाणिक हिंदी वीडियो स्क्रिप्ट** के साथ-साथ सभी आवश्यक SEO और सोशल मीडिया एसेट दिए गए हैं।
+
+---
+
+# 📌 SEO METADATA & ASSETS
+
+### **SEO Title:**
+शेयर बाजार का बड़ा सच! Nifty 23,985 पर बंद | L&T, Suzlon, HUL Q1 Results | Global Chip Selloff | Market News Today Hindi
+
+### **Thumbnail Text:**
+- **Main Headline:** Suzlon 10% गिरा! HUL down 5% 📉
+- **Sub-headline:** L&T & Coforge के नतीजे | Fed Meeting Today 🔥
+- **Visual Callouts:** Nifty 23,985 | Gold Rally? | World Bank Growth 6.6%
+
+### **Description:**
+नमस्कार दोस्तों! आज के शेयर बाजार स्पेशल बुलेटिन में आपका स्वागत है। निफ्टी 23,985 के स्तर पर और सेंसेक्स 76,765 के स्तर पर बंद हुआ। आज बाजार में मिला-जुला रुख देखने को मिला जहाँ IT शेयरों ने बढ़त बनाई, वहीं FMCG और सीमेंट्स में भारी गिरावट रही।
+
+आज के वीडियो में हम कवर करेंगे:
+1. Nifty और Sensex का सटीक तकनीकी और मौलिक विश्लेषण।
+2. Q1 नतीजों का पूरा ब्योरा: L&T, HUL, Suzlon Energy, Coforge, RR Kabel, Ambuja Cements, Tata Capital।
+3. ग्लोबल मार्केट का हाल: Semiconductor स्टॉक्स में भारी बिकवाली, Kospi में 8% की गिरावट और US Fed की बैठक।
+4. वर्ल्ड बैंक द्वारा भारत की GDP ग्रोथ का अनुमान बढ़ाकर 6.6% करना और RBI/सेंट्रल बैंक का Repo Rate को 5.25% पर बरकरार रखना।
+5. SEBI के नए आदेश और Chris Wood का Gold पर बड़ा बयान।
+
+वीडियो को अंत तक देखें और अपनी निवेश रणनीति को मजबूत बनाएं!
+
+### **20 Hashtags:**
+#StockMarketHindi #Nifty50 #Sensex #L&TResults #SuzlonEnergy #HULQ1Results #Coforge #ShareMarketNews #IndianEconomy #GlobalMarkets #USFedMeeting #SEBIUpdates #IPOAlert #MVElectrosystems #GoldOutlook #InvestingTips #Q1Results #MarketAnalysis #NiftyAnalysis #StockMarketIndia
+
+### **Pinned Comment:**
+"आज के बाजार में जहां Suzlon Energy 10% गिरा और HUL में गिरावट रही, वहीं Coforge और RR Kabel ने शानदार तेजी दिखाई। जॉन टेम्पलटन के शब्दों में—'महान अवसर उन जगहों पर होते हैं जिन्हें नज़रअंदाज़ किया गया है।' आपकी नज़र आज किस स्टॉक पर है? कमेंट करके जरूर बताएं! वीडियो को लाइक और चैनल को सब्सक्राइब करना न भूलें।"
+
+### **Chapter Timestamps:**
+- 00:00 - दमदार ओपनिंग हुक & Quote of the Day
+- 01:30 - मार्केट ओवरव्यू (Nifty & Sensex)
+- 03:15 - आज की 10 बड़ी हेडलाइंस
+- 06:00 - सेक्टर एनालिसिस (IT vs FMCG vs Infra)
+- 08:30 - टॉप गेनर्स (Coforge, RR Kabel, TCS)
+- 10:15 - टॉप लूजर्स (Suzlon, HUL, Aurionpro)
+- 12:00 - कॉर्पोरेट अपडेट्स & Q1 रिजल्ट्स
+- 15:00 - ग्लोबल मार्केट प्रभाव & Semiconductor Rout
+- 16:45 - FII/DII, सेंट्रल बैंक नीति & Macro View
+- 18:15 - कल के मुख्य ट्रिगर्स
+- 19:15 - निवेशकों के लिए सीख
+- 20:00 - निष्कर्ष और डिस्क्लेमर
+
+---
+
+# 🎬 18-20 MINUTE FULL YOUTUBE VIDEO SCRIPT
+
+**[दृश्य: स्टूडियो का माहौल, बैकग्राउंड में शेयर बाजार की लाइव स्क्रीन और ग्राफिक्स। एंकर आत्मविश्वास और ऊर्जा के साथ कैमरे की ओर देखता है।]**
+
+---
+
+### **SECTION 1: DAMDAR OPENING HOOK (00:00 - 01:30)**
+
+**[Graphic Overlay: NIFTY 23,985.35 (-0.00%) | SENSEX 76,765.92 (-70 pts)]**
+
+**एंकर:**
+नमस्कार दोस्तों! मैं आपका स्वागत करता हूं देश के सबसे भरोसेमंद शेयर बाजार बुलेटिन में। 
+
+आज दलाल स्ट्रीट पर एक बेहद दिलचस्प और हलचल भरा दिन रहा। एक तरफ जहां वैश्विक बाजारों से आ रहे दबाव के बीच भारतीय बाजार में ऊपरी स्तरों पर मुनाफावसूली दिखी, वहीं दूसरी ओर चुनिंदा सेक्टरों में ऐसी तूफानी तेजी आई जिसने निवेशकों को हैरान कर दिया। आज सेंसेक्स करीब 70 अंक फिसलकर 76,765 के स्तर पर बंद हुआ, तो वहीं निफ्टी 23,985 के बेहद अहम स्तर पर टिकने में कामयाब रहा।
+
+लेकिन असली कहानी सूचकांकों के इन आंकड़ों में नहीं, बल्कि इसके पीछे छिपी कंपनियों के नतीजों में है! आज जहां सुजलॉन एनर्जी (Suzlon Energy) के Q1 नतीजों के बाद शेयर में 10% का लोअर सर्किट/गिरावट देखने को मिली और FMCG दिग्गज HUL 5% टूट गया, वहीं कॉफोर्ज (Coforge) का शेयर 63% मुनाफा बढ़ते ही 7% उछल गया! आर आर केबल (RR Kabel) में 10% का अपर सर्किट जैसा उछाल देखने को मिला।
+
+दोस्तों, प्रसिद्ध निवेशक **जॉन टेम्पलटन (John Templeton)** ने एक बार कहा था:
+> *"I have learned that the great opportunities are the places that have been neglected, where other people are not looking."*
+> *(मैंने सीखा है कि सबसे बड़े अवसर उन जगहों पर होते हैं जिन्हें नजरअंदाज कर दिया गया है, जहां बाकी लोगों की नजर नहीं है।)*
+
+आज का बाजार भी आपको यही सिखा रहा है। जब पूरा बाजार सुजलॉन और HUL के झटकों से घबरा रहा है, तब स्मार्ट मनी कहाँ जा रही है? आज इस 20 मिनट के विशेष बुलेटिन में हम डेटा, नतीजों और खबरों का ऐसा गहरा विश्लेषण करेंगे जो आपके पोर्टफोलियो को सही दिशा देगा। तो चलिए, बिना किसी देरी के शुरू करते हैं!
+
+---
+
+### **SECTION 2: MARKET OVERVIEW & INDEX ANALYSIS (01:30 - 03:15)**
+
+**[Graphic: Nifty 50 and Sensex Intraday Chart]**
+
+**एंकर:**
+आइए सबसे पहले आज के बाजार के आंकड़ों पर विस्तार से नज़र डालते हैं।
+
+आज भारतीय शेयर बाजार की शुरुआत वैश्विक संकेतों के चलते सतर्क रुख के साथ हुई। दिन के कारोबार के अंत में:
+- **Nifty 50:** 23,985.35 के स्तर पर बंद हुआ।
+- **BSE Sensex:** 76,765.92 के स्तर पर बंद हुआ, जिसमें लगभग 70 अंकों की गिरावट दर्ज की गई।
+
+**मार्केट ब्रेड्थ और ट्रेंड:**
+आज का बाजार पूरी तरह से दो हिस्सों में बटा हुआ नजर आया। एक तरफ IT सेक्टर ने बाजार को ढहने से बचाया—TCS जैसी दिग्गज IT कंपनियों में अच्छी लिवाली देखी गई। वहीं दूसरी तरफ FMCG और सीमेंट सेक्टर में भारी बिकवाली का दबाव रहा। 
+
+भारतीय रुपया (Rupee) कच्चे तेल (Brent Crude) में आई गिरावट के चलते दो सप्ताह के उच्चतम स्तर पर टिका रहा। ब्रेंट क्रूड के $85 के नीचे फिसलने और केंद्रीय बैंक के हस्तक्षेप ने रुपये को मजबूत सहारा दिया है। हालांकि, बाजार की समग्र चाल को देखें तो निवेशकों ने आक्रामक दांव लगाने के बजाय Q1 नतीजों के आधार पर स्टॉक-स्पेसिफिक (Stock-Specific) एक्शन को ज्यादा तवज्जो दी।
+
+---
+
+### **SECTION 3: TOP 10 BIG NEWS OF THE DAY (03:15 - 06:00)**
+
+**[Graphic: Fast-paced Top 10 Headlines Layout]**
+
+**एंकर:**
+चलिए अब बात करते हैं आज की उन 10 बड़ी खबरों की, जिन्होंने आज के बाजार का रुख तय किया और आगे भी बाजार पर असर डालेंगी:
+
+1. **वर्ल्ड बैंक ने बढ़ाया भारत का विकास अनुमान:** वर्ल्ड बैंक ने FY27 के लिए भारत की GDP वृद्धि दर का अनुमान बढ़ाकर **6.6%** कर दिया है। इसके साथ ही Q4 में भारत की GDP ग्रोथ 7.8% दर्ज की गई है, जो वैश्विक अनिश्चितताओं के बावजूद भारत की आर्थिक मजबूती को दर्शाती है।
+2. **L&T के दमदार नतीजे:** इंफ्रास्ट्रक्चर दिग्गज L&T का Q1 नेट प्रॉफिट 14% YoY बढ़कर ₹4,123 करोड़ रहा, जबकि रेवेन्यू में 7% की बढ़ोतरी हुई।
+3. **सेंट्रल बैंक की मौद्रिक नीति:** केंद्रीय बैंक ने रेपो रेट (Repo Rate) को **5.25%** पर स्थिर रखा है और अपना रुख 'न्यूट्रल' (Neutral) बनाए रखा है ताकि विदेशी पूंजी को आकर्षित किया जा सके।
+4. **India-UK CETA लागू:** भारत-यूके मुक्त व्यापार समझौते के तहत बिना किसी सीमा शुल्क (Zero-Duty) के भारतीय कॉफी और ज्वेलरी की पहली खेप यूके पहुंची।
+5. **ग्लोबल सेमीकंडक्टर क्रैश:** ASML, सैमसंग इलेक्ट्रॉनिक्स और SK हाइनिक्स जैसे दिग्गज चिप स्टॉक्स में भारी गिरावट के कारण दुनिया भर के टेक शेयरों में बिकवाली हावी रही।
+6. **सुजलॉन एनर्जी में 10% का क्रैश:** Q1 नतीजों में मुनाफा 6% घटकर ₹305 करोड़ रहने से सुजलॉन का शेयर 3 महीने के निचले स्तर पर आ गया।
+7. **HUL में 5% की गिरावट:** कमजोर तिमाही नतीजों और नेट प्रॉफिट में 3% की गिरावट (₹2,673 करोड़) के बाद HUL का शेयर टूट गया।
+8. **IPO पाइपलाइन बेहद मजबूत:** Equirus की रिपोर्ट के मुताबिक, SEBI के पास 245 DRHP जमा हैं, जिनमें से 175 को ऑब्जर्वेशन मिल चुका है।
+9. **क्रिस वुड का सोने पर बड़ा बयान:** जेफरीज के क्रिस वुड (Chris Wood) का कहना है कि सोना (Gold) फिर से खरीदने का सही समय आ गया है और अगली रैली ऐतिहासिक हो सकती है।
+10. **साउथ कोरिया का Kospi 8% टूटा:** वैश्विक टेक सेल-ऑफ और भू-राजनीतिक तनावों के बीच दक्षिण कोरिया का सूचकांक Kospi 8% तक ढह गया।
+
+---
+
+### **SECTION 4: SECTOR ANALYSIS (06:00 - 08:30)**
+
+**[Graphic: Sectoral Performance Heatmap]**
+
+**एंकर:**
+आइए अब बात करते हैं सेक्टर वाइज परफॉर्मेंस की। आज किस सेक्टर ने बाजी मारी और कौन सा सेक्टर पूरी तरह पस्त रहा?
+
+**1. IT सेक्टर (आज का आउटपरफॉर्मर):**
+वैश्विक स्तर पर चिप शेयरों में बिकवाली के बावजूद, भारतीय IT सेक्टर ने आज रक्षात्मक (Defensive) खेल दिखाया। Coforge के 63% प्रॉफिट जंप ने पूरे सेक्टर का मूड बदल दिया। TCS और Birlasoft जैसे शेयरों में अच्छी खरीदारी देखी गई, जिससे निफ्टी को 24,000 के करीब बनाए रखने में मदद मिली।
+
+**2. FMCG सेक्टर (भारी दबाव में):**
+FMCG सेक्टर आज सबसे ज्यादा पिटने वाला सेक्टर रहा। HUL के कमजोर Q1 नतीजों ने सेक्टर की धारणा को बिगाड़ दिया। इसके अलावा गॉडफ्रे फिलिप्स (Godfrey Phillips) का मुनाफा टैक्स बढ़ोतरी के कारण 44% से अधिक गिरा, जिससे शेयर 6% टूट गया।
+
+**3. इंफ्रास्ट्रक्चर और कैपिटल गुड्स (मिश्रित रुझान):**
+L&T के मजबूत नतीजों ने इंफ्रा सेक्टर में भरोसा जगाया। हालांकि, भारत इलेक्ट्रॉनिक्स (BEL) ने मिश्रित संकेत दिए, लेकिन विश्लेषकों का मानना है कि रक्षा क्षेत्र की लॉन्ग-टर्म संभावनाएं अभी भी बरकरार हैं।
+
+**4. सीमेंट और मेटल्स:**
+अंबुजा सीमेंट्स (Ambuja Cements) का मुनाफा Q1 में लगभग 37% घटकर ₹660 करोड़ रह गया, जिससे सीमेंट शेयरों में नरमी देखी गई। दूसरी तरफ, वेदांता एल्युमिनियम को लेकर ICICI डायरेक्ट की 'Buy' रेटिंग ने मेटल में चुनिंदा खरीदारी बनाए रखी।
+
+---
+
+### **SECTION 5: TOP GAINERS OF THE DAY (08:30 - 10:15)**
+
+**[Graphic: Top Gainers Table with Percentage Changes]**
+
+**एंकर:**
+आइए अब नजर डालते हैं आज के **Top Gainers** पर, जिन्होंने कठिन बाजार में भी निवेशकों को मालामाल किया:
+
+1. **Coforge (उछाल: ~7%):**
+   कंपनी के Q1 नेट प्रॉफिट में सालाना आधार पर 63% का भारी उछाल आया। मजबूत डील पाइपलाइन और मार्जिन विस्तार के कारण शेयर 7% चढ़कर बंद हुआ।
+2. **RR Kabel (उछाल: ~10%):**
+   कंपनी का Q1 PAT (शुद्ध लाभ) 129% YoY बढ़ा और EBITDA दोगुना हो गया। इस शानदार प्रदर्शन के दम पर शेयर में 10% की बड़ी तेजी दर्ज की गई।
+3. **Birlasoft (उछाल: ~5%):**
+   Q1 नेट प्रॉफिट 51% बढ़कर ₹161 करोड़ पर पहुंचा और TCV (टोटल कॉन्ट्रैक्ट वैल्यू) में 20% की बढ़ोतरी हुई, जिससे निवेशकों ने दिल खोलकर खरीदारी की।
+4. **Tata Capital & City Union Bank:**
+   टाटा कैपिटल के मुनाफा 56% बढ़कर ₹1,547 करोड़ होने की खबर ने फाइनेंशियल स्पेस को बूस्ट दिया। सिटी यूनियन बैंक और स्विगी में भी लिवाली का दौर रहा।
+5. **TCS & Nestle:**
+   लार्जकैप स्पेस में TCS और नेस्ले ने बाजार को निचली सतह पर संभालने का काम किया।
+
+---
+
+### **SECTION 6: TOP LOSERS OF THE DAY (10:15 - 12:00)**
+
+**[Graphic: Top Losers Table with Percentage Changes]**
+
+**एंकर:**
+अब बात करते हैं उन शेयरों की, जिन्होंने आज निवेशकों के पोर्टफोलियो को झटका दिया यानी **Top Losers**:
+
+1. **Suzlon Energy (गिरावट: 10%):**
+   सुजलॉन एनर्जी का शेयर 10% टूटकर 3 महीने के निचले स्तर पर आ गया। हालांकि कंपनी का रेवेन्यू 22% बढ़ा, लेकिन नेट प्रॉफिट 6% घटकर ₹305 करोड़ रहने से निवेशक मायूस दिखे और भारी बिकवाली शुरू हो गई।
+2. **Aurionpro Solutions (गिरावट: ~12%):**
+   मल्टीबैगर स्टॉक ओरियनप्रो सॉल्यूशंस के जून तिमाही के नतीजे बाजार की उम्मीदों पर खरे नहीं उतरे, जिसके बाद शेयर 12% से ज्यादा क्रैश हो गया।
+3. **Hindustan Unilever - HUL (गिरावट: ~5%):**
+   FMCG दिग्गज HUL का Q1 नेट प्रॉफिट 3% घटकर ₹2,673 करोड़ रहा। एकमुश्त टैक्स/क्रेडिट एडजस्टमेंट और कमजोर वॉल्यूम ग्रोथ की वजह से शेयर 5% फिसल गया।
+4. **Godfrey Phillips (गिरावट: ~6%):**
+   टैक्स बढ़ोतरी के कारण कंपनी का Q1 शुद्ध लाभ 44% से ज्यादा घट गया, जिससे शेयर में 6% की बड़ी गिरावट आई।
+5. **Ambuja Cements (गिरावट: ~3-4%):**
+   कंपनी का नेट प्रॉफिट YoY 37% गिरकर ₹660 करोड़ रहने और रेवेन्यू में 8% की कमी आने से शेयर दबाव में बंद हुआ।
+
+---
+
+### **SECTION 7: CORPORATE UPDATES & EARNINGS DEEP DIVE (12:00 - 15:00)**
+
+**[Graphic: Corporate Logos & Financial Highlights]**
+
+**एंकर:**
+दोस्तों, कॉरपोरेट जगत की खबरें और नतीजे ही किसी भी स्टॉक का लंबी अवधि का भविष्य तय करते हैं। आइए आज के प्रमुख कॉर्पोरेट अपडेट्स पर गहराई से बात करते हैं:
+
+**1. Larsen & Toubro (L&T) Q1 Breakdown:**
+देश की सबसे बड़ी इंजीनियरिंग और कंस्ट्रक्शन कंपनी L&T ने शानदार प्रदर्शन किया है। कंपनी का नेट प्रॉफिट 14% बढ़कर ₹4,123 करोड़ रहा। रेवेन्यू में भी 7% की ग्रोथ देखी गई। इंफ्रास्ट्रक्चर और ऑर्डर बुक में मजबूती यह दर्शाती है कि भारत का कैपेक्स (Capex) साइकिल सही रास्ते पर है।
+
+**2. Tata Capital Q1 Highlights:**
+टाटा समूह की फाइनेंशियल सर्विस शाखा Tata Capital ने धमाका किया है। कंपनी का नेट प्रॉफिट 56% बढ़कर ₹1,547 करोड़ हो गया, जबकि रेवेन्यू 15% बढ़ा। यह भारत में रिटेल और MSME क्रेडिट डिमांड की मजबूती को दिखाता है।
+
+**3. Meesho पर Motilal Oswal की बड़ी रिपोर्ट:**
+मोतीलाल ओसवाल ने ई-कॉमर्स प्लेटफॉर्म **Meesho** के शेयर पर कवरेज शुरू की है और ₹240 के टारगेट प्राइस के साथ खरीदारी की सलाह दी है। ब्रोकरेज का मानना है कि टीयर-2 और टीयर-3 शहरों में मेशो का बिजनेस मॉडल तेजी से मार्केट शेयर हासिल कर रहा है।
+
+**4. Smallcap Stocks में Mutual Funds का भरोसा:**
+डेटा से खुलासा हुआ है कि म्यूचुअल फंड्स लगातार 4 तिमाहियों से 13 स्मॉलकैप शेयरों को आक्रामक रूप से खरीद रहे हैं। इन शेयरों ने पिछले एक साल में 111% तक का मल्टीबैगर रिटर्न दिया है। मोतीलाल ओसवाल प्राइवेट वेल्थ का कहना है कि लॉन्ग-टर्म निवेशकों को स्मॉल और मिडकैप में अपना आवंटन (Allocation) व्यवस्थित रूप से बढ़ाना चाहिए।
+
+**5. Defense & Power Sector Updates:**
+- **Apollo Micro Systems:** इस डिफेंस कंपनी ने भारतीय वायु सेना (IAF) के माध्यम से प्रिसिजन बिजनेस (Precision Business) में प्रवेश किया है, जिससे इसके लॉन्ग-टर्म आउटलुक को बल मिला है।
+- **Tata Power:** मॉर्गन स्टेनली (Morgan Stanley) ने टाटा पावर पर 'Equal Weight' रेटिंग दी है और ₹399 का टारगेट प्राइस तय किया है।
+
+**6. IPO Market Update:**
+**MV Electrosystems IPO** 30 जुलाई को खुलने जा रहा है। कंपनी ने ₹400-425 प्रति शेयर का प्राइस बैंड तय किया है। प्राइमरी मार्केट में इक्विरस (Equirus) की रिपोर्ट के अनुसार, 245 DRHP SEBI के पास प्रोसेस में हैं, जो प्राइमरी मार्केट में जबरदस्त लिक्विडिटी का संकेत है।
+
+---
+
+### **SECTION 8: GLOBAL MARKET IMPACT & MACRO DYNAMICS (15:00 - 16:45)**
+
+**[Graphic: Global Map with Stock Tickers & US Fed Image]**
+
+**एंकर:**
+अब नजर डालते हैं सात समंदर पार की खबरों पर, क्योंकि ग्लोबल मार्केट के संकेत हमारे भारतीय बाजार के लिए बेहद अहम हैं:
+
+**1. US Stock Market & Tech Selloff:**
+वॉल स्ट्रीट (Wall Street) में आज सुस्ती का माहौल रहा। सबसे चिंताजनक बात सेमीकंडक्टर/चिप स्टॉक्स में आई भारी बिकवाली रही। Micron, Sandisk, ASML और Samsung के शेयरों पर नए दबाव के कारण वैश्विक टेक सूचकांक टूटे हैं।
+
+**2. US Fed Meeting Begins:**
+अमेरिकी फेडरल रिजर्व (US Fed) की बहुप्रतीक्षित नीतिगत बैठक आज से शुरू हो रही है। पूरे विश्व की नजरें केविन वॉर्श (Kevin Warsh) के भाषण और फेड चेयरमैन की टिप्पणियों पर टिकी हैं। क्या अमेरिका ब्याज दरों पर सख्त रुख अपनाएगा या राहत देगा? यह देखना दिलचस्प होगा।
+
+**3. Crude Oil & Currency:**
+कच्चे तेल (Brent Crude) में नरमी आई है और यह $85 प्रति बैरल के नीचे ट्रेड कर रहा है। मिडिल ईस्ट और पश्चिम एशिया में जारी तनाव के बावजूद तेल की कीमतों में गिरावट भारत के लिए एक बड़ी राहत की खबर है, जिससे हमारे चालू खाते के घाटे (CAD) और रुपये को सहारा मिल रहा है।
+
+**4. Geopolitics & Asian Markets:**
+साउथ कोरिया का Kospi इंडेक्स 8% तक ढह गया। इसके पीछे अमेरिकी-ईरान युद्ध की अनिश्चितता और चिप सेक्टर का संकट मुख्य कारण रहे। वहीं, भारत-यूके CETA का प्रभावी होना और ओमान से तंजानिया तक भारत द्वारा अपने व्यापार मार्गों को नया रूप देना भारत की रणनीतिक जीत को दर्शाता है।
+
+---
+
+### **SECTION 9: FII/DII ACTIVITY, CENTRAL BANK & REGULATORY UPDATES (16:45 - 18:15)**
+
+**[Graphic: Central Bank & SEBI Logo with Policy Points]**
+
+**एंकर:**
+आइए अब बात करते हैं देश के मैक्रो-इकोनॉमिक आंकड़ों और रेगुलेटरी संस्था SEBI की बड़ी खबरों की:
+
+**1. Central Bank Rate Decision:**
+देश के केंद्रीय बैंक ने विदेशी पूंजी को आकर्षित करने और मुद्रास्फीति को नियंत्रित रखने के लिए रेपो रेट को **5.25%** पर स्थिर रखा है और अपने रुख को 'न्यूट्रल' रखा है। वित्त मंत्री निर्मला सीतारमण ने भी स्पष्ट किया है कि वैश्विक संकटों का खामियाजा विकासशील देशों पर अनुचित रूप से नहीं पड़ना चाहिए।
+
+**2. SEBI Regulatory Strict Action:**
+SEBI आज काफी एक्शन में नजर आया:
+- ऑनलाइन विवाद समाधान (Online Dispute Resolution - ODR) प्रणाली में बड़ा सुधार किया जा रहा है।
+- **Front Running Cases:** SEBI ने 'माधव स्टॉक विजन' और अन्य संस्थाओं के खिलाफ फ्रंट रनिंग मामलों में अंतिम आदेश जारी किए हैं।
+- इसके अलावा, Affiance Industries, Shubhlaxmi Jewel Art और DU Digital Global से जुड़े मामलों में संपत्ति कुर्की (Attachment Orders) और रिकवरी सर्टिफिकेट जारी किए गए हैं। SEBI का संदेश साफ है—बाजार में हेरफेर बर्दाश्त नहीं की जाएगी!
+
+---
+
+### **SECTION 10: TOMORROW'S KEY TRIGGERS (18:15 - 19:15)**
+
+**[Graphic: Calendar Graphic with Tomorrow's Date and Key Events]**
+
+**एंकर:**
+कल जब आप सुबह 9:15 बजे बाजार में ट्रेडिंग या निवेश के लिए उतरेंगे, तो आपको किन ट्रिगर्स पर नजर रखनी चाहिए? नोट कीजिए:
+
+1. **US Fed Meeting Outcome:** अमेरिका से आने वाले ब्याज दरों के फैसले और केविन वॉर्श के भाषण का सीधा असर कल सुबह एशियाई बाजारों और हमारे IT सेक्टर पर दिखेगा।
+2. **Reactions to Earnings:** L&T, HUL, Suzlon Energy और Coforge के नतीजों का असर कल भी इन शेयरों और इनसे जुड़े सेक्टरों पर देखने को मिलेगा।
+3. **Crude Oil Movements:** अगर ब्रेंट क्रूड $85 के नीचे बना रहता है, तो पेंट, टायर और ऑटो स्टॉक्स के लिए सकारात्मक संकेत होगा।
+4. **IPO Activity:** MV Electrosystems के IPO से जुड़ी हलचल और ग्रे मार्केट प्रीमियम (GMP) पर नजर बनाए रखें।
+
+---
+
+### **SECTION 11: LESSON FOR INVESTORS / WISDOM (19:15 - 20:00)**
+
+**[Graphic: Investor Educational Slide - Templeton Quote & Key Takeaways]**
+
+**एंकर:**
+दोस्तों, बुलेटिन के इस सेगमेंट में हम बात करते हैं कि आज के बाजार से एक समझदार निवेशक को क्या सीख लेनी चाहिए:
+
+आज सुजलॉन में 10% की गिरावट या HUL का टूटना हमें यह याद दिलाता है कि **"परिणाम (Results) हमेशा उम्मीदों (Expectations) के गुलाम होते हैं।"** अगर कंपनी का मूल्यांकन बहुत ज्यादा है और नतीजे जरा भी कमजोर आते हैं, तो बाजार बेरहमी से पिटाई करता है।
+
+शुरुआत में मैंने जॉन टेम्पलटन का जो विचार आपके साथ साझा किया था—*कि असली अवसर Neglected यानी उपेक्षित जगहों पर मिलते हैं*—उसे याद रखें। जब पूरा बाजार किसी सेक्टर से भाग रहा हो, लेकिन उस कंपनी के फंडामेंटल्स मजबूत हों (जैसे आज IT सेक्टर में दिखा), तो वही सही समय होता है सिस्टमैटिक तरीके से वैल्यू ढूंढने का। पैनिक में आकर अपने मजबूत शेयरों को न बेचें और नतीजों का अध्ययन गहराई से करें।
+
+---
+
+### **SECTION 12: CONCLUSION & DISCLAIMER (20:00 - 20:30)**
+
+**[Graphic: Subscribe Animation, Social Handles & Standard SEBI Disclaimer Text]**
+
+**एंकर:**
+तो दोस्तों, यह था आज के शेयर बाजार का पूरा लेखा-जोखा। आशा करता हूं कि यह विश्लेषण आपके निवेश निर्णयों में मददगार साबित होगा।
+
+अगर आपको यह वीडियो और हमारा प्रयास पसंद आया, तो इसे **Like** जरूर करें, अपने दोस्तों और ट्रेडर साथियों के साथ **Share** करें और चैनल को **Subscribe** करके बेल आइकन दबाना न भूलें ताकि कोई भी मार्केट अपडेट आपसे न छूटे।
+
+**अस्वीकरण (Disclaimer):**
+यह वीडियो केवल शैक्षणिक और सूचनात्मक उद्देश्यों (Educational Purposes) के लिए बनाया गया है। इसमें दी गई जानकारी किसी भी शेयर को खरीदने या बेचने की सलाह या सिफारिश (Investment Advice) नहीं है। शेयर बाजार में निवेश बाजार के जोखिमों के अधीन है। कोई भी निवेश निर्णय लेने से पहले अपने SEBI पंजीकृत वित्तीय सलाहकार (SEBI Registered Financial Advisor) से परामर्श अवश्य लें।
+
+कल फिर मिलेंगे ठीक इसी समय, बाजार की नई हलचलों और सटीक विश्लेषण के साथ। तब तक के लिए सीखते रहिए, निवेश करते रहिए। जय हिंद!
+
+**[स्क्रीन धीरे-धीरे डार्क होती है, बैकग्राउंड म्यूजिक बंद होता है।]**
+</pre>
+    </div>
+    <div class="footer">
+        🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+    </div>
+</div>
+<div id="toast" class="toast">Script Copied Successfully ✅</div>
+<script>
+function copyScript(){
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display="none"; }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+</body>
+</html>
