@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Stock Market Script - 19-08-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Inter',sans-serif;
+    background: radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+                radial-gradient(circle at top right,#06b6d433,transparent 40%),
+                #020617;
+    color:var(--text); min-height:100vh;
+}
+.container { max-width:1200px; margin:auto; padding:30px; }
+.header {
+    text-align:center; padding:40px; border-radius:24px; margin-bottom:25px;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.08);
+}
+.badge {
+    display:inline-block; padding:8px 16px; border-radius:999px;
+    background:#0ea5e920; border:1px solid #38bdf830; color:#38bdf8; margin-bottom:15px; font-size:14px;
+}
+.header h1 {
+    font-size:48px; font-weight:700;
+    background:linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height: 1.2;
+}
+.header p { margin-top:10px; color:#94a3b8; }
+.tagline { font-size:18px; color:#38bdf8; margin-top:10px; }
+.toolbar { display:flex; justify-content:flex-end; margin-bottom:20px; }
+.copy-btn {
+    background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; border:none;
+    padding:14px 24px; border-radius:14px; cursor:pointer; font-weight:600; transition: all 0.2s;
+}
+.copy-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(6,182,212,.5); }
+.card {
+    background:rgba(15,23,42,.85); border:1px solid rgba(255,255,255,.08);
+    border-radius:24px; overflow:hidden; backdrop-filter:blur(20px); box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+.card-top { display:flex; align-items:center; padding:15px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dots { display:flex; gap:8px; }
+.dot { width:14px; height:14px; border-radius:50%; }
+.red { background:#ff5f57; } .yellow { background:#ffbd2e; } .green { background:#28c840; }
+.file-name { margin-left:15px; color:#94a3b8; font-size:14px; }
+pre {
+    white-space:pre-wrap; word-wrap:break-word; padding:30px; line-height:1.8;
+    font-size:16px; color:#e2e8f0; font-family:'Inter', sans-serif;
+}
+.footer { text-align:center; margin-top:30px; color:#64748b; font-size: 14px; padding-bottom: 20px; }
+.toast {
+    position:fixed; bottom:25px; right:25px; background:#22c55e; color:white;
+    padding:12px 20px; border-radius:12px; display:none; z-index: 50; box-shadow:0 10px 30px rgba(34,197,94,.3);
+}
+
+/* ========================================= */
+/* MOBILE OPTIMIZATION (@media query added)  */
+/* ========================================= */
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 15px; border-radius: 20px; }
+    .header h1 { font-size: 32px; }
+    .tagline { font-size: 15px; }
+    .toolbar { justify-content: center; }
+    .copy-btn { width: 100%; padding: 16px; font-size: 16px; }
+    .card { border-radius: 16px; }
+    .card-top { flex-direction: row; justify-content: space-between; }
+    .file-name { margin-left: 10px; font-size: 12px; }
+    pre { padding: 20px 15px; font-size: 15px; }
+    .toast { left: 50%; right: auto; transform: translateX(-50%); width: 90%; text-align: center; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">🚀 AI Generated Market Report</div>
+        <h1>📈 Stock Samvad AI</h1>
+        <p class="tagline">Daily Market Intelligence Platform</p>
+    </div>
+    <div class="toolbar">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Full Script</button>
+    </div>
+    <div class="card">
+        <div class="card-top">
+            <div class="dots">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="file-name">📊 Daily Market Analysis</div>
+        </div>
+        <pre id="script">
+📅 दिनांक: 19-08-2026
+📊 Content Type: VIDEO
+
+यहाँ आपकी 18-20 मिनट की यूट्यूब वीडियो स्क्रिप्ट, SEO मेटाडेटा और विवरण के साथ पूरी तरह से हिंदी में तैयार की गई है।
+
+---
+
+### **[SEO & YouTube Metadata]**
+
+* **SEO Title:** दलाल स्ट्रीट पर कोहराम! Nifty लगातार 7वें दिन गिरा | IT शेयरों में क्रैश का खतरा? | Top 10 Stock Market News Today
+* **Thumbnail Text:** NIFTY में भारी गिरावट! 🚨 IT Stocks पर बड़ा खतरा? | BofA की चेतावनी!
+* **Video Description:**
+  आज भारतीय शेयर बाजार में लगातार 7वें दिन गिरावट देखने को मिली। निफ्टी 24,078.3 और सेंसेक्स 76,909.68 पर बंद हुआ। इस वीडियो में जानिए CLSA द्वारा IT शेयरों (TCS, Infosys, Wipro) के डाउनग्रेड, BofA के नए सर्वे रिपोर्ट, SEBI के नए AI 'Kill Switch' नियम, Swiggy के $400M आउटफ्लो जोखिम और IGL, MGL, Adani Total Gas में आई तेजी का पूरा विश्लेषण। जानिए कल के मुख्य ट्रिगर्स और बाजार में आपकी क्या रणनीति होनी चाहिए।
+
+* **20 Hashtags:**
+  #StockMarketIndia #Nifty50 #Sensex #ShareMarketNews #ITStocks #CLSA #SEBI #NiftyAnalysis #MarketCrash #BofASurvey #SwiggyIPO #IGL #MGL #AdaniTotalGas #RailTel #LTTS #GlobalMarket #RupeeVSDollar #Investing #TradingHindi
+
+* **Pinned Comment:**
+  "क्या आपको लगता है कि निफ्टी की यह 7 दिनों की गिरावट खरीदारी का सही मौका है या बाजार अभी और नीचे जाएगा? नीचे कमेंट में अपनी राय जरूर बताएं! 👇"
+
+* **Chapter Timestamps:**
+  00:00 - दमदार ओपनिंग हुक (Opening Hook)
+  01:30 - मार्केट ओवरव्यू (Market Overview)
+  03:00 - निफ्टी और सेंसेक्स विश्लेषण (Nifty & Sensex Analysis)
+  05:30 - आज की 10 बड़ी खबरें (Top 10 Big Headlines)
+  09:00 - सेक्टर विश्लेषण (Sectoral Analysis: IT, Gas, Defence & Infra)
+  11:30 - टॉप गेनर्स (Top Gainers Today)
+  12:45 - टॉप लूजर्स (Top Losers Today)
+  14:00 - कॉर्पोरेट अपडेट्स (Corporate Updates & Order Wins)
+  16:00 - ग्लोबल मार्केट प्रभाव (Global Markets & Crude Oil)
+  17:30 - FII & DII गतिविधि (BofA Survey & Capital Flows)
+  18:45 - कल के ट्रिगर्स (Tomorrow's Key Triggers)
+  19:45 - निवेशकों के लिए सीख (Investor Takeaways)
+  20:30 - निष्कर्ष और डिस्क्लेमर (Conclusion & Disclaimer)
+
+---
+
+### **[VIDEO SCRIPT: 18-20 MINUTES]**
+
+---
+
+#### **1. दमदार ओपनिंग हुक (Opening Hook)**
+
+**(CAMERA ON ANCHOR - Dynamic, Serious & Engaging Tone)**
+
+**एंकर:**
+"नमस्कार दोस्तों! दलाल स्ट्रीट पर क्या चल रहा है? क्या भारतीय शेयर बाजार किसी बड़े संकट की ओर बढ़ रहा है, या फिर यह गिरावट निवेशकों के लिए एक ऐतिहासिक मौका बनने जा रही है? 
+
+आज निफ्टी में लगातार 7वें दिन लाल निशान में क्लोजिंग देखने को मिली है—सितंबर 2025 के बाद यह बाजार की सबसे लंबी गिरावट की श्रृंखला बन चुकी है! एक तरफ जहां वैश्विक ब्रोकरेज फर्म CLSA ने दिग्गज IT कंपनियों—TCS, Infosys और Wipro के टारगेट प्राइस घटाकर बाजार में खलबली मचा दी है, वहीं Bank of America के ताजा सर्वे में भारत को एशिया का 'Least-Favoured' यानी सबसे कम पसंदीदा बाजार करार दिया गया है!
+
+इतना ही नहीं, भारतीय रुपया डॉलर के मुकाबले तीन हफ्ते के निचले स्तर पर आ चुका है, Swiggy पर $400 मिलियन के आउटफ्लो का खतरा मंडरा रहा है, और दूसरी तरफ SEBI बाजार में एक 'AI Kill Switch' लाने की तैयारी कर रहा है! 
+
+अगर आप शेयर बाजार में ट्रेडिंग करते हैं या लंबी अवधि के निवेशक हैं, तो आज का यह वीडियो आपके पोर्टफोलियो के लिए बेहद निर्णायक साबित हो सकता है। अगले 18 मिनट में हम आज के पूरे बाजार डेटा, ग्लोबल ट्रिगर्स और कल के बड़े संकेतों का बिल्कुल सटीक और निष्पक्ष विश्लेषण करेंगे। तो बिना किसी देरी के, चलिए शुरू करते हैं!"
+
+---
+
+#### **2. मार्केट ओवरव्यू (Market Overview)**
+
+**(GRAPHIC ON SCREEN: Market Indices Close)**
+* Nifty 50 Close: 24,078.3
+* Sensex Close: 76,909.68
+
+**एंकर:**
+"दोस्तों, सबसे पहले आज के मुख्य आंकड़ों पर नजर डालते हैं। आज भारतीय शेयर बाजार की शुरुआत बेहद सुस्त रही और दिन भर बाजार में लगातार बिकवाली का दबाव बना रहा। 
+
+आज एनएसई का बेंचमार्क इंडेक्स **Nifty 50** आखिरकार **24,078.3** के स्तर पर बंद हुआ। वहीं, बीएसई का **Sensex** **76,909.68** के स्तर पर लाल निशान में सिमट गया। 
+
+बाजार की चाल को देखकर साफ लग रहा है कि पहली तिमाही (Q1) के नतीजे उम्मीद से बेहतर रहने के बावजूद, दलाल स्ट्रीट एक सीमित दायरे (Rangebound) में फंसी हुई है और वैश्विक चिंताओं के कारण निवेशक अपना पैसा निकालने में ही भलाई समझ रहे हैं।"
+
+---
+
+#### **3. निफ्टी और सेंसेक्स विश्लेषण (Nifty & Sensex Analysis)**
+
+**(GRAPHIC: Nifty Technical Chart - Showing 7-day losing streak)**
+
+**एंकर:**
+"आइए अब निफ्टी और सेंसेक्स की इस गिरावट की परतें खोलते हैं। 
+
+निफ्टी के लिए लगातार 7वें दिन गिरावट में बंद होना यह दर्शाता है कि बाजार में 'Sell on Rise' यानी हर तेजी पर बिकवाली की रणनीति हावी है। सितंबर 2025 के बाद यह पहला मौका है जब निफ्टी ने इतनी लंबी लूजिंग स्ट्रीक दर्ज की है।
+
+इस गिरावट की सबसे बड़ी वजह क्या है? 
+1. **वैश्विक बॉन्ड यील्ड में तेजी:** अमेरिकी ट्रेजरी Yields में लगातार हो रही बढ़ोतरी से ग्लोबल इक्विटी मार्केट पर दबाव बढ़ा है।
+2. **IT और बैंकिंग दिग्गजों में बिकवाली:** हेवीवेट शेयरों में लगातार संस्थागत बिकवाली देखने को मिल रही है।
+3. **FIIs का रुख:** विदेशी संस्थागत निवेशक भारतीय बाजार से अपना पैसा निकालकर अन्य सस्ते एशियाई बाजारों की तरफ मोड़ रहे हैं।
+
+निफ्टी के लिए 24,000 का स्तर एक बेहद महत्वपूर्ण मनोवैज्ञानिक और तकनीकी सपोर्ट बना हुआ है। अगर यह स्तर टूटता है, तो बाजार में और बिकवाली देखने को मिल सकती है।"
+
+---
+
+#### **4. टॉप 10 बड़ी खबरें (Top 10 Big News Headlines)**
+
+**(GRAPHIC: Top 10 Headlines Bulletin)**
+
+**एंकर:**
+"चलिए अब बात करते हैं आज की उन 10 बड़ी खबरों की, जिन्होंने आज बाजार की दिशा तय की और जिनका असर आपके पोर्टफोलियो पर पड़ रहा है:
+
+1. **IT शेयरों में क्रैश का डर:** CLSA ने TCS, Infosys, Wipro सहित प्रमुख IT शेयरों को Downgrade कर दिया है और उनके टारगेट प्राइस में कटौती की है।
+2. **BofA का चौंकाने वाला सर्वे:** बैंक ऑफ अमेरिका (BofA) के पोल में भारत ने इंडोनेशिया को पछाड़कर एशिया का सबसे कम पसंदीदा (Least-Favoured) शेयर बाजार बनने का तमगा हासिल किया है।
+3. **रुपया तीन हफ्ते के निचले स्तर पर:** भारतीय रुपया डॉलर के मुकाबले लगातार फिसल रहा है। ट्रेडर्स को डर है कि यह 96/USD तक गिर सकता है, हालांकि RBI लगातार मोर्चा संभाले हुए है।
+4. **SEBI ला रहा है AI 'Kill Switch':** बाजार नियामक SEBI जल्द ही स्टॉक मार्केट के लिए एक Kill Switch के साथ AI नियम लागू करने की योजना बना रहा है। साथ ही SME प्लेटफॉर्म्स पर ट्रेडिंग और मार्केट-मेकिंग नियमों को आसान बनाया जा सकता है।
+5. **PNG/CNG कंपनियों की बल्ले-बल्ले:** केंद्र सरकार द्वारा घरेलू PNG को बढ़ावा देने के फैसले से IGL, MGL और Adani Total Gas के शेयरों में 6% तक का जोरदार उछाल आया।
+6. **Swiggy को $400M के झटके की आशंका:** ब्रोकरेज फर्म Jefferies के मुताबिक, इंडियन-ओन्ड स्टेटस को लेकर अस्पष्टता के चलते Swiggy से $400 मिलियन का फंड आउटफ्लो हो सकता है।
+7. **कच्चे तेल और तेल कंपनियों का गणित:** JM Financial ने ब्रेंट क्रूड का लक्ष्य $80 प्रति बैरल रखा है। इसका असर Oil India, ONGC और OMCs पर देखने को मिल रहा है।
+8. **बैंकों ने जुटाया ग्लोबल फंड:** IDFC FIRST Bank ने अपने पहले ग्लोबल बॉन्ड इश्यू से $500 मिलियन और Indian Bank ने $400 मिलियन जुटाए हैं। BlackRock और Capital Group ने Anchor निवेशक के रूप में भाग लिया।
+9. **डील और ऑर्डर बुक्स:** L&T Technology Services (LTTS) को $75 मिलियन का बड़ा सौदा मिला, RailTel को ₹167 करोड़ का EPFO ऑर्डर मिला, और HG Infra को REC से LoI प्राप्त हुआ।
+10. **जियोपॉलिटिक्स और ट्रेड मैप:** ईरान-इजरायल युद्ध के खतरों और वैश्विक तनाव के बीच भारत-ब्रिटेन CETA के तहत पहली जीरो-ड्यूटी ट्रेड कन्साइनमेंट ब्रिटेन पहुंच चुकी है, जबकि भारत और कनाडा 2026 तक CEPA ट्रेड समझौते पर मुहर लगाने की तैयारी में हैं।"
+
+---
+
+#### **5. सेक्टर विश्लेषण (Sector Analysis)**
+
+**(GRAPHIC: Sectoral Performance - IT vs Gas vs Railways)**
+
+**एंकर:**
+"आइए अब गहराई से समझते हैं कि अलग-अलग सेक्टर्स में आज क्या हलचल रही।
+
+* **IT Sector (सूचना प्रौद्योगिकी):** आज का सबसे बड़ा विलेन IT सेक्टर रहा। CLSA की डाउनग्रेड रिपोर्ट ने पूरे सेक्टर की कमर तोड़ दी। AI से आने वाली चुनौतियों और धीमी ग्रोथ की चिंताओं के कारण TCS, Infosys और Wipro जैसे दिग्गजों में भारी दबाव देखा गया।
+* **City Gas Distribution (CGD Sector):** आज का स्टार परफॉर्मर रहा गैस सेक्टर! सरकार द्वारा घरेलू PNG सप्लाई को प्राथमिकता देने की वजह से IGL, Mahanagar Gas (MGL) और Adani Total Gas में 6% तक की शानदार रैली देखने को मिली।
+* **Oil & Gas / Energy:** JM Financial के $80 ब्रेंट कॉल के बाद ONGC और Oil India जैसे अपस्ट्रीम कंपनियों और OMC कंपनियों (BPCL, HPCL, IOC) के मार्जिन को लेकर ट्रेडर्स सतर्क रुख अपना रहे हैं।
+* **Rail, Defense & Infra Sector:** ऑर्डर मिलने की खबरों से RailTel में 7% से अधिक और HG Infra में 8% से ज्यादा की तेजी दर्ज की गई। वहीं दूसरी तरफ, Jupiter Wagons में Jefferies द्वारा टारगेट प्राइस घटाने के बाद दबाव देखा गया।"
+
+---
+
+#### **6. टॉप गेनर्स (Top Gainers Today)**
+
+**(GRAPHIC: Top Gainers Table)**
+
+**एंकर:**
+"गिरावट भरे इस बाजार में भी कुछ शेयरों ने निवेशकों को बेहतरीन रिटर्न दिया। आज के टॉप गेनर्स में शामिल रहे:
+
+1. **Behari Lal Engineering:** अपने ब्लॉकबस्टर डेब्यू के बाद शेयर 14% तक उछला।
+2. **HG Infra Engineering:** REC से LoI मिलने के बाद 8% से ज्यादा की बढ़त दर्ज की।
+3. **RailTel Corporation:** ₹167 करोड़ के EPFO ऑर्डर के दम पर 7% से ज्यादा उछला।
+4. **City Gas Players (IGL, MGL, Adani Total Gas):** सरकारी फैसलों के दम पर 6% तक चढ़े।
+5. **L&T Technology Services (LTTS):** $75 मिलियन की डील मिलने के बाद 3% तक चढ़ा।
+6. **Penny Stocks:** ₹5 से कम वाला एक पेनी स्टॉक लगातार 10वें दिन अपर सर्किट में रहा।"
+
+---
+
+#### **7. टॉप लूजर्स (Top Losers Today)**
+
+**(GRAPHIC: Top Losers Table)**
+
+**एंकर:**
+"अब बात करते हैं उन शेयरों की, जिन्होंने आज निवेशकों को निराश किया और जिनमें भारी बिकवाली देखने को मिली:
+
+1. **Netweb Tech:** मुनाफावसूली के चलते भारी दबाव में रहा।
+2. **Bata India & Tata Chemicals:** लगातार बिकवाली का शिकार बने।
+3. **Reliance Power & Bharat Dynamics:** बाजार के नकारात्मक मूड का असर इन पर भी पड़ा।
+4. **India Glycols:** लगातार 4 दिनों की तेजी के बाद आज 3% फिसल गया, हालांकि कंपनी डिमर्जर की तैयारी कर रही है।
+5. **NMDC:** कमजोर Q1 नतीजों और लोहे की गिरती कीमतों के कारण दबाव में रहा।
+6. **IT Majors (TCS, Infosys, Wipro):** CLSA की डाउनग्रेड रिपोर्ट के बाद नुकसान में बंद हुए।"
+
+---
+
+#### **8. कॉर्पोरेट अपडेट (Corporate Updates)**
+
+**(GRAPHIC: Corporate News Cards)**
+
+**एंकर:**
+"आइए अब नजर डालते हैं आज की प्रमुख कॉर्पोरेट खबरों और कंपनियों के बड़े फैसलों पर:
+
+* **Swiggy Outflow Threat:** Jefferies की रिपोर्ट के अनुसार, Swiggy के 'Indian-Owned' स्टेटस को लेकर बनी असमंजस की स्थिति के कारण $400 मिलियन तक का पैसिव आउटफ्लो देखने को मिल सकता है।
+* **Banking Fundraise:** IDFC FIRST Bank ने ग्लोबल बॉन्ड इश्यू से $500 मिलियन जुटाए हैं, जिसमें BlackRock और Capital Group जैसे वैश्विक दिग्गजों ने एंकर निवेशक के रूप में पैसा लगाया है। वहीं Indian Bank ने भी 4 साल की अवधि के लिए $400 मिलियन जुटाए हैं।
+* **L&T Tech Services (LTTS):** LTTS को $75 मिलियन (लगभग ₹625 करोड़) का एक बड़ा क्लाइंट कॉन्ट्रैक्ट हासिल हुआ है, जिससे कंपनी के रेवेन्यू विजिबिलिटी को मजबूती मिलेगी।
+* **Jupiter Wagons:** ब्रोकरेज फर्म Jefferies ने Q1 नतीजों के बाद Jupiter Wagons का टारगेट प्राइस घटा दिया है और 'Underperform' रेटिंग को बरकरार रखा है।
+* **Shalimar Paints:** Hella Infra शेयर-स्वैप खुलासे से ठीक पहले Shalimar Paints के शेयर में आए 20% स्पाइक के बाद अब यह रेगुलेटरी (SEBI) जांच के दायरे में आ सकता है।
+* **Angel One bullish on Gujarat Pharma:** एंजेल वन ने एक गुजरात-बेस्ड फार्मा स्टॉक में 39% के अपसाइड पोटेंशियल का अनुमान जताया है और इसे लंबी अवधि के लिए खरीदने की सलाह दी है।"
+
+---
+
+#### **9. ग्लोबल मार्केट प्रभाव (Global Market Impact)**
+
+**(GRAPHIC: Global Markets Overview - Wall Street, Europe, Asia)**
+
+**एंकर:**
+"दोस्तों, भारतीय बाजार अलग-थलग रहकर काम नहीं कर सकता। आइए देखते हैं कि अंतरराष्ट्रीय बाजारों से क्या संकेत मिल रहे हैं:
+
+* **US Economy & Treasury Yields:** अमेरिका में ट्रेजरी यील्ड में लगातार तेजी आ रही है, जो अमेरिकी अर्थव्यवस्था के साथ-साथ उभरते हुए बाजारों (Emerging Markets) के लिए बड़ा जोखिम बनती जा रही है।
+* **US Tech & AI Space:** Wall Street पर Nvidia द्वारा OpenAI के 8-GW ओहायो AI कैंपस में $1.5 बिलियन के निवेश के बावजूद, SanDisk, Micron और Credo में गिरावट के कारण Dow Jones और Tech Futures दबाव में दिखे। Bank of America के सर्वे में यह भी खुलासा हुआ है कि निवेशक अब AI बबल के डर से सेमीकंडक्टर दांवों को हटाकर दूसरे सेक्टर्स में पैसा लगा रहे हैं।
+* **South Korea’s SK Hynix:** सेमीकंडक्टर दिग्गज SK Hynix के शेयर में पिछले दो महीनों में 50% की भारी गिरावट आई, जिससे रिटेल निवेशकों की संपत्ति स्वाहा हो गई। इसके बाद कंपनी ने बायबैक का ऐलान किया है।
+* **European Markets & Middle East:** मिडिल ईस्ट में बढ़ते जियोपॉलिटिकल तनाव और क्रूड ऑयल की बढ़ती कीमतों के कारण यूरोपीय बाजारों में सुस्ती का माहौल है। निवेशकों की नजर FOMC Fed Minutes पर टिकी हुई है।
+* **Crypto Market:** बिटकॉइन $64,350 के स्तर के आसपास ट्रेड कर रहा है। कम लिक्विडिटी और सुस्त ऑन-चैन गतिविधियों के कारण क्रिप्टो निवेशक भी सतर्क हैं।"
+
+---
+
+#### **10. FII और DII गतिविधि (FII & DII Activity)**
+
+**(GRAPHIC: FII / DII Institutional Flows Chart)**
+
+**एंकर:**
+"अब बात करते हैं बाजार की सबसे बड़ी ताकत—FIIs और DIIs के फ्लो की।
+
+Bank of America (BofA) के हालिया फंड मैनेजर सर्वे में एक बेहद चिंताजनक बात सामने आई है। भारत अब एशिया में फंड मैनेजर्स का सबसे कम पसंदीदा (Least-Favoured) बाजार बन गया है। इसने इंडोनेशिया को भी पीछे छोड़ दिया है। 
+
+इसका सीधा कारण है—भारतीय बाजारों का ऊंचा वैल्यूएशन (Valuations) और अमेरिकी बॉन्ड यील्ड में तेजी। FIIs लगातार भारतीय बाजार से पैसा निकालकर उन बाजारों में लगा रहे हैं जहां वैल्यूएशन सस्ता है। हालांकि, RBI के विशेष स्पेशल विंडोज के जरिए $100 बिलियन तक की पूंजी लाने की क्षमता भारतीय बाजार और रुपए को एक बड़ा सुरक्षा कवच प्रदान कर रही है।"
+
+---
+
+#### **11. कल के ट्रिगर्स (Tomorrow's Key Triggers)**
+
+**(GRAPHIC: Tomorrow's Event Calendar)**
+
+**एंकर:**
+"कल जब आप सुबह ट्रेडिंग डेस्क पर बैठेंगे, तो आपको इन मुख्य ट्रिगर्स पर नजर रखनी होगी:
+
+1. **US Fed Minutes:** अमेरिकी फेडरल रिजर्व की बैठक के मिनट्स जारी होंगे, जिससे ब्याज दरों में कटौती के भावी संकेतों का पता चलेगा।
+2. **रुपया बनाम डॉलर (USD/INR):** क्या रुपया 96/USD के स्तर की तरफ बढ़ता है या RBI के हस्तक्षेप से इसमें रिकवरी आती है।
+3. **कच्चे तेल की कीमतें:** ब्रेंट क्रूड $80 के स्तर को पार करता है या नहीं, यह OMCs और पेंट कंपनियों के लिए अहम होगा।
+4. **SEBI के नए ऐलान:** SME प्लेटफॉर्म्स पर ट्रेडिंग नियमों में ढील और AI 'Kill Switch' पर SEBI के अगले कदम।
+5. **FII Trend:** क्या विदेशी संस्थागत निवेशकों की बिकवाली थमने के कोई संकेत मिलते हैं या नहीं।"
+
+---
+
+#### **12. निवेशकों के लिए सीख (Investor Takeaways)**
+
+**(CAMERA ON ANCHOR - Advice & Educational Tone)**
+
+**एंकर:**
+"दोस्तों, बाजार के इस अनिश्चित माहौल में एक समझदार निवेशक को क्या करना चाहिए? आइए समझते हैं 3 सबसे महत्वपूर्ण बातें:
+
+1. **गिरते हुए शेयरों को पकड़ने की जल्दी न करें (Don't Catch a Falling Knife):** IT सेक्टर में CLSA के डाउनग्रेड के बाद केवल इसलिए खरीदारी न करें कि शेयर काफी गिर चुके हैं। ट्रेंड के स्थिर होने का इंतजार करें।
+2. **मजबूत ऑर्डर बुक वाली कंपनियों पर ध्यान दें:** बाजार की गिरावट में भी RailTel, HG Infra और LTTS जैसी कंपनियां इसलिए टिकी हुई हैं क्योंकि उनकी ऑर्डर बुक और फंडामेंटल्स मजबूत हैं।
+3. **एसेट एलोकेशन और कैश अनुशासन:** निफ्टी 7 दिनों से गिर रहा है, लेकिन Q1 नतीजों के बाद बाजार में सीमित दायरे की चाल (Rangebound Trend) स्वाभाविक है। अपना कुछ कैश बचाकर रखें ताकि सही सपोर्ट लेवल पर आप क्वालिटी स्टॉक्स को SIP मोड में जोड़ सकें।"
+
+---
+
+#### **13. निष्कर्ष (Conclusion)**
+
+**(CAMERA ON ANCHOR - Professional Closing)**
+
+**एंकर:**
+"तो दोस्तों, यह था आज के शेयर बाजार का पूरा लेखा-जोखा। बाजार में उतार-चढ़ाव आते रहेंगे, लेकिन एक अनुशासित और सूचित निवेशक ही लंबी अवधि में संपत्ति बना पाता है। 
+
+अगर आपको हमारा यह विस्तृत और डेटा-आधारित विश्लेषण पसंद आया हो, तो इस वीडियो को लाइक करें, अपने ट्रेडर दोस्तों के साथ शेयर करें, और हमारे चैनल को सब्सक्राइब करके बेल आइकन जरूर दबाएं ताकि कोई भी मार्केट अपडेट आपसे न छूटे।
+
+कल फिर मिलेंगे बाजार की नई हलचल और सटीक विश्लेषण के साथ। तब तक के लिए धन्यवाद और हैप्पी इन्वेस्टिंग!"
+
+---
+
+#### **14. डिस्क्लेमर (Disclaimer)**
+
+**(GRAPHIC ON SCREEN: Regulatory Disclaimer Text)**
+
+**एंकर (वॉइसओवर):**
+"**डिस्क्लेमर:** यह वीडियो केवल शैक्षणिक और सूचनात्मक उद्देश्यों के लिए बनाया गया है। इसमें बताए गए कोई भी विचार, शेयर सुझाव या विश्लेषण व्यक्तिगत निवेश सलाह नहीं हैं। शेयर बाजार में निवेश बाजार जोखिमों के अधीन है। कोई भी निवेश निर्णय लेने से पहले अपने पंजीकृत वित्तीय सलाहकार (SEBI Registered Financial Advisor) से परामर्श अवश्य लें। प्रस्तुत डेटा केवल उपलब्ध सार्वजनिक समाचारों और रिपोर्टों पर आधारित है।"
+
+---
+</pre>
+    </div>
+    <div class="footer">
+        🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+    </div>
+</div>
+<div id="toast" class="toast">Script Copied Successfully ✅</div>
+<script>
+function copyScript(){
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display="none"; }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+</body>
+</html>
