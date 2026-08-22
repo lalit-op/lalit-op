@@ -87,34 +87,26 @@ def generate_index():
 
         date_str = file.replace(".html", "")
 
-        cards += f"""
-        <article class="report-card">
+       cards += f"""
+<article class="report-card">
 
-            <div class="report-info">
+    <div class="report-info">
 
-                <a
-                    href="{file}"
-                    class="report-title"
-                >
-                    📄 Daily Market Script - {date_str}
-                </a>
+        <a
+            href="{file}"
+            class="report-title"
+        >
+            📄 Daily Market Script - {date_str}
+        </a>
 
-                <div class="report-date">
-                    📅 Published on {date_str}
-                </div>
+        <div class="report-date">
+            📅 Published on {date_str}
+        </div>
 
-            </div>
+    </div>
 
-            <a
-                href="{file}"
-                class="open-button"
-                aria-label="Open report"
-            >
-                →
-            </a>
-
-        </article>
-        """
+</article>
+"""
 
     html = f"""<!DOCTYPE html>
 
@@ -488,35 +480,6 @@ body {{
 }}
 
 
-.open-button {{
-
-    width: 52px;
-
-    height: 52px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    color: #38bdf8;
-
-    border:
-        1px solid
-        rgba(56,189,248,0.35);
-
-    text-decoration: none;
-
-    font-size: 28px;
-
-}}
-
-
 /* ==============================
    MOBILE
 ============================== */
@@ -561,16 +524,6 @@ body {{
 
     }}
 
-
-    .open-button {{
-
-        width: 44px;
-
-        height: 44px;
-
-        font-size: 23px;
-
-    }}
 
 }}
 
