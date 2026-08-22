@@ -36,7 +36,7 @@ def get_market_data():
         sensex_close = round(float(sensex.history(period="5d")["Close"].iloc[-1]), 2)
     except Exception:
         sensex_close = "Unavailable"
-        
+
     return nifty_close, sensex_close
 
 def fetch_news_headlines():
@@ -55,7 +55,7 @@ def fetch_news_headlines():
         "https://www.investing.com/rss/news.rss",
         "https://www.sebi.gov.in/sebirss.xml"
     ]
-    
+
     headlines = []
     for source in sources:
         try:
@@ -87,7 +87,7 @@ def generate_index():
 
         date_str = file.replace(".html", "")
 
-       cards += f"""
+        cards += f"""
 <article class="report-card">
 
     <div class="report-info">
@@ -770,7 +770,7 @@ def send_to_telegram(script):
         return
 
     telegram_url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    
+
     # Telegram max message length is 4096. Sending in chunks of 3500.
     for i in range(0, len(script), 3500):
         try:
@@ -793,7 +793,7 @@ def send_to_telegram(script):
 def main():
     print("Fetching market data...")
     nifty_close, sensex_close = get_market_data()
-    
+
     print("Fetching news headlines...")
     news_text = fetch_news_headlines()
 
@@ -847,7 +847,7 @@ Sensex Close: {sensex_close}
 """
 
     today = datetime.now().strftime("%d-%m-%Y")
-    
+
     # Gemini Generation
     if not GEMINI_API_KEY:
         print("GEMINI_API_KEY is missing. Aborting generation.")
@@ -855,12 +855,12 @@ Sensex Close: {sensex_close}
 
     print("Generating AI Script with Gemini...")
     model = genai.GenerativeModel("gemini-3.6-flash")
-    
+
     try:
         response = model.generate_content(prompt)
         script = f"\n📅 दिनांक: {today}\n📊 Content Type: {CONTENT_TYPE.upper()}\n\n{response.text}\n"
         title = f"Daily Stock Market Script - {today}"
-        
+
         save_post(title, script)
         generate_index()
         send_to_telegram(script)
