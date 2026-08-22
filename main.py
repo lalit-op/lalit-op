@@ -70,46 +70,616 @@ def fetch_news_headlines():
     return "\n".join(headlines[:100])
 
 def generate_index():
-    """Generates a mobile-optimized index.html listing all generated posts."""
+    """Generates the Indian Market AI homepage."""
+
     os.makedirs("posts", exist_ok=True)
-    files = [f for f in os.listdir("posts") if f.endswith(".html") and f != "index.html"]
+
+    files = [
+        f for f in os.listdir("posts")
+        if f.endswith(".html") and f != "index.html"
+    ]
+
     files.sort(reverse=True)
 
     cards = ""
+
     for file in files:
+
         date_str = file.replace(".html", "")
+
         cards += f"""
-        <article class="bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-4 md:p-8 mb-4 md:mb-5 transition-transform hover:scale-[1.02]">
-            <a href="{file}" class="block text-sky-400 hover:text-green-400 text-lg md:text-3xl font-bold mb-2 md:mb-3">
-                🔥 Daily Market Script - {date_str}
-            </a>
-            <div class="text-sm md:text-base text-slate-300">
-                📅 Published on {date_str}
+        <article class="report-card">
+
+            <div class="report-info">
+
+                <a
+                    href="{file}"
+                    class="report-title"
+                >
+                    📄 Daily Market Script - {date_str}
+                </a>
+
+                <div class="report-date">
+                    📅 Published on {date_str}
+                </div>
+
             </div>
+
+            <a
+                href="{file}"
+                class="open-button"
+                aria-label="Open report"
+            >
+                →
+            </a>
+
         </article>
         """
 
-    # MOBILE OPTIMIZED HTML (Tailwind adjustments and viewport added)
     html = f"""<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Market Reports</title>
-<script src="https://cdn.tailwindcss.com"></script>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#020617"
+>
+
+<title>
+    Stock Samvad AI | Daily Market Reports
+</title>
+
+
+<style>
+
+* {{
+    box-sizing: border-box;
+}}
+
+
+html,
+body {{
+
+    margin: 0;
+
+    padding: 0;
+
+    width: 100%;
+
+    min-height: 100%;
+
+}}
+
+
+body {{
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #1e3a8a55,
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at top right,
+            #06b6d455,
+            transparent 40%
+        ),
+
+        #020617;
+
+    color: #e2e8f0;
+
+    min-height: 100vh;
+
+}}
+
+
+.container {{
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 25px;
+
+}}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {{
+
+    text-align: center;
+
+    padding: 45px 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    backdrop-filter:
+        blur(20px);
+
+}}
+
+
+.badge {{
+
+    display: inline-block;
+
+    padding: 9px 17px;
+
+    border-radius: 999px;
+
+    color: #38bdf8;
+
+    background:
+        rgba(14,165,233,0.10);
+
+    border:
+        1px solid
+        rgba(56,189,248,0.25);
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+
+}}
+
+
+.header h1 {{
+
+    margin: 10px 0;
+
+    font-size:
+        clamp(38px, 7vw, 64px);
+
+    line-height: 1.1;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #22c55e,
+            #facc15
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}}
+
+
+.subtitle {{
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(15px, 3vw, 19px);
+
+}}
+
+
+/* ==============================
+   AUTOMATION
+============================== */
+
+.automation-box {{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+
+    padding: 18px 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(15,23,42,0.85);
+
+    border:
+        1px solid
+        rgba(56,189,248,0.18);
+
+}}
+
+
+.automation-title {{
+
+    color: #f8fafc;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+}}
+
+
+.automation-text {{
+
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}}
+
+
+.run-button {{
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background: #238636;
+
+    border: 1px solid #2ea043;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+
+}}
+
+
+.run-button:hover {{
+
+    background: #2ea043;
+
+}}
+
+
+/* ==============================
+   ARCHIVE
+============================== */
+
+.section-label {{
+
+    color: #38bdf8;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+
+    margin-bottom: 8px;
+
+}}
+
+
+.section-title {{
+
+    margin: 0 0 20px;
+
+    font-size:
+        clamp(30px, 5vw, 44px);
+
+    color: #f8fafc;
+
+}}
+
+
+/* ==============================
+   REPORT CARD
+============================== */
+
+.report-card {{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(15,23,42,0.85);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+}}
+
+
+.report-card:hover {{
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(56,189,248,0.35);
+
+}}
+
+
+.report-info {{
+
+    min-width: 0;
+
+}}
+
+
+.report-title {{
+
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    font-weight: 700;
+
+}}
+
+
+.report-date {{
+
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}}
+
+
+.open-button {{
+
+    width: 52px;
+
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #38bdf8;
+
+    border:
+        1px solid
+        rgba(56,189,248,0.35);
+
+    text-decoration: none;
+
+    font-size: 28px;
+
+}}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {{
+
+    .container {{
+
+        padding: 15px;
+
+    }}
+
+
+    .header {{
+
+        padding: 30px 15px;
+
+    }}
+
+
+    .automation-box {{
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 16px;
+
+    }}
+
+
+    .run-button {{
+
+        width: 100%;
+
+    }}
+
+
+    .report-card {{
+
+        padding: 17px;
+
+    }}
+
+
+    .open-button {{
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 23px;
+
+    }}
+
+}}
+
+</style>
+
 </head>
-<body class="bg-slate-900 text-white min-h-screen">
-<div class="max-w-4xl mx-auto p-4 md:p-8">
-    <h1 class="text-3xl md:text-5xl font-bold text-center mb-6 md:mb-8 mt-4 md:mt-0">
-        📈 Daily Market Reports
-    </h1>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="badge">
+
+            🇮🇳 AI-Powered Indian Market Intelligence
+
+        </div>
+
+        <h1>
+
+            Stock Samvad AI
+
+        </h1>
+
+        <div class="subtitle">
+
+            Daily Nifty, Sensex & Indian Stock Market Reports
+
+        </div>
+
+    </div>
+
+
+    <!-- AUTOMATION -->
+
+    <div class="automation-box">
+
+        <div>
+
+            <div class="automation-title">
+
+                ⚙️ Indian Market Automation
+
+            </div>
+
+            <div class="automation-text">
+
+                Generate the latest Indian market script
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="https://github.com/lalit-op/lalit-op/actions/workflows/market_news.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="run-button"
+        >
+
+            ▶ Run Workflow
+
+        </a>
+
+    </div>
+
+
+    <!-- ARCHIVE -->
+
+    <div class="section-label">
+
+        ARCHIVE
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        Daily Indian Market Reports
+
+    </h2>
+
+
     {cards}
+
+
 </div>
+
+
 </body>
+
 </html>
 """
-    with open("posts/index.html", "w", encoding="utf-8") as f:
+
+    with open(
+        "posts/index.html",
+        "w",
+        encoding="utf-8"
+    ) as f:
+
         f.write(html)
+
     print("Updated posts/index.html")
 
 def save_post(title, content):
