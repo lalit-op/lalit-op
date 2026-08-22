@@ -1,68 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Daily Market Reports</title>
-    
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#020617"
+    >
+
+    <meta
+        name="description"
+        content="Stock Samvad AI - Daily Indian Stock Market Reports"
+    >
+
+    <title>
+        Stock Samvad AI | Daily Market Reports
+    </title>
+
     <style>
-        :root {
-            /* Fallback background color */
-            --bg-color: #0f172a; 
+
+        * {
+            box-sizing: border-box;
         }
 
-        body, html {
+        html,
+        body {
+
             margin: 0;
             padding: 0;
+
             width: 100%;
-            /* Use dvh (dynamic viewport height) if supported, fallback to vh */
+            height: 100%;
+
+            background: #020617;
+
+        }
+
+        .loading {
+
+            width: 100%;
             height: 100vh;
-            height: 100dvh; 
-            overflow: hidden; /* Critical: Prevent double scrollbars on mobile */
-            background-color: var(--bg-color);
-            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape mode */
+            height: 100dvh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 14px;
+
+            background: #020617;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
         }
 
-        .fullscreen-iframe-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            /* Ensure smooth scrolling on iOS */
-            -webkit-overflow-scrolling: touch; 
+        .loading-dot {
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow:
+                0 0 20px
+                rgba(34,197,94,0.8);
+
+            animation:
+                pulse 1.2s infinite;
+
         }
 
-        .fullscreen-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            /* Remove tap highlight color on mobile */
-            -webkit-tap-highlight-color: transparent; 
+        .loading-text {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+
         }
+
+        @keyframes pulse {
+
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.35);
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
     </style>
+
 </head>
+
+
 <body>
-    
-    <div class="fullscreen-iframe-container">
-        <!-- 
-          Crucial settings for mobile compatibility:
-          1. No 'sandbox' attribute to maximize permissions.
-          2. allow="clipboard-read; clipboard-write; display-capture" for full functionality.
-          3. allowfullscreen for potential media elements.
-        -->
-        <iframe 
-            src="https://lalit-op.github.io/lalit-op/posts/" 
-            class="fullscreen-iframe"
-            title="Stock Samvad AI Market Reports"
-            allow="clipboard-read; clipboard-write; display-capture; fullscreen"
-            allowfullscreen
-            referrerpolicy="origin"
-        ></iframe>
+
+
+    <div class="loading">
+
+        <div class="loading-dot"></div>
+
+        <div class="loading-text">
+            Loading Stock Samvad AI
+        </div>
+
     </div>
 
+
+    <script>
+
+        window.location.replace("posts/");
+
+    </script>
+
+
+    <noscript>
+
+        <div class="loading">
+
+            <a
+                href="posts/"
+                style="
+                    color:#38bdf8;
+                    text-decoration:none;
+                "
+            >
+                Open Stock Samvad AI
+            </a>
+
+        </div>
+
+    </noscript>
+
+
 </body>
+
 </html>
