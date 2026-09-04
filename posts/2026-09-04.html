@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Stock Market Script - 04-09-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Inter',sans-serif;
+    background: radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+                radial-gradient(circle at top right,#06b6d433,transparent 40%),
+                #020617;
+    color:var(--text); min-height:100vh;
+}
+.container { max-width:1200px; margin:auto; padding:30px; }
+.header {
+    text-align:center; padding:40px; border-radius:24px; margin-bottom:25px;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.08);
+}
+.badge {
+    display:inline-block; padding:8px 16px; border-radius:999px;
+    background:#0ea5e920; border:1px solid #38bdf830; color:#38bdf8; margin-bottom:15px; font-size:14px;
+}
+.header h1 {
+    font-size:48px; font-weight:700;
+    background:linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height: 1.2;
+}
+.header p { margin-top:10px; color:#94a3b8; }
+.tagline { font-size:18px; color:#38bdf8; margin-top:10px; }
+.toolbar { display:flex; justify-content:flex-end; margin-bottom:20px; }
+.copy-btn {
+    background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; border:none;
+    padding:14px 24px; border-radius:14px; cursor:pointer; font-weight:600; transition: all 0.2s;
+}
+.copy-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(6,182,212,.5); }
+.card {
+    background:rgba(15,23,42,.85); border:1px solid rgba(255,255,255,.08);
+    border-radius:24px; overflow:hidden; backdrop-filter:blur(20px); box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+.card-top { display:flex; align-items:center; padding:15px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dots { display:flex; gap:8px; }
+.dot { width:14px; height:14px; border-radius:50%; }
+.red { background:#ff5f57; } .yellow { background:#ffbd2e; } .green { background:#28c840; }
+.file-name { margin-left:15px; color:#94a3b8; font-size:14px; }
+pre {
+    white-space:pre-wrap; word-wrap:break-word; padding:30px; line-height:1.8;
+    font-size:16px; color:#e2e8f0; font-family:'Inter', sans-serif;
+}
+.footer { text-align:center; margin-top:30px; color:#64748b; font-size: 14px; padding-bottom: 20px; }
+.toast {
+    position:fixed; bottom:25px; right:25px; background:#22c55e; color:white;
+    padding:12px 20px; border-radius:12px; display:none; z-index: 50; box-shadow:0 10px 30px rgba(34,197,94,.3);
+}
+
+/* ========================================= */
+/* MOBILE OPTIMIZATION (@media query added)  */
+/* ========================================= */
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 15px; border-radius: 20px; }
+    .header h1 { font-size: 32px; }
+    .tagline { font-size: 15px; }
+    .toolbar { justify-content: center; }
+    .copy-btn { width: 100%; padding: 16px; font-size: 16px; }
+    .card { border-radius: 16px; }
+    .card-top { flex-direction: row; justify-content: space-between; }
+    .file-name { margin-left: 10px; font-size: 12px; }
+    pre { padding: 20px 15px; font-size: 15px; }
+    .toast { left: 50%; right: auto; transform: translateX(-50%); width: 90%; text-align: center; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">🚀 AI Generated Market Report</div>
+        <h1>Stock Samvad AI</h1>
+        <p class="tagline">Daily Market Intelligence Platform</p>
+    </div>
+    <div class="toolbar">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Full Script</button>
+    </div>
+    <div class="card">
+        <div class="card-top">
+            <div class="dots">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="file-name">📊 Daily Market Analysis</div>
+        </div>
+        <pre id="script">
+📅 दिनांक: 04-09-2026
+📊 Content Type: VIDEO
+
+यहाँ आपके लिए 18-20 मिनट की संपूर्ण, विस्तृत और पेशेवर यूट्यूब वीडियो स्क्रिप्ट तैयार की गई है।
+
+---
+
+# 📌 META DATA FOR YOUTUBE
+
+### **SEO Title:**
+SEBI ने दी ₹30,000 Cr NSE IPO को मंजूरी! | Nifty 23897 & Sensex 76515 Analysis | Tata Elxsi, HUL, Swiggy, Groww, Angel One Big News | Daily Share Market Hindi News
+
+### **Thumbnail Text:**
+- **Main Heading:** NSE IPO को मिली SEBI की मंजूरी! (₹30,000 Crore Mega Offer)
+- **Sub-heading:** Tata Elxsi, HUL Q4 Alert | Market Wrap & Global Cues
+- **Visual Cues:** Anchor image pointing to green/red stock tickers, Bull vs Bear background, NSE Logo with "APPROVED" stamp.
+
+### **Video Description:**
+नमस्कार दोस्तों! शेयर बाजार के आज के सबसे भरोसेमंद और सटीक विश्लेषण में आपका स्वागत है। 
+
+आज के एपिसोड में हम बात करेंगे:
+1. SEBI द्वारा नेशनल स्टॉक एक्सचेंज (NSE) के ₹30,000 करोड़ के मेगा IPO को मिली हरी झंडी के बारे में।
+2. निफ्टी (23,897.7) और सेंसेक्स (76,515.43) का पूरा क्लोजिंग विश्लेषण।
+3. Tata Elxsi, ICICI Pru Life, Tata Consumer के Q4 नतीजे और डिविडेंड की घोषणाएं।
+4. SEBI के CAS सर्कुलर के बाद Groww, Angel One और BSE के शेयरों में 8% तक की तूफानी तेजी।
+5. Swiggy ब्लॉक डील, Sterlite Tech का 5% अपर सर्किट और ग्लोबल मार्केट के बड़े ट्रिगर्स।
+
+अगर आप शेयर बाजार में सही समय पर सही फैसले लेना चाहते हैं, तो इस वीडियो को अंत तक जरूर देखें। चैनल को सब्सक्राइब करें और बेल आइकन दबाएं!
+
+### **20 SEO Hashtags:**
+#ShareMarketNews #NSEIPO #Nifty50 #Sensex #StockMarketHindi #TataElxsi #HUL #Swiggy #Groww #AngelOne #SEBI #Q4Results #FII #DII #GlobalMarkets #StockMarketAnalysis #MarketWrap #IndianEconomy #InvestmentTips #FinancialNews
+
+### **Pinned Comment:**
+"📌 दोस्तों, SEBI ने ₹30,000 करोड़ के NSE IPO को मंजूरी दे दी है और इसका जीएमपी (GMP) ₹200 तक देखा जा रहा है! क्या आप NSE के IPO में अप्लाई करने की योजना बना रहे हैं? और Tata Elxsi के नतीजे आपको कैसे लगे? अपनी राय नीचे कमेंट्स में जरूर शेयर करें! 👇"
+
+---
+
+# ⏱️ CHAPTER TIMESTAMPS
+
+- `00:00` - धमाकेदार ओपनिंग हुक (NSE IPO & Market Highlights)
+- `01:30` - मार्केट ओवरव्यू (Nifty 23897 & Sensex 76515)
+- `03:00` - निफ्टी और सेंसेक्स का विस्तृत तकनीकी विश्लेषण
+- `05:15` - आज की टॉप 10 बड़ी खबरें
+- `08:45` - सेक्टोरल एनालिसिस (IT, FMCG, Defense, Capital Markets)
+- `11:00` - आज के टॉप गेनर्स (Top Gainers Analysis)
+- `12:30` - आज के टॉप लूजर्स (Top Losers Analysis)
+- `14:00` - कॉरपोरेट अपडेट्स एवं Q4 नतीजे (Tata Elxsi, ICICI Pru, Tata Consumer)
+- `15:45` - ग्लोबल मार्केट अपडेट्स (US Fed, Crude Oil & Nuclear Doctrine)
+- `17:00` - FII & DII एक्टिविटी और लिक्विडिटी
+- `18:00` - कल के बाजार ट्रिगर्स
+- `18:45` - निवेशकों के लिए काम की सीख
+- `19:30` - निष्कर्ष एवं चैनल कॉल टू एक्शन
+- `19:50` - डिस्क्लेमर
+
+---
+
+# 🎬 COMPLETE VIDEO SCRIPT (3000+ WORDS)
+
+---
+
+### **[SECTION 1: OPENING HOOK (धमाकेदार ओपनिंग हुक)]**
+
+**[Visual: Dynamic Intro Graphics, Stock Tickers Running, Fast Cut Camera Angles]**
+
+**Anchor (Excited & Authoritative Tone):**
+"नमस्कार दोस्तों! शेयर बाजार के आज के इस बेहद खास और पावर-पैक बुलेटिन में आपका स्वागत है। मैं हूँ आपका दोस्त और बाजार विश्लेषक।
+
+दोस्तों, आज भारतीय शेयर बाजार में एक ऐसा ऐतिहासिक ऐलान हुआ है, जिसका इंतजार दलाल स्ट्रीट पिछले कई सालों से कर रही थी! जी हां, SEBI ने देश के सबसे बड़े स्टॉक एक्सचेंज, यानी **NSE के ₹30,000 करोड़ के मेगा IPO** को आखिरकार अपनी हरी झंडी दे दी है! इस खबर के आते ही NSE के गैर-सूचीबद्ध (unlisted) शेयरों को होल्ड करने वाली कंपनियों और ब्रोकिंग शेयरों में एक जबरदस्त तूफानी तेजी देखने को मिली है। 
+
+लेकिन क्या यह तेजी टिकेगी? जहाँ एक तरफ निफ्टी **23,897.7** के स्तर पर बंद हुआ है और सेंसेक्स **76,515.43** पर कारोबार समाप्त कर चुका है, वहीं दूसरी तरफ वैश्विक मोर्चे से कुछ ऐसी खबरें आई हैं जो आने वाले दिनों में बाजार की चाल बिगाड़ सकती हैं। अमेरिका में मजबूत एम्प्लॉयमेंट डेटा के बाद ब्याज दरों में कटौती के बजाय बढ़ोतरी की आशंकाएं गहरा गई हैं, और रूस-यूक्रेन मोर्चे पर पुतिन द्वारा न्यूक्लियर डॉक्ट्रिन को अपडेट करने की खबरों से अमेरिकी वायदा बाजार में गिरावट देखने को मिली है।
+
+आज के इस 20 मिनट के मास्टरक्लास वीडियो में हम Tata Elxsi, Tata Consumer और ICICI Prudential के Q4 नतीजों का बारीकी से विश्लेषण करेंगे, Swiggy की ब्लॉक डील की इनसाइड स्टोरी बताएंगे, और जानेंगे कि क्या आपको इस बाजार में खरीदारी करनी चाहिए या गिरावट का इंतजार करना चाहिए! 
+
+वीडियो को बिना स्किप किए पूरा देखें, क्योंकि आधी जानकारी बाजार में नुकसान का कारण बन सकती है। चलिए, शुरू करते हैं आज का मार्केट एनालिसिस!"
+
+---
+
+### **[SECTION 2: MARKET OVERVIEW (मार्केट ओवरव्यू)]**
+
+**[Visual: Screen split with Nifty and Sensex closing figures, Currency chart]**
+
+**Anchor:**
+"चलिए दोस्तों, सबसे पहले आज के बाजार के कुल रिपोर्ट कार्ड पर नजर डालते हैं।
+
+आज भारतीय शेयर बाजार में मिला-जुला लेकिन काफी संवेदनशील कारोबार देखने को मिला। 
+- **Nifty 50** आज दिन भर के उतार-चढ़ाव के बाद **23,897.70** के स्तर पर बंद हुआ।
+- वहीं, **BSE Sensex** **76,515.43** के स्तर पर बंद होने में कामयाब रहा।
+
+मुद्रा बाजार (Currency Market) की बात करें तो अमेरिकी डॉलर के मुकाबले भारतीय रुपया **94.49** के स्तर पर 2 पैसे की मामूली बढ़त के साथ बंद हुआ। हालांकि, फॉरेक्स मार्केट में रुपए की यह स्थिति वैश्विक स्तर पर डॉलर की मजबूती और कच्चे तेल की कीमतों के दबाव के बीच स्थिर बनी हुई है।
+
+बॉन्ड मार्केट की बात करें तो भारतीय बॉन्ड्स में लगातार तीसरे हफ्ते गिरावट दर्ज की गई है। इसके पीछे की मुख्य वजह वैश्विक कर्ज में जारी भारी गिरावट और कच्चे तेल की ऊंची कीमतें हैं। भारत के कर्ज निवेशकों ने सरकार से मांग की है कि अतिरिक्त नकदी (excess cash) को खपाने के लिए कम अवधि की उधारी (short-term borrowing) को बढ़ाया जाए।
+
+दूसरी तरफ, भारतीय रिजर्व बैंक (RBI) की विशेष खिड़कियों (special windows) को लेकर बाजार जानकारों का मानना है कि ये खिड़कियां इतनी सक्षम हैं कि भारत में लगभग **100 बिलियन डॉलर ($100B)** का विदेशी निवेश ला सकती हैं।
+
+तो कुल मिलाकर, घरेलू स्तर पर लिक्विडिटी के संकेत सकारात्मक हैं, लेकिन वैश्विक वृहद-आर्थिक परिस्थितियां (macroeconomics) बाजार पर लगातार दबाव बना रही हैं।"
+
+---
+
+### **[SECTION 3: NIFTY AND SENSEX ANALYSIS (निफ्टी और सेंसेक्स विश्लेषण)]**
+
+**[Visual: Chart showing Nifty 50 and Sensex intra-day movement, Resistance and Support levels marked]**
+
+**Anchor:**
+"आइए अब गहराई से समझते हैं कि निफ्टी और सेंसेक्स के चार्ट्स हमें क्या इशारा कर रहे हैं।
+
+आज निफ्टी 23,897.7 के स्तर पर स्थिर हुआ है। अगर हम आज के ट्रेड पैटर्न को देखें, तो बाजार में बड़े दिग्गजों (Heavyweights) का दबदबा साफ नजर आया। Reliance Industries (RIL), Tata Steel, Bharti Airtel और HCL Tech जैसे शेयरों ने आज निफ्टी और सेंसेक्स दोनों के मार्केट रैप में टॉप गेनर्स और लूजर्स की सूची में अपनी जगह बनाई।
+
+**निफ्टी का टेक्निकल स्ट्रक्चर:**
+1. **इमीडिएट सपोर्ट (Immediate Support):** निफ्टी के लिए 23,800 का स्तर एक बेहद मजबूत सपोर्ट के रूप में काम कर रहा है। यदि निफ्टी इस स्तर के नीचे फिसलता है, तो हमें अगला सपोर्ट 23,650 के पास देखने को मिल सकता है।
+2. **रेजिस्टेंस (Resistance):** ऊपर की तरफ, निफ्टी को 24,050 से 24,100 के जोन में भारी बिकवाली का सामना करना पड़ सकता है। जब तक निफ्टी 24,100 के ऊपर निर्णायक क्लोजिंग नहीं देता, तब तक नए फ्रेश बुलिश मोमेंटम की संभावना थोड़ी सीमित नजर आती है।
+
+**सेंसेक्स का हाल:**
+सेंसेक्स 76,515.43 के स्तर पर बंद हुआ है। सेंसेक्स के लिए 76,000 का स्तर एक मनोवैज्ञानिक सपोर्ट (psychological support) है। सेंसेक्स में तेजी बनाए रखने के लिए Bharti Airtel और Reliance Industries का मजबूती दिखाना बेहद जरूरी है।
+
+आज बाजार में जो ट्रेड हुआ, वह दर्शाता है कि ट्रेडर्स बड़े सेक्टरों में रोटेशन कर रहे हैं। आईटी और कंज्यूमर ड्यूरेबल्स पर जहां Q4 नतीजों का दबाव है, वहीं कैपिटल मार्केट्स और डिफेंस शेयरों में जबरदस्त खरीदारी देखने को मिली है।"
+
+---
+
+### **[SECTION 4: TOP 10 BIG NEWS (टॉप 10 बड़ी खबरें)]**
+
+**[Visual: Graphics showing "Top 10 News Bullets" with breaking news sound effect]**
+
+**Anchor:**
+"चलिए अब रुख करते हैं आज की 10 सबसे बड़ी कॉर्पोरेट और इकोनॉमिक खबरों की तरफ, जिन्होंने आज बाजार की दिशा तय की है:
+
+**1. SEBI ने दिया ₹30,000 करोड़ के NSE IPO को ग्रीन सिग्नल:**
+मार्केट रेगुलेटर SEBI ने आखिरकार नेशनल स्टॉक एक्सचेंज के 30,000 करोड़ रुपये के पब्लिक इश्यू (IPO) को मंजूरी दे दी है। सूत्रों के मुताबिक, NSE अपने IPO की कीमत **₹1,800 प्रति शेयर** के आसपास रख सकता है और इसे **25 सितंबर** तक लिस्ट करने की योजना है। ग्रे मार्केट में NSE का अनलिस्टेड शेयर पहले ही ₹200 के प्रीमियम (GMP) पर ट्रेड कर रहा है।
+
+**2. SEBI और यूरोपीय मार्केट्स अथॉरिटी (ESMA) के बीच ऐतिहासिक समझौता:**
+SEBI ने सेंट्रल काउंटरपार्टीज (CCPs) के संबंध में सहयोग और सूचनाओं के आदान-प्रदान के लिए यूरोपीय सिक्योरिटीज एंड मार्केट्स अथॉरिटी (ESMA) के साथ एक MoU पर हस्ताक्षर किए हैं। इसी वजह से NSE IPO के रास्ते की आखिरी विनियामक बाधा भी दूर हो गई।
+
+**3. Tata Elxsi के Q4 नतीजों में गिरावट:**
+टाटा समूह की प्रमुख टेक्नोलॉजी कंपनी Tata Elxsi ने अपने चौथी तिमाही के नतीजे घोषित कर दिए हैं। कंपनी का शुद्ध लाभ (Net Profit) और राजस्व (Revenue) तिमाही-दर-तिमाही (QoQ) आधार पर गिरा है। हालांकि, निवेशकों को राहत देते हुए कंपनी ने **₹70 प्रति शेयर के भारी-भरकम डिविडेंड** का ऐलान किया है।
+
+**4. Groww, Angel One और BSE के शेयरों में 8% का उछाल:**
+SEBI द्वारा कंसोलिडेटेड अकाउंट स्टेटमेंट (CAS) पर जारी किए गए नए सर्कुलर के बाद ब्रोकिंग और एक्सचेंज शेयरों में जबरदस्त रैली देखने को मिली। BSE, Groww और Angel One के शेयर 8% तक चढ़ गए।
+
+**5. Swiggy ब्लॉक डील में 4% इक्विटी का तबादला:**
+फूड डिलीवरी दिग्गज Swiggy के शेयरों में आज बड़ा ब्लॉक डील देखने को मिला, जहां कंपनी की लगभग 4% इक्विटी के हाथ बदले। इस खबर के बाद Swiggy के शेयर में 2.5% की बढ़त दर्ज की गई।
+
+**6. Cyient DLM का शानदार प्रदर्शन:**
+वित्त वर्ष 2024 (FY24) में Cyient DLM का टैक्स के बाद मुनाफा (PAT) **93% की तूफानी गति से बढ़ा है**। कंपनी के इस दमदार प्रदर्शन ने मिडकैप स्पेस में उत्साह भर दिया है।
+
+**7. भारत-ब्रिटेन CETA लागू & भारत-कनाडा व्यापार समझौता:**
+भारत और ब्रिटेन के बीच मुक्त व्यापार समझौता (CETA) प्रभाव में आ गया है। पहली शून्य-शुल्क (zero-duty) भारतीय कॉफी और ज्वेलरी की खेप ब्रिटेन पहुंच चुकी है। इसके साथ ही विदेश मंत्रालय (MEA) ने पुष्टि की है कि भारत और कनाडा 2026 के अंत तक CEPA व्यापार समझौते को अंतिम रूप देने का लक्ष्य रख रहे हैं।
+
+**8. Sterlite Tech में 5% का अपर सर्किट:**
+आर्टिफिशियल इंटेलिजेंस (AI) की बढ़ती मांग के बीच Sterlite Tech ने FY29 तक ₹20,000 करोड़ के राजस्व का लक्ष्य रखा है, जिसके बाद शेयर में 5% का अपर सर्किट लग गया।
+
+**9. शहरी विकास मंत्रालय का दो भागों में विभाजन:**
+केंद्र सरकार ने अपने अर्बन रिसेट प्लान के तहत आवास और शहरी मामलों के मंत्रालय (MoHUA) को दो विशेष कार्यक्षेत्रों (specialized verticals) में विभाजित कर दिया है।
+
+**10. वैश्विक तनाव और अमेरिका में ब्याज दरों का डर:**
+अमेरिका में उम्मीद से बेहतर जॉब्स रिपोर्ट के बाद फेडरल रिजर्व द्वारा ब्याज दरें बढ़ाने की आशंका बढ़ गई है। वहीं, पुतिन द्वारा अपनी न्यूक्लियर डॉक्ट्रिन को अपडेट करने की खबरों से वैश्विक बाजारों में अनिश्चितता का माहौल है।"
+
+---
+
+### **[SECTION 5: SECTOR ANALYSIS (सेक्टर विश्लेषण)]**
+
+**[Visual: Heatmap of various sectors - Green for Financials/Defense, Red for FMCG/IT]**
+
+**Anchor:**
+"आइए अब समझते हैं कि आज किस सेक्टर ने बाजी मारी और किस सेक्टर में बिकवाली का दबाव रहा।
+
+**1. कैपिटल मार्केट्स और ब्रोकर्स (Capital Markets & Wealth Management):**
+आज का स्टार परफॉर्मर रहा कैपिटल मार्केट सेक्टर! NSE IPO की मंजूरी और SEBI के CAS सर्कुलर के चलते **BSE, Angel One, Groww** और **IFCI** में 6% से 8% की जोरदार तेजी देखी गई। IFCI का शेयर, जो NSE में हिस्सेदारी रखता है, बीते एक महीने में 35% चढ़ चुका है।
+
+**2. आईटी सेक्टर (IT Sector):**
+आईटी सेक्टर आज दबाव में नजर आया। Tata Elxsi के कमजोर Q4 नतीजों (QoQ प्रॉफिट में गिरावट) ने सेंटिमेंट बिगाड़ा। इसके अलावा, LTIMindtree के Q4 प्रीव्यू में कम पास-थ्रू रेवेन्यू के कारण ग्रोथ प्रभावित होने की बात कही गई है। HCL Tech भी आज बाजार में उतार-चढ़ाव का शिकार रहा।
+
+**3. FMCG सेक्टर (FMCG Sector):**
+FMCG सेक्टर में आज सतर्कता देखने को मिली। 
+- **Tata Consumer** का Q4 शुद्ध लाभ 19% घटकर ₹217 करोड़ रह गया, हालांकि कंपनी ने ₹7.75 प्रति शेयर डिविडेंड दिया है।
+- **HUL (Hindustan Unilever)** के Q4 प्रीव्यू के अनुसार, कीमतों में कटौती, सुस्त मांग और क्षेत्रीय प्रतिस्पर्धा (regional competition) के कारण कंपनी की टॉपलाइन (राजस्व) प्रभावित हो सकती है।
+
+**4. डिफेंस सेक्टर (Defense Sector):**
+डिफेंस शेयरों पर ब्रोकरेज हाउस बेहद बुलिश नजर आ रहे हैं। BDL (भारत डायनेमिक्स) और HAL (हिंदुस्तान एयरोनॉटिक्स) जैसे शेयरों में ब्रोकरेज की 'Buy' रेटिंग और बुलिश टारगेट के बाद निवेशकों की खरीदारी लौटती दिखी है।
+
+**5. रिन्यूएबल और एनर्जी सेक्टर (Renewable Energy):**
+Juniper Green Energy और Tata Power ने महाराष्ट्र में 85 मेगावाट की हाइब्रिड परियोजना के लिए PPA पर हस्ताक्षर किए हैं, जिससे पावर और रिन्यूएबल स्पेस में मजबूती देखी गई।"
+
+---
+
+### **[SECTION 6: TOP GAINERS (टॉप गेनर्स)]**
+
+**[Visual: Green Screen animation listing Top Gainers with percentage increases]**
+
+**Anchor:**
+"चलिए अब नजर डालते हैं आज के टॉप गेनिंग स्टॉक्स पर, जिन्होंने निवेशकों की झोली भरी है:
+
+1. **Sterlite Tech:** 5% का अपर सर्किट! कंपनी के FY29 तक ₹20,000 करोड़ रेवेन्यू के महत्वाकांक्षी लक्ष्य और AI डिमांड के चलते शेयर में जबरदस्त खरीदारी हुई।
+2. **BSE, Groww, Angel One:** SEBI के CAS सर्कुलर और NSE IPO की खबरों के दम पर इन शेयरों में 8% तक का उछाल दर्ज किया गया।
+3. **IFCI Ltd:** आज 6% की तेजी! NSE IPO के बज के कारण यह शेयर पिछले एक महीने में 35% का रिटर्न दे चुका है।
+4. **PhysicsWallah:** मोतीलाल ओसवाल द्वारा 'Buy' रेटिंग के साथ कवरेज शुरू करने के बाद शेयर 4% से अधिक उछला।
+5. **Swiggy:** 4% इक्विटी के ब्लॉक डील होने के बाद शेयर में 2.5% की बढ़त देखने को मिली।
+6. **Sudeep Pharma:** कमोडिटी स्पेस की यह कंपनी 52-वीक हाई पर पहुंची, जिसने पिछले एक महीने में 55% का दमदार रैली दिखाया है।
+7. **Nifty Heavyweights:** Reliance Industries (RIL), Tata Steel और Bharti Airtel भी निफ्टी को संभालने वाले मुख्य टॉप गेनर्स में शामिल रहे।"
+
+---
+
+### **[SECTION 7: TOP LOSERS (टॉप लूजर्स)]**
+
+**[Visual: Red Screen animation listing Top Losers with percentage drops]**
+
+**Anchor:**
+"अब बात करते हैं उन शेयरों की, जहां आज बिकवाली का रेड सिग्नल देखने को मिला:
+
+1. **Tata Elxsi:** Q4 में नेट प्रॉफिट और रेवेन्यू में तिमाही-दर-तिमाही (QoQ) गिरावट के कारण शेयर में बिकवाली का दबाव रहा।
+2. **ICICI Prudential Life Insurance:** Q4 में शुद्ध लाभ 26% घटकर ₹174 करोड़ रहने की खबर से शेयर में गिरावट आई।
+3. **Tata Consumer Products:** Q4 नेट प्रॉफिट में 19% की सालाना गिरावट (₹217 करोड़) के कारण निवेशकों ने मुनाफावसूली की।
+4. **HCL Tech:** आईटी सेक्टोरल दबाव के चलते निफ्टी के लूजर्स पैक में शामिल रहा।
+5. **ग्लोबल लूजर्स (ग्लोबल कॉन्टेक्स्ट):** अंतर्राष्ट्रीय बाजार में Wingstop का शेयर मुनाफा घटने से 12% टूट गया, वहीं Kazatomprom और Vestas Wind Systems के शेयरों में भी मार्जिन की चिंताओं से गिरावट आई।"
+
+---
+
+### **[SECTION 8: CORPORATE UPDATES & EARNINGS FOCUS (कॉर्पोरेट अपडेट्स)]**
+
+**[Visual: Company logos along with key numbers - Tata Elxsi, L&T, Air India, Razorpay]**
+
+**Anchor:**
+"आइए अब कॉर्पोरेट जगत की कुछ अन्य महत्वपूर्ण खबरों पर विस्तार से चर्चा करते हैं:
+
+- **L&T (Larsen & Toubro):** एलएंडटी ने मेक्सिको में एक रिफाइनरी के लिए हाइड्रोट्रीटिंग रिएक्टर का निर्माण सफलतापूर्वक पूरा कर लिया है। यह कंपनी की वैश्विक विनिर्माण क्षमता को दर्शाता है।
+- **Air India:** एयर इंडिया ने जापान की प्रमुख एयरलाइन 'ऑल निप्पन एयरवेज' (ANA) के साथ कोडशेयर समझौता किया है, जिससे दोनों देशों के बीच यात्रियों का सफर आसान होगा।
+- **Razorpay & Airtel Payments Bank:** रेजरपे ने एयरटेल पेमेंट बैंक के साथ साझेदारी में अपना नया 'UPI Switch' लॉन्च करने की घोषणा की है, जिससे डिजिटल पेमेंट्स की सफलता दर बढ़ेगी।
+- **Stellantis India:** वाहन निर्माता स्टेलांटिस इंडिया ने 30 अप्रैल से अपने वाहनों की कीमतों में ₹17,000 तक की बढ़ोतरी करने का फैसला किया है।
+- **WeWork India:** WeWork Global, WeWork India में अपनी पूरी 27% हिस्सेदारी बेचने के लिए बातचीत कर रहा है।
+- **Jane Street - SEBI प्रकरण:** बाजार में हेरफेर के मामले में Jane Street ने SEBI और NSE के पत्राचार की मांग की है, जिसमें संयुक्त अरब अमीरात (UAE) स्थित एक हेज फंड की भूमिका का आरोप लगाया गया है।
+- **Motilal Oswal Stock Pick:** ब्रोकरेज हाउस मोतीलाल ओसवाल ने एक न्यू-एज टेक स्टॉक पर 'Buy' रेटिंग देते हुए इसमें **58% अपसाइड** का बड़ा टारगेट दिया है।"
+
+---
+
+### **[SECTION 9: GLOBAL MARKET IMPACT (ग्लोबल मार्केट प्रभाव)]**
+
+**[Visual: World Map showing Wall Street, European & Asian stock markets status]**
+
+**Anchor:**
+"दोस्तों, भारतीय बाजार कभी भी दुनिया से अलग थलग होकर नहीं चल सकता। आइए देखते हैं कि ग्लोबल मार्केट्स से हमारे लिए क्या संकेत हैं:
+
+**1. अमेरिकी बाजार (Wall Street):**
+अमेरिका में हाल ही में आए मजबूत जॉब्स डेटा (ब्लोआउट जॉब्स रिपोर्ट) और बेरोजगारी दावों (Jobless Claims) के मई के बाद के सबसे निचले स्तर पर आने से वॉल स्ट्रीट पर अनिश्चितता छाई हुई है। निवेशकों को डर है कि अमेरिकी फेडरल रिजर्व ब्याज दरों में कटौती करने के बजाय उन्हें बढ़ा सकता है। 
+
+**2. जियो-पॉलिटिकल तनाव (Nuclear Doctrine Update):**
+ऐसी रिपोर्ट्स आई हैं कि रूसी राष्ट्रपति व्लादिमीर पुतिन ने रूस की परमाणु नीति (Nuclear Doctrine) को अपडेट कर दिया है। इस खबर के आते ही अमेरिकी स्टॉक फ्यूचर्स और बॉन्ड यील्ड्स में अचानक गिरावट दर्ज की गई।
+
+**3. कच्चे तेल और डीजल की कीमतें:**
+अमेरिका में डीजल की कीमतें रिकॉर्ड ऊंचाई पर पहुंच गई हैं, जिससे वैश्विक माल ढुलाई और परिवहन लागत (Transportation Costs) बढ़ने का खतरा पैदा हो गया है। 
+
+**4. यूरोपीय बाजार:**
+जर्मन बॉन्ड यील्ड्स लगातार चौथे हफ्ते बढ़ने की राह पर हैं क्योंकि निवेशक यूरोपीय सेंट्रल बैंक (ECB) द्वारा मौद्रिक नीति में और सख्ती (Tightening) की शर्त लगा रहे हैं।"
+
+---
+
+### **[SECTION 10: FII & DII ACTIVITY AND LIQUIDITY (FII/DII और लिक्विडिटी)]**
+
+**[Visual: Flowchart showing foreign institutional investment flows and domestic capital]**
+
+**Anchor:**
+"आइए अब बात करते हैं बाजार में पैसों के प्रवाह यानी FIIs और DIIs की लिक्विडिटी स्थिति की।
+
+वैश्विक स्तर पर अमेरिकी बॉन्ड यील्ड में तेजी और कच्चे तेल के दबाव के कारण विदेशी संस्थागत निवेशक (FIIs) उभरते हुए बाजारों से सतर्क रुख अपना रहे हैं। भारतीय बॉन्ड मार्केट में पिछले तीन हफ्तों से जो गिरावट देखी जा रही है, वह FIIs के सतर्क रवैये का ही नतीजा है।
+
+हालांकि, घरेलू मोर्चे पर DIIs (घरेलू संस्थागत निवेशक) और रिटेल SIP का सहारा बाजार को निचले स्तरों पर थामे हुए है। RBI की विशेष लिक्विडिटी विंडोज ($100B कैपेसिटी) यह सुनिश्चित कर रही है कि अगर FIIs बिकवाली करते भी हैं, तो भारतीय बैंकिंग प्रणाली और वित्तीय बाजारों में नकदी का संकट पैदा न हो।"
+
+---
+
+### **[SECTION 11: TOMORROW'S TRIGGERS (कल के ट्रिगर्स)]**
+
+**[Visual: Calendar graphic highlighting key upcoming events for tomorrow]**
+
+**Anchor:**
+"कल जब बाजार खुलेगा, तो आपको किन प्रमुख ट्रिगर्स पर नजर रखनी चाहिए? नोट कर लीजिए:
+
+1. **NSE IPO फॉलो-अप:** NSE IPO की SEBI मंजूरी के बाद कल BSE, IFCI और संबंधित ब्रोकिंग शेयरों में ट्रेडिंग वॉल्यूम पर पैनी नजर रखनी होगी।
+2. **Q4 रिजल्ट्स का रिएक्शन:** Tata Elxsi, ICICI Pru Life और Tata Consumer के Q4 नतीजों पर कल सुबह के सत्र में बाजार की सीधी प्रतिक्रिया दिखेगी।
+3. **क्रूड ऑयल और डीजल प्राइस मूवमेंट:** अमेरिका में डीजल की कीमतों में आए उछाल का असर लॉजिस्टिक्स और ऑटो शेयरों पर कैसा रहता है, इस पर ध्यान दें।
+4. **IPO अलॉटमेंट अपडेट्स:** Rays of Belief IPO का अलॉटमेंट स्टेटस और Purple Style Labs IPO की 7 सितंबर की लिस्टिंग से पहले GMP मूवमेंट पर नजर रखें।
+5. **ग्लोबल फेड की टिप्पणी:** अमेरिकी जॉब्स डेटा के बाद Fed अधिकारियों के बयानों पर वैश्विक बाजारों की नजर रहेगी।"
+
+---
+
+### **[SECTION 12: KEY TAKEAWAYS FOR INVESTORS (निवेशकों के लिए सीख)]**
+
+**[Visual: Graphic overlaying "Smart Investor Rules" with bulletin points]**
+
+**Anchor:**
+"दोस्तों, आज के इस पूरे बाजार विश्लेषण से एक रिटेल निवेशक के लिए तीन सबसे बड़ी सीख क्या निकल कर आती हैं?
+
+**पहली सीख - IPO की हवा में बहने से बचें:**
+NSE IPO की खबर निश्चित रूप से ऐतिहासिक है, लेकिन जो शेयर पहले से ही अनलिस्टेड मार्केट में या होल्डिंग कंपनियों के रूप में बहुत ज्यादा भाग चुके हैं (जैसे IFCI 35% चढ़ चुका है), वहां बिना वैल्यूएशन समझे ऊपरी स्तरों पर भारी-भरकम खरीदारी करने से बचें।
+
+**दूसरी सीख - नतीजों में केवल 'डिविडेंड' न देखें:**
+Tata Elxsi और Tata Consumer दोनों ने डिविडेंड का ऐलान किया है, लेकिन उनके Q4 नेट प्रॉफिट में गिरावट आई है। लंबे समय के संपत्ति निर्माण (Wealth Creation) के लिए केवल डिविडेंड नहीं, बल्कि कंपनी की टॉपलाइन और बॉटमलाइन ग्रोथ मायने रखती है।
+
+**तीसरी सीख - विनियामक बदलावों (SEBI Circulars) पर नजर रखें:**
+आज Groww, Angel One और BSE में 8% की तेजी यह साबित करती है कि SEBI का एक सर्कुलर पूरे सेक्टर की री-रेटिंग कर सकता है। हमेशा रेगुलेटरी खबरों को ट्रैक करें।"
+
+---
+
+### **[SECTION 13: CONCLUSION (निष्कर्ष)]**
+
+**[Visual: Anchor back to main full-screen view with engaging background music]**
+
+**Anchor:**
+"तो दोस्तों, यह था आज के शेयर बाजार का पूरा और सबसे सटीक कच्चा-चिट्ठा! भारतीय बाजार घरेलू स्तर पर मजबूत IPO पाइपलाइन और SEBI की सक्रियता के दम पर नई ऊंचाइयों को छूने को तैयार है, लेकिन वैश्विक स्तर पर अमेरिका में ब्याज दरों का डर और कच्चे तेल की कीमतें चिंता का विषय बनी हुई हैं।
+
+अगर आपको आज का यह विस्तृत विश्लेषण और हमारी रिसर्च पसंद आई हो, तो इस वीडियो को **लाइक** जरूर करें। अपने उन सभी दोस्तों के साथ इस वीडियो को **शेयर** करें जो शेयर बाजार में ट्रेडिंग या इन्वेस्टिंग करते हैं।
+
+और हां, कमेंट सेक्शन में हमें जरूर बताएं कि क्या आप आने वाले **NSE के ₹30,000 करोड़ के IPO** में पैसा लगाने की सोच रहे हैं या नहीं? 
+
+चैनल को सब्सक्राइब करना और बेल आइकन दबाना बिल्कुल न भूलें ताकि बाजार की कोई भी बड़ी खबर आपसे मिस न हो। कल फिर मिलेंगे शाम को ठीक इसी समय, बाजार की नई अपडेट्स के साथ। तब तक के लिए धन्यवाद, जय हिंद!"
+
+---
+
+### **[SECTION 14: DISCLAIMER (डिस्क्लेमर)]**
+
+**[Visual: Text scroll of Regulatory SEBI Disclaimer on Screen with audio voiceover]**
+
+**Anchor (Voiceover):**
+"**डिस्क्लेमर:** यह वीडियो केवल शैक्षणिक और सूचनात्मक उद्देश्यों (Educational Purposes) के लिए बनाया गया है। इसमें दी गई जानकारी उपलब्ध बाजार डेटा और समाचारों पर आधारित है। यह किसी भी शेयर को खरीदने या बेचने की प्रत्यक्ष या अप्रत्यक्ष सलाह (Stock Tip/Recommendation) नहीं है। शेयर बाजार में निवेश बाजार के जोखिमों के अधीन है। कोई भी निवेश निर्णय लेने से पहले अपने पंजीकृत वित्तीय सलाहकार (SEBI Registered Financial Advisor) से परामर्श अवश्य लें। हम या हमारा चैनल किसी भी वित्तीय नुकसान के लिए जिम्मेदार नहीं होंगे।"
+
+---
+**[END OF VIDEO SCRIPT]**
+</pre>
+    </div>
+    <div class="footer">
+        🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+    </div>
+</div>
+<div id="toast" class="toast">Script Copied Successfully ✅</div>
+<script>
+function copyScript(){
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display="none"; }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+</body>
+</html>
