@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Stock Market Script - 16-09-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Inter',sans-serif;
+    background: radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+                radial-gradient(circle at top right,#06b6d433,transparent 40%),
+                #020617;
+    color:var(--text); min-height:100vh;
+}
+.container { max-width:1200px; margin:auto; padding:30px; }
+.header {
+    text-align:center; padding:40px; border-radius:24px; margin-bottom:25px;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.08);
+}
+.badge {
+    display:inline-block; padding:8px 16px; border-radius:999px;
+    background:#0ea5e920; border:1px solid #38bdf830; color:#38bdf8; margin-bottom:15px; font-size:14px;
+}
+.header h1 {
+    font-size:48px; font-weight:700;
+    background:linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height: 1.2;
+}
+.header p { margin-top:10px; color:#94a3b8; }
+.tagline { font-size:18px; color:#38bdf8; margin-top:10px; }
+.toolbar { display:flex; justify-content:flex-end; margin-bottom:20px; }
+.copy-btn {
+    background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; border:none;
+    padding:14px 24px; border-radius:14px; cursor:pointer; font-weight:600; transition: all 0.2s;
+}
+.copy-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(6,182,212,.5); }
+.card {
+    background:rgba(15,23,42,.85); border:1px solid rgba(255,255,255,.08);
+    border-radius:24px; overflow:hidden; backdrop-filter:blur(20px); box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+.card-top { display:flex; align-items:center; padding:15px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dots { display:flex; gap:8px; }
+.dot { width:14px; height:14px; border-radius:50%; }
+.red { background:#ff5f57; } .yellow { background:#ffbd2e; } .green { background:#28c840; }
+.file-name { margin-left:15px; color:#94a3b8; font-size:14px; }
+pre {
+    white-space:pre-wrap; word-wrap:break-word; padding:30px; line-height:1.8;
+    font-size:16px; color:#e2e8f0; font-family:'Inter', sans-serif;
+}
+.footer { text-align:center; margin-top:30px; color:#64748b; font-size: 14px; padding-bottom: 20px; }
+.toast {
+    position:fixed; bottom:25px; right:25px; background:#22c55e; color:white;
+    padding:12px 20px; border-radius:12px; display:none; z-index: 50; box-shadow:0 10px 30px rgba(34,197,94,.3);
+}
+
+/* ========================================= */
+/* MOBILE OPTIMIZATION (@media query added)  */
+/* ========================================= */
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 15px; border-radius: 20px; }
+    .header h1 { font-size: 32px; }
+    .tagline { font-size: 15px; }
+    .toolbar { justify-content: center; }
+    .copy-btn { width: 100%; padding: 16px; font-size: 16px; }
+    .card { border-radius: 16px; }
+    .card-top { flex-direction: row; justify-content: space-between; }
+    .file-name { margin-left: 10px; font-size: 12px; }
+    pre { padding: 20px 15px; font-size: 15px; }
+    .toast { left: 50%; right: auto; transform: translateX(-50%); width: 90%; text-align: center; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">🚀 AI Generated Market Report</div>
+        <h1>Stock Samvad AI</h1>
+        <p class="tagline">Daily Market Intelligence Platform</p>
+    </div>
+    <div class="toolbar">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Full Script</button>
+    </div>
+    <div class="card">
+        <div class="card-top">
+            <div class="dots">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="file-name">📊 Daily Market Analysis</div>
+        </div>
+        <pre id="script">
+📅 दिनांक: 16-09-2026
+📊 Content Type: VIDEO
+
+यहाँ आपके लिए 18-20 मिनट के YouTube वीडियो के लिए एक पूर्ण, पेशेवर और विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार की गई है।
+
+---
+
+### **SEO METADATA & DELIVERABLES**
+
+#### **SEO Title:**
+शेयर बाजार में बड़ा धमाका! Nifty 23,200 पार | Paytm & UPI स्टॉक्स में तूफानी तेजी | Fed Decision & Top Market News Today
+
+#### **Thumbnail Text:**
+*   **MAIN HEADING:** बाजार में भारी हलचल!
+*   **SUB-TEXT:** Paytm, Yes Bank में तेजी | Solar & Power Stocks क्रैश! | Fed का बड़ा फैसला?
+
+#### **Video Description:**
+नमस्कार दोस्तों! आज के शेयर बाजार विश्लेषण में आपका स्वागत है। सेंसेक्स में 400 अंकों की तेजी के साथ निफ्टी 23,217.6 के स्तर पर बंद हुआ। आज के वीडियो में हम चर्चा करेंगे:
+- नए UPI चार्जेस और Paytm, Yes Bank, CMS Info में आई तेजी का कारण।
+- US Fed मीटिंग के नतीजों से पहले ग्लोबल और घरेलू बाजार का हाल।
+- Solar Industries और Power Capex स्टॉक्स में भारी गिरावट क्यों आई?
+- Tata Consumer, ICICI Pru Life और Tata Elxsi के Q4 नतीजे।
+- कल के लिए निफ्टी, सेंसेक्स के की-लेवल्स और ट्रिगर्स।
+
+वीडियो को अंत तक देखें और चैनल को सब्सक्राइब करना न भूलें!
+
+#### **20 Hashtags:**
+#ShareMarket #Nifty50 #Sensex #StockMarketIndia #PaytmShareNews #UPICharges #USFedMeeting #TataConsumer #SolarIndustries #PowerStocks #Q4Results #MarketAnalysis #StockMarketNews #GlobalMarketUpdate #IndianStockMarket #InvestingTips #TradingStrategy #FIIActivity #NSEIPO #FinancialNews
+
+#### **Pinned Comment:**
+"नमस्कार निवेशकों! आज के बाजार में UPI चार्जेस की खबर के बाद Paytm और Fintech स्टॉक्स में जबरदस्त तेजी दिखी, वहीं दूसरी तरफ Power Capex और Solar स्टॉक्स में भारी मुनाफावसूली दर्ज की गई। आपकी पोर्टफोलियो में आज कौन सा स्टॉक सबसे ज्यादा बढ़ा या घटा? कमेंट में जरूर बताएं! Disclaimer: यह वीडियो केवल शैक्षणिक उद्देश्यों के लिए है।"
+
+#### **Chapter Timestamps:**
+*   `00:00` - धमाकेदार ओपनिंग हुक (Hook)
+*   `01:15` - मार्केट ओवरव्यू (Market Overview)
+*   `03:00` - निफ्टी और सेंसेक्स का तकनीकी विश्लेषण
+*   `05:00` - आज की 10 बड़ी खबरें (Top 10 Headlines)
+*   `09:00` - सेक्टर वाइज एनालिसिस (Sectoral Analysis)
+*   `11:30` - टॉप गेनर्स और लूजर्स (Top Gainers & Losers)
+*   `13:30` - कॉर्पोरेट अपडेट्स और Q4 नतीजे (Earnings & Corporate Updates)
+*   `15:30` - ग्लोबल मार्केट और मैक्रो इकोनॉमिक अपडेट
+*   `17:00` - FII & DII गतिविधि और कल के ट्रिगर्स
+*   `18:30` - निवेशकों के लिए सीख और निष्कर्ष (Investor Takeaway & Conclusion)
+*   `19:30` - डिस्क्लेमर (Disclaimer)
+
+---
+
+### **FULL VIDEO SCRIPT (हिंदी में)**
+
+---
+
+#### **[00:00 - 01:15] SECTION 1: DUMDAR OPENING HOOK (दमदार ओपनिंग हुक)**
+
+**(Camera Angle: Close-Up, High Energy, Confident Anchor)**
+
+**Anchor:**
+"नमस्कार दोस्तों! मैं हूँ आपका दोस्त और भारत का सबसे भरोसेमंद स्टॉक मार्केट विश्लेषक। 'द दलाल स्ट्रीट शो' में आपका स्वागत है!
+
+क्या आज आपने अपने ब्रोकरेज ऐप में Paytm, Yes Bank और CMS Info Systems के शेयर चेक किए? सरकार द्वारा ₹2,000 से ऊपर के UPI ट्रांजेक्शन पर MDR यानी मर्चेंट डिस्काउंट रेट को लेकर आई खबर के बाद फिनटेक और बैंकिंग शेयरों में जैसे आग लग गई! Paytm 7% बढ़कर अपने 52-सप्ताह के नए उच्चतम स्तर पर पहुंच गया, तो Yes Bank और CMS Info Systems में भी जोरदार लिवाली देखने को मिली।
+
+लेकिन... रुकिए! बाजार का दूसरा पहलू भी आज काफी चौंकाने वाला रहा। जहां एक तरफ सेंसेक्स 400 अंकों की छलांग लगाकर 74,336.45 पर और निफ्टी 23,217.6 पर बंद हुआ, वहीं दूसरी तरफ GE Vernova और CG Power जैसे पावर कैपेक्स स्टॉक्स में 2 दिनों के अंदर 16% तक की भारी गिरावट दर्ज की गई। इतना ही नहीं, Solar Industries का शेयर भी 2 दिनों में 17% टूट चुका है! 
+
+दूसरी तरफ, पूरी दुनिया की नजरें इस समय अमेरिकी केंद्रीय बैंक यानी US Fed की ब्याज दरों पर आने वाले फैसले पर टिकी हुई हैं। बॉन्ड यील्ड्स 5% के करीब पहुंच चुकी हैं और क्रूड ऑयल से लेकर सोने-चांदी के दामों में भयंकर अनिश्चितता बनी हुई है।
+
+आखिर आज भारतीय शेयर बाजार में इस मिले-जुले रुझान की असली वजह क्या है? कौन से सेक्टर्स में स्मार्ट मनी का फ्लो हो रहा है और कौन से शेयर अब रेड फ्लैग जोन में आ चुके हैं? अगले 18 से 20 मिनट में हम आज के पूरे मार्केट डेटा का 360-डिग्री पोस्टमार्टम करने वाले हैं। तो बिना एक सेकंड भी गंवाए, सीधे चलते हैं आज के मार्केट डेटा पर!"
+
+---
+
+#### **[01:15 - 03:00] SECTION 2: MARKET OVERVIEW (मार्केट ओवरव्यू)**
+
+**(Graphic: Screen Splits - Anchor on Left, Full Market Heatmap/Numbers on Right)**
+
+**Anchor:**
+"आइए सबसे पहले आज के क्लोजिंग फिगर्स पर नजर डालते हैं।
+
+आज भारतीय शेयर बाजार की शुरुआत मजबूती के साथ हुई और दिनभर के उतार-चढ़ाव के बाद क्लोजिंग बेल बजते-बजते बुल्स ने बाजार पर अपना दबदबा कायम रखा।
+
+*   **Nifty 50:** आज निफ्टी 50 23,217.6 के स्तर पर बंद हुआ। ट्रेडिंग सेशन के दौरान निफ्टी ने 23,250 के बेहद करीब पहुंचने की कोशिश की।
+*   **BSE Sensex:** सेंसेक्स में आज 400 से ज्यादा अंकों की शानदार बढ़त देखी गई और यह 74,336.45 के स्तर पर सफलतापूर्वक बंद होने में कामयाब रहा।
+
+आज के सेशन में बाजार की चाल काफी चुनिंदा यानी स्टॉक-स्पेसिफिक (Stock-Specific) रही। जहां इंडेक्स के फ्रंटलाइन लार्जकैप शेयरों ने बाजार को सहारा दिया, वहीं मिडकैप और स्मॉलकैप स्पेस में कुछ चुनिंदा पॉकेट्स में भारी मुनाफावसूली (Profit Booking) देखने को मिली।
+
+बाजार की चौड़ाई यानी एडवांस-टू-डिक्लाइन रेशियो की बात करें तो आज बढ़त वाले शेयरों और गिरावट वाले शेयरों के बीच मुकाबला कड़ा रहा। निवेशकों की नजरें इस बात पर थीं कि क्या निफ्टी 23,250 के ऊपर टिक पाएगा या नहीं, क्योंकि ग्लोबल मार्केट से मिल रहे संकेत काफी मिले-जुले थे।"
+
+---
+
+#### **[03:00 - 05:00] SECTION 3: NIFTY & SENSEX ANALYSIS (निफ्टी और सेंसेक्स विश्लेषण)**
+
+**(Graphics: Chart Analysis Overlay - Daily/Weekly Chart of Nifty 50 & Sensex)**
+
+**Anchor:**
+"चलिए अब निफ्टी और सेंसेक्स के टेक्निकल स्ट्रक्चर को गहराई से समझते हैं।
+
+**निफ्टी 50 विश्लेषण:**
+आज निफ्टी ने 23,217.6 पर क्लोजिंग देकर यह साफ कर दिया है कि 23,100 से 23,150 का जोन अब एक इमीडिएट सपोर्ट (Immediate Support) के रूप में काम कर रहा है। आज दिन के दौरान निफ्टी ने 23,250 के रेजिस्टेंस लेवल को टेस्ट किया। 
+
+अगर कल के सेशन में निफ्टी 23,250 के स्तर के ऊपर सस्टेन करता है, तो अगला टारगेट 23,380 और फिर 23,500 के ऊपरी स्तरों का खुल सकता है। हालांकि, नीचे की तरफ अगर 23,100 का स्तर टूटता है, तो फिर 22,950 तक का रिट्रेसमेंट संभव है।
+
+**सेंसेक्स विश्लेषण:**
+सेंसेक्स के लिए 74,336.45 का क्लोजिंग लेवल काफी महत्वपूर्ण है। 400 अंकों की इस बढ़त में बैंकिंग और आईटी शेयरों का योगदान सराहनीय रहा। सेंसेक्स के लिए अब 74,000 का स्तर एक मज़बूत मनोवैज्ञानिक सपोर्ट बन चुका है। ऊपर की तरफ 74,600 और 75,000 के लेवल्स इमीडिएट रेजिस्टेंस के रूप में सामने खड़े हैं।
+
+व्यापारियों और निवेशकों के लिए मुख्य बात यह है कि जब तक US Fed की पॉलिसी का आउटकम पूरी तरह डिस्काउंट नहीं हो जाता, तब तक बाजार में वोलेटिलिटी (Volatility) यानी उतार-चढ़ाव बना रहेगा।"
+
+---
+
+#### **[05:00 - 09:00] SECTION 4: TOP 10 BIG NEWS (टॉप 10 बड़ी खबरें)**
+
+**(Graphics: News Headlines Ticker & Visual Cards)**
+
+**Anchor:**
+"आइए अब रुख करते हैं आज दिनभर की उन 10 बड़ी खबरों की ओर, जिन्होंने आज बाजार की दिशा तय की और आगे भी स्टॉक्स पर असर डालेंगी:
+
+1.  **UPI MDR चार्जेस पर बड़ा फैसला - Fintech में उफान:**
+    सरकार द्वारा ₹2,000 से अधिक के UPI ट्रांजेक्शन पर नए शुल्क (UPI Charges) लागू करने के बाद फिनटेक प्लेटफॉर्म्स में जबरदस्त रैली देखी गई। Paytm का शेयर 7% बढ़कर 52-सप्ताह के नए उच्चतम स्तर पर पहुंच गया। Jefferies और अन्य अंतरराष्ट्रीय ब्रोकरेज फर्मों ने Paytm का टारगेट प्राइस बढ़ा दिया है। इसके अलावा Yes Bank 4% और CMS Info Systems 7% चढ़ा।
+2.  **Nithin Kamath का बयान - ब्रोकिंग इंडस्ट्री पर दबाव:**
+    Zerodha के सह-संस्थापक नितिन कामथ ने नए UPI चार्जेस पर प्रतिक्रिया देते हुए कहा कि निवेश और ब्रोकिंग पर नए यूपीआई शुल्क व्यावहारिक नहीं हैं। उन्होंने चिंता जताई कि ब्रोकिंग कंपनियां इन चार्जेस को अनिश्चित काल तक खुद सहन (Absorb) नहीं कर सकती हैं।
+3.  **Power Capex और AI स्टॉक्स में भारी गिरावट:**
+    वैश्विक स्तर पर AI कैपेक्स को लेकर जताई जा रही चिंताओं के बीच GE Vernova और CG Power जैसे पावर कैपेक्स स्टॉक्स में पिछले 2 दिनों में 16% तक की भारी गिरावट दर्ज की गई है।
+4.  **Solar Industries 17% गिरा, लेकिन ब्रोकरेज अभी भी बुलिश:**
+    Solar Industries के शेयरों में 2 दिनों के भीतर 17% की बड़ी गिरावट आई है। हालांकि, ब्रोकरेज हाउस Jefferies और Nuvama का मानना है कि स्टॉक में यहाँ से भी 46% तक की बढ़त (Upside) देखने को मिल सकती है।
+5.  **Tata Group स्टॉक्स में IPO बज के बाद गिरावट:**
+    मंगलवार को IPO बज के कारण रैली दिखाने के बाद आज टाटा ग्रुप के शेयरों में मुनाफावसूली हावी रही और कई टाटा स्टॉक्स 7% तक टूट गए।
+6.  **Tata Consumer Q4 नतीजे - मुनाफा 19% घटा:**
+    Tata Consumer Products ने अपने Q4 नतीजों की घोषणा की, जहाँ कंपनी का कंसोलिडेटेड नेट प्रॉफिट 19% घटकर ₹217 करोड़ रह गया। इसके बावजूद कंपनी ने ₹7.75 प्रति शेयर के डिविडेंड (Dividend) की घोषणा की है।
+7.  **ICICI Pru Life Q4 मुनाफा 26% गिरा:**
+    ICICI Prudential Life Insurance का Q4 नेट प्रॉफिट 26% घटकर ₹174 करोड़ दर्ज किया गया। कंपनी ने डिविडेंड का ऐलान किया है और FY24 में मंदी के बावजूद एब्सोल्यूट VNB (Value of New Business) बढ़ाने पर ध्यान केंद्रित करने की बात कही है।
+8.  **NSE IPO Buzz और Radhakishan Damani की वेल्थ:**
+    NSE IPO की चर्चाओं के बीच खबर है कि डिमाार्ट के प्रमोटर राधाकिशन दमानी की संपत्ति में NSE शेयर के हर ₹10 के मूवमेंट पर लगभग ₹40 करोड़ का उतार-चढ़ाव आ सकता है। वहीं अनऑफिशियल मार्केट में NSE IPO का GMP थोड़ा फिसला है।
+9.  **US Fed मीटिंग और ग्लोबल बॉन्ड Yields:**
+    US Fed की बैठक के नतीजों से पहले अमेरिकी शेयर बाजार वायदा (Dow Futures) में तेजी देखी गई। वहीं, 10-वर्षीय अमेरिकी बॉन्ड यील्ड्स 5% के करीब बनी हुई हैं। कमोडिटी मार्केट में सोना $4,300 के आसपास कारोबार कर रहा है और चांदी में बढ़त दर्ज की गई है।
+10. **अंतर्राष्ट्रीय व्यापार सौदे - CETA और CEPA:**
+    भारत और यूके के बीच CETA समझौता लागू होने के बाद भारतीय कॉफी और ज्वेलरी की पहली जीरो-ड्यूटी खेप यूके पहुंची। वहीं, भारत और कनाडा 2026 के अंत तक CEPA ट्रेड पैक्ट को अंतिम रूप देने का लक्ष्य बना रहे हैं।"
+
+---
+
+#### **[09:00 - 11:30] SECTION 5: SECTOR ANALYSIS (सेक्टर विश्लेषण)**
+
+**(Graphics: Sectoral Performance Bar Chart / Heatmap)**
+
+**Anchor:**
+"खबरों के बाद, अब आइए नजर डालते हैं आज सेक्टोरल परफॉर्मेंस पर। आज कौन से सेक्टर्स चमके और किन सेक्टर्स ने निवेशकों को निराश किया?
+
+**1. Fintech & Banking (आउटपरफॉर्मर):**
+आज का स्टार परफॉर्मर फिनटेक और बैंकिंग सेक्टर रहा। UPI MDR नियम में बदलाव से ऑनलाइन पेमेंट एग्रीगेटर्स और बैंकों के मार्जिन में सुधार की उम्मीद जगी है। Paytm, Yes Bank और CMS Info Systems ने पूरे सेक्टर का सेंटिमेंट लिफ्ट किया।
+
+**2. Power & Energy Capex (अंडरपरफॉर्मर):**
+आज पावर कैपेक्स और एआई-लिंक्ड एनर्जी स्टॉक्स में भयंकर बिकवाली देखी गई। GE Vernova, CG Power और Solar Industries जैसे दिग्गजों में 12% से 17% तक की बिकवाली हुई। ग्लोबल लेवल पर AI डेटा सेंटर्स के लिए कैपेक्स की गति धीमी होने की आशंका से यह पैनिक सेल-ऑफ देखा गया।
+
+**3. FMCG Sector (मिला-जुला रुख):**
+FMCG सेक्टर में आज मिक्स्ड ट्रेंड रहा। Patanjali Foods 5% की बढ़त के साथ बंद हुआ, जबकि Tata Consumer के निराशाजनक Q4 मुनाफे (19% की गिरावट) ने सेंटिमेंट थोड़ा बिगाड़ा। HUL के Q4 प्रीव्यू में कीमतों में कटौती और सुस्त मांग के चलते टॉपलाइन प्रभावित होने का अंदेशा जताया गया है।
+
+**4. IT & Technology (दबाव में):**
+Tata Elxsi के Q4 नेट प्रॉफिट और रेवेन्यू में QoQ (तिमाही दर तिमाही) गिरावट दर्ज की गई, हालांकि कंपनी ने ₹70 प्रति शेयर के भारी-भरकम डिविडेंड का ऐलान किया। LTIMindtree के Q4 प्रीव्यू में भी ग्रोथ पर थोड़ा असर पड़ने की बात कही गई है।
+
+**5. Infrastructure & Water Distribution:**
+वाटर डिस्ट्रीब्यूशन और एनवायरनमेंट मैनेजमेंट स्टॉक्स जैसे Concord Enviro, EMS और VA Tech Wabag पर आज भारी बिकवाली का दबाव देखा गया।"
+
+---
+
+#### **[11:30 - 13:30] SECTION 6 & 7: TOP GAINERS & TOP LOSERS (टॉप गेनर्स एवं टॉप लूजर्स)**
+
+**(Graphics: Two Columns on Screen - Green for Gainers, Red for Losers with Percentage Changes)**
+
+**Anchor:**
+"चलिए अब देखते हैं आज के बाजार के असली हीरो और ज़ीरो कौन रहे।
+
+**आज के TOP GAINERS:**
+
+1.  **Godavari Biorefineries:** शेयर में 13% की जबरदस्त रैली दर्ज की गई। चीन से पेटेंट मिलने की सकारात्मक खबर से स्टॉक में जोरदार लिवाली आई।
+2.  **Paytm (One97 Communications):** 7% की छलांग लगाकर 52-सप्ताह के नए उच्च स्तर पर पहुंचा। UPI चार्जेस की खबर और ब्रोकरेज अपग्रेड का सीधा फायदा मिला।
+3.  **CMS Info Systems:** UPI MDR बदलाव का बड़ा फायदा मिलने की उम्मीद में शेयर 7% उछला।
+4.  **Patanjali Foods:** FMCG स्पेस में मज़बूती दिखाते हुए स्टॉक 5% चढ़कर बंद हुआ।
+5.  **Yes Bank:** Citi और Morgan Stanley द्वारा यूपीआई चार्ज बदलावों का लाभार्थी बताए जाने के बाद शेयर 4% चढ़ा।
+6.  **Borosil Renewables:** सोलर रूफटॉप सेक्टर में प्रवेश की खबरों से विशेषज्ञों की पॉजिटिव रेटिंग के बाद शेयर में अपट्रेंड देखा गया।
+
+**आज के TOP LOSERS:**
+
+1.  **Solar Industries:** पिछले 2 दिनों में स्टॉक 17% तक टूट चुका है। वैल्युएशन कंसर्न्स और प्रॉफिट बुकिंग मुख्य वजह रही।
+2.  **Power Capex Stocks (GE Vernova, CG Power):** AI-कैपेक्स चिंताओं के कारण 2 दिनों में 16% तक की भारी गिरावट दर्ज की गई।
+3.  **Tata Group Momentum Stocks:** मंगलवार की रैली के बाद आज टाटा ग्रुप के कई शेयरों में 7% तक की गिरावट देखने को मिली।
+4.  **Water Distribution Stocks:** Concord Enviro, EMS और VA Tech Wabag में बिकवाली का दौर जारी रहा।"
+
+---
+
+#### **[13:30 - 15:30] SECTION 8: CORPORATE UPDATES & EARNINGS (कॉर्पोरेट अपडेट और नतीजे)**
+
+**(Graphics: Company Logos with Bullet Points of Financial Results & Corporate Actions)**
+
+**Anchor:**
+"आइए अब बात करते हैं आज की मुख्य कॉर्पोरेट खबरों और Q4 नतीजों की:
+
+*   **Tata Consumer Products Q4 Results:** कंपनी का Q4 कंसोलिडेटेड नेट प्रॉफिट 19% घटकर ₹217 करोड़ रह गया। हालांकि, कंपनी ने अपने निवेशकों के लिए ₹7.75 प्रति शेयर के डिविडेंड की सिफारिश की है।
+*   **ICICI Prudential Life Insurance:** Q4 का नेट प्रॉफिट 26% गिरकर ₹174 करोड़ रहा। इंश्योरेंस कंपनी ने डिविडेंड का ऐलान किया है और FY24 के मंदी के दौर के बाद अब VNB (Value of New Business) ग्रोथ पर फोकस करने की बात कही है।
+*   **Tata Elxsi:** Q4 में नेट प्रॉफिट और रेवेन्यू दोनों में QoQ आधार पर गिरावट दर्ज की गई। लेकिन कंपनी ने निवेशकों को राहत देते हुए ₹70 प्रति शेयर का बंपर डिविडेंड डिक्लेयर किया है।
+*   **Cyient DLM:** FY24 के लिए कंपनी का प्रॉफिट आफ्टर टैक्स (PAT) 93% के विशाल उछाल के साथ दर्ज किया गया। डिफेंस और एयरोस्पेस इलेक्ट्रॉनिक्स सेगमेंट में मज़बूत प्रदर्शन इसका मुख्य कारण रहा।
+*   **Bajaj Holdings Dividend:** बजाज होल्डिंग्स ने अपने शेयरधारकों के लिए ₹65 प्रति शेयर के भारी कैश रिवॉर्ड यानी डिविडेंड की घोषणा की है।
+*   **Aviation & Auto Updates:** Air India ने जापान की All Nippon Airways (ANA) के साथ कोडशेयर समझौता किया है। वहीं स्टेलेंटिस इंडिया (Stellantis India) ने 30 अप्रैल से अपने वाहनों की कीमतों में ₹17,000 तक की बढ़ोतरी करने का फैसला किया है।
+*   **Airtel Payments Bank & Razorpay:** रेजरपे ने एयरटेल पेमेंट बैंक के साथ पार्टनरशिप में 'UPI Switch' लॉन्च करने का ऐलान किया है।"
+
+---
+
+#### **[15:30 - 17:00] SECTION 9: GLOBAL MARKET IMPACT (ग्लोबल मार्केट प्रभाव)**
+
+**(Graphics: World Map with Stock Indices - US, Europe, Asia, Commodities)**
+
+**Anchor:**
+"दोस्तों, घरेलू खबरों के साथ-साथ ग्लोबल मार्केट्स से क्या संकेत मिल रहे हैं, यह समझना बेहद जरूरी है:
+
+*   **US Fed & Wall Street:** अमेरिकी बाजार की नजरें पूरी तरह से फेडरल रिजर्व के ब्याज दरों पर आने वाले फैसले पर टिकी हैं। Dow Jones Futures में हल्की बढ़त देखी गई, लेकिन यह चर्चा जोरों पर है कि क्या US Fed 3 साल बाद फिर से दरें बढ़ा सकता है या यथास्थिति बनाए रखेगा।
+*   **US Labor Market:** अमेरिका में जॉबलेस क्लेम्स (Jobless Claims) मई के मध्य के बाद से अपने निचले स्तर पर आ गए हैं, जो एक मजबूत लेबर मार्केट का संकेत देता है, लेकिन इससे फेड द्वारा दरों में कटौती में देरी हो सकती है।
+*   **Europe & Crude Oil:** यूरोपीय बाजारों में पिछले 3 महीने के निचले स्तर से रिकवरी देखी गई, क्योंकि क्रूड ऑयल की रैली Fed मीटिंग से पहले थम गई।
+*   **Geopolitical Tensions:** रूस के राष्ट्रपति व्लादिमीर पुतिन द्वारा न्यूक्लियर डॉक्ट्रिन को अपडेट करने की रिपोर्ट्स के बाद यूएस स्टॉक फ्यूचर्स और बॉन्ड यील्ड्स में अस्थायी गिरावट देखी गई। वहीं ईरान युद्ध और मध्य पूर्व के तनाव के कारण भारत अपने व्यापारिक मार्गों को ओमान से तंजानिया की तरफ री-रूट कर रहा है।
+*   **China Economy:** पीपुल्स बैंक ऑफ चाइना (PBOC) के गवर्नर पैन गोंगशेंग के अनुसार, चीन में लोन ग्रोथ की धीमी रफ्तार अब एक नया सामान्य (New Normal) बन रही है।"
+
+---
+
+#### **[17:00 - 18:30] SECTION 10 & 11: FII/DII ACTIVITY & TOMORROW'S TRIGGERS (FII-DII गतिविधि एवं कल के ट्रिगर्स)**
+
+**(Graphics: Flowcharts and Key Trigger Bullet Points for Tomorrow)**
+
+**Anchor:**
+"आइए अब बात करते हैं संस्थागत निवेशकों की चाल और कल के मुख्य ट्रिगर्स की।
+
+**FII & DII गतिविधि:**
+म्यूचुअल फंड्स (DIIs) का भारतीय बाजार पर भरोसा लगातार बना हुआ है। हालिया आंकड़ों के अनुसार, म्यूचुअल फंड्स ने अगस्त महीने में 8 चुनिंदा स्टॉक्स में 1 करोड़ से अधिक शेयर जोड़े हैं, जिनमें 30% तक की रैली देखी गई है। आरबीआई (RBI) की विशेष लिक्विडिटी विंडोज के जरिए $100 Billion तक के इनफ्लो आने की संभावना जताई जा रही है, जो बाजार को निचले स्तरों पर सहारा दे रहा है।
+
+**कल के लिए 5 बड़े Triggers (17 सितंबर):**
+
+1.  **US Fed Interest Rate Decision:** आज देर रात आने वाला US Fed का फैसला कल सुबह भारतीय बाजारों की दिशा तय करेगा।
+2.  **NSE IPO Update:** NSE IPO को लेकर अनऑफिशियल मार्केट और GMP पर सभी की निगाहें रहेंगी।
+3.  **New IPO Listings:** Rentomojo IPO और LCC Projects IPO की कल लिस्टिंग होने जा रही है। GMP में क्रमशः 27% और ₹44 के प्रीमियम का अनुमान लगाया गया है।
+4.  **Jindal Supreme IPO:** जिंदल सुप्रीम आईपीओ के शुरुआती बिड्स में 200% से अधिक सब्सक्रिप्शन मिला है और GMP 29% पर है। इस पर नजर बनी रहेगी।
+5.  **Rupee vs Dollar & Bond Yields:** डॉलर के मुकाबले रुपया 6 हफ्ते के निचले स्तर पर बना हुआ है। आरबीआई के हस्तक्षेप और अमेरिकी बॉन्ड यील्ड्स की चाल पर कल नजर रखनी होगी।"
+
+---
+
+#### **[18:30 - 19:30] SECTION 12 & 13: INVESTOR TAKEAWAY & CONCLUSION (निवेशकों के लिए सीख एवं निष्कर्ष)**
+
+**(Camera Angle: Medium Shot, Direct Eye Contact, Educational Tone)**
+
+**Anchor:**
+"**आज के बाजार से निवेशकों के लिए 3 बड़ी सीख:**
+
+1.  **पॉलिसी और रेगुलेटरी बदलावों का महत्व:** आज आपने देखा कि कैसे सिर्फ एक UPI MDR पॉलिसी न्यूज ने Paytm, Yes Bank और CMS Info की किस्मत बदल दी। इसलिए हमेशा रेगुलेटरी खबरों पर नजर रखें।
+2.  **मोमेंटम चेस न करें:** सोलर इंडस्ट्रीज और पावर कैपेक्स स्टॉक्स में आई गिरावट यह सिखाती है कि किसी भी सेक्टर में वैल्युएशन को नजरअंदाज करके केवल मोमेंटम के पीछे भागना खतरनाक हो सकता है।
+3.  **क्वालिटी डिविडेंड स्टॉक्स:** Tata Elxsi (₹70) और Bajaj Holdings (₹65) जैसे उदाहरण दिखाते हैं कि बाजार में उतार-चढ़ाव के बीच भी अच्छी कंपनियां अपने निवेशकों को कैश डिविडेंड के जरिए रीवर्ड देती हैं।
+
+**निष्कर्ष (Conclusion):**
+संक्षेप में कहें तो, भारतीय बाजार 23,200 के ऊपर मजबूती से डटा हुआ है। लेकिन US Fed के फैसले और ग्लोबल जियोपॉलिटिकल तनाव को देखते हुए आने वाले दिनों में वोलेटिलिटी से इंकार नहीं किया जा सकता। किसी भी नए ट्रेड में सख्त स्टॉपलॉस का इस्तेमाल करें और लंबी अवधि के निवेशक हर गिरावट को क्वालिटी स्टॉक्स जमा करने का मौका समझें।"
+
+---
+
+#### **[19:30 - 20:00] SECTION 14: DISCLAIMER (डिस्क्लेमर)**
+
+**(Graphics: On-screen Text Disclaimer with Anchor Voiceover)**
+
+**Anchor:**
+"**डिस्क्लेमर (Disclaimer):**
+यह वीडियो केवल शैक्षणिक और सूचनात्मक उद्देश्यों (Educational & Informational Purposes) के लिए बनाया गया है। इस वीडियो में बताए गए किसी भी स्टॉक में खरीदारी या बिकवाली की सलाह नहीं दी जाती है। शेयर बाजार में निवेश जोखिमों के अधीन है। कोई भी निवेश निर्णय लेने से पहले अपने पंजीकृत वित्तीय सलाहकार (SEBI Registered Financial Advisor) से परामर्श अवश्य लें।
+
+अगर आपको आज का यह विश्लेषण पसंद आया हो, तो वीडियो को **Like** करें, दोस्तों के साथ **Share** करें और चैनल को **Subscribe** करके बेल आइकन दबाना न भूलें!
+
+कल फिर मिलेंगे बाजार की नई खबरों और सटीक विश्लेषण के साथ। तब तक के लिए धन्यवाद और हैप्पी इन्वेस्टिंग!"
+
+**(Screen Fades to Black with End Screen Cards & Subscribe Button)**
+</pre>
+    </div>
+    <div class="footer">
+        🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+    </div>
+</div>
+<div id="toast" class="toast">Script Copied Successfully ✅</div>
+<script>
+function copyScript(){
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display="none"; }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+</body>
+</html>
