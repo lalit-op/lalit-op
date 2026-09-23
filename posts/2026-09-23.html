@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Stock Market Script - 23-09-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg:#020617; --card:#0f172a; --border:#1e293b; --text:#e2e8f0; --muted:#94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Inter',sans-serif;
+    background: radial-gradient(circle at top left,#1e3a8a33,transparent 40%),
+                radial-gradient(circle at top right,#06b6d433,transparent 40%),
+                #020617;
+    color:var(--text); min-height:100vh;
+}
+.container { max-width:1200px; margin:auto; padding:30px; }
+.header {
+    text-align:center; padding:40px; border-radius:24px; margin-bottom:25px;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.08);
+}
+.badge {
+    display:inline-block; padding:8px 16px; border-radius:999px;
+    background:#0ea5e920; border:1px solid #38bdf830; color:#38bdf8; margin-bottom:15px; font-size:14px;
+}
+.header h1 {
+    font-size:48px; font-weight:700;
+    background:linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height: 1.2;
+}
+.header p { margin-top:10px; color:#94a3b8; }
+.tagline { font-size:18px; color:#38bdf8; margin-top:10px; }
+.toolbar { display:flex; justify-content:flex-end; margin-bottom:20px; }
+.copy-btn {
+    background:linear-gradient(135deg, #2563eb, #06b6d4); color:white; border:none;
+    padding:14px 24px; border-radius:14px; cursor:pointer; font-weight:600; transition: all 0.2s;
+}
+.copy-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(6,182,212,.5); }
+.card {
+    background:rgba(15,23,42,.85); border:1px solid rgba(255,255,255,.08);
+    border-radius:24px; overflow:hidden; backdrop-filter:blur(20px); box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+.card-top { display:flex; align-items:center; padding:15px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+.dots { display:flex; gap:8px; }
+.dot { width:14px; height:14px; border-radius:50%; }
+.red { background:#ff5f57; } .yellow { background:#ffbd2e; } .green { background:#28c840; }
+.file-name { margin-left:15px; color:#94a3b8; font-size:14px; }
+pre {
+    white-space:pre-wrap; word-wrap:break-word; padding:30px; line-height:1.8;
+    font-size:16px; color:#e2e8f0; font-family:'Inter', sans-serif;
+}
+.footer { text-align:center; margin-top:30px; color:#64748b; font-size: 14px; padding-bottom: 20px; }
+.toast {
+    position:fixed; bottom:25px; right:25px; background:#22c55e; color:white;
+    padding:12px 20px; border-radius:12px; display:none; z-index: 50; box-shadow:0 10px 30px rgba(34,197,94,.3);
+}
+
+/* ========================================= */
+/* MOBILE OPTIMIZATION (@media query added)  */
+/* ========================================= */
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .header { padding: 25px 15px; border-radius: 20px; }
+    .header h1 { font-size: 32px; }
+    .tagline { font-size: 15px; }
+    .toolbar { justify-content: center; }
+    .copy-btn { width: 100%; padding: 16px; font-size: 16px; }
+    .card { border-radius: 16px; }
+    .card-top { flex-direction: row; justify-content: space-between; }
+    .file-name { margin-left: 10px; font-size: 12px; }
+    pre { padding: 20px 15px; font-size: 15px; }
+    .toast { left: 50%; right: auto; transform: translateX(-50%); width: 90%; text-align: center; bottom: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">🚀 AI Generated Market Report</div>
+        <h1>Stock Samvad AI</h1>
+        <p class="tagline">Daily Market Intelligence Platform</p>
+    </div>
+    <div class="toolbar">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Full Script</button>
+    </div>
+    <div class="card">
+        <div class="card-top">
+            <div class="dots">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            </div>
+            <div class="file-name">📊 Daily Market Analysis</div>
+        </div>
+        <pre id="script">
+📅 दिनांक: 23-09-2026
+📊 Content Type: VIDEO
+
+यहाँ आपके लिए 18-20 मिनट की विस्तृत, पेशेवर और विश्लेषणात्मक यूट्यूब वीडियो स्क्रिप्ट तैयार की गई है। इसमें सभी दिए गए बाजार आंकड़ों और खबरों को पूरी तरह से शामिल किया गया है।
+
+---
+
+# 📌 META DATA FOR YOUTUBE
+
+### **SEO Title Options (3 विकल्प):**
+1. **बाजार में बंपर तेजी! Nifty 23,400 पार, Crude Oil $99 से नीचे! Whirlpool 20% अपर सर्किट | Share Market News Today**
+2. **Sensex 350 अंक उछला! Tata Consumer & Tata Elxsi Q4 Results | Adani Group SEBI Order | Stock Market Analysis Hindi**
+3. **शेयर बाजार एनालिसिस: Q4 रिजल्ट्स, NBFCs पर बड़ा ब्रोकरेज अपडेट, FII Flow & Top Stocks To Watch Tomorrow!**
+
+---
+
+### **Thumbnail Text Ideas (3 विकल्प):**
+1. **बाजार में बंपर तेजी! 🚀 | Nifty @ 23,446 | Q4 Results Update**
+2. **कच्चा तेल गिरा! 📉 | Whirlpool 20% Upper Circuit | Adani SEBI Update**
+3. **Q4 रिजल्ट्स का धमाका! 💥 | NBFCs में बड़ी खरीदारी? | Buy or Sell?**
+
+---
+
+### **YouTube Video Description:**
+आज भारतीय शेयर बाजार में शानदार बढ़त देखने को मिली! सेंसेक्स 350 अंकों की छलांग लगाकर 74,828.25 पर बंद हुआ, वहीं निफ्टी 23,400 के पार निकलकर 23,446.80 के स्तर पर बंद हुआ। कच्चे तेल की कीमतों में गिरावट ($99/बैरल से नीचे) ने बाजार के सेंटिमेंट को मजबूत किया। 
+
+इस वीडियो में हम चर्चा करेंगे:
+- निफ्टी और सेंसेक्स का विस्तृत तकनीकी व बुनियादी विश्लेषण।
+- Tata Consumer, Tata Elxsi और ICICI Prudential Life के Q4 नतीजे।
+- Whirlpool India में 20% का अपर सर्किट और Hero Motors का बंपर डेब्यू।
+- Adani Group कंपनियों पर SEBI का नया सेटलमेंट ऑर्डर।
+- UBS और Jefferies का NBFC सेक्टर (Bajaj Finance, LT Finance) पर बड़ा बुलिश अपडेट।
+- ग्लोबल मार्केट संकेत, US Fed के बयान और भारत-UK/कनाडा ट्रेड डील।
+
+पूरी जानकारी के लिए वीडियो को अंत तक देखें!
+
+---
+
+### **20 SEO Hashtags:**
+#ShareMarket #Nifty50 #Sensex #StockMarketIndia #Q4Results #TataConsumer #TataElxsi #WhirlpoolIndia #AdaniGroup #NBFCSector #BajajFinance #CrudeOil #GlobalMarkets #FIIandDII #StockMarketNews #TradingStrategy #InvestInIndia #MarketAnalysis #BusinessNewsHindi #DalalStreet
+
+---
+
+### **Pinned Comment:**
+📌 **आज के वीडियो के मुख्य बिंदु:**
+00:00 - दमदार ओपनिंग हुक
+01:30 - मार्केट ओवरव्यू & क्लोजिंग आंकड़े
+03:15 - निफ्टी और सेंसेक्स का विस्तृत विश्लेषण
+05:30 - आज की 10 बड़ी खबरें (Top 10 Headlines)
+08:45 - सेक्टर विश्लेषण (FMCG, IT, NBFC, Defence)
+11:00 - टॉप गेनर्स (Whirlpool, Hero Motors, Clean Max)
+12:30 - टॉप लूजर्स व दबाव वाले शेयर (Tata Consumer, Tata Elxsi, Meesho)
+14:00 - कॉर्पोरेट अपडेट्स (L&T, Air India, Adani SEBI Order)
+15:30 - ग्लोबल मार्केट प्रभाव & US Fed संकेत
+17:00 - FII / DII गतिविधि और लिक्विडिटी
+18:15 - कल के लिए मुख्य ट्रिगर्स (Tomorrow's Triggers)
+19:15 - निवेशकों के लिए काम की सीख (Key Takeaways)
+20:00 - निष्कर्ष और डिस्क्लेमर
+
+👇 **आपका सवाल:** क्या आप इस तेजी में NBFCs या IT शेयर्स में खरीदारी कर रहे हैं? नीचे कमेंट में अपनी राय जरूर शेयर करें!
+
+---
+
+### **Chapter Timestamps:**
+- `00:00` - 1. दमदार ओपनिंग हुक (Opening Hook)
+- `01:30` - 2. मार्केट ओवरव्यू (Market Overview)
+- `03:15` - 3. निफ्टी और सेंसेक्स विश्लेषण (Nifty & Sensex Analysis)
+- `05:30` - 4. टॉप 10 बड़ी खबरें (Top 10 Major News)
+- `08:45` - 5. सेक्टर विश्लेषण (Sectoral Analysis)
+- `11:00` - 6. टॉप गेनर्स (Top Gainers)
+- `12:30` - 7. टॉप लूजर्स (Top Losers)
+- `14:00` - 8. कॉर्पोरेट अपडेट (Corporate Updates)
+- `15:30` - 9. ग्लोबल मार्केट प्रभाव (Global Markets & US Fed)
+- `17:00` - 10. FII और DII गतिविधि (FII & DII Activity)
+- `18:15` - 11. कल के ट्रिगर्स (Tomorrow's Key Triggers)
+- `19:15` - 12. निवेशकों के लिए सीख (Key Takeaways for Investors)
+- `20:00` - 13. निष्कर्ष (Conclusion)
+- `20:30` - 14. डिस्क्लेमर (Disclaimer)
+
+---
+
+# 🎬 FULL VIDEO SCRIPT (सम्पूर्ण हिंदी वीडियो स्क्रिप्ट)
+
+**(समय: लगभग 18-20 मिनट | शब्द संख्या: ~3200 शब्द)**
+
+---
+
+### **[00:00 - 01:30] 1. दमदार ओपनिंग हुक (Powerful Opening Hook)**
+
+**[ANCHOR ON CAMERA - HIGH ENERGY, CONFIDENT TONE]**
+
+**एंकर:** नमस्कार दोस्तों! भारत के सबसे भरोसेमंद शेयर बाजार एनालिसिस शो में आपका स्वागत है। मैं हूँ आपका दोस्त और होस्ट। 
+
+दलाल स्ट्रीट पर आज एक बार फिर बुल की दहाड़ सुनाई दी है! क्या आपने आज का बाजार देखा? जिस कच्चे तेल के $100 के पार जाने का डर बाजार को सता रहा था, जैसे ही ब्रांड क्रूड $99 प्रति बैरल के नीचे फिसला, भारतीय शेयर बाजार में खरीदारी का ऐसा तूफान आया कि सेंसेक्स 350 अंकों की शानदार छलांग लगाकर 74,800 के ऊपर बंद हुआ! और हमारी निफ्टी? निफ्टी ने एक बार फिर 23,400 के महत्वपूर्ण मनोवैज्ञानिक स्तर को पार करते हुए 23,446.80 पर अपनी क्लोजिंग दर्ज की है।
+
+**[GRAPHIC ON SCREEN: Whirlpool 20% Upper Circuit, Hero Motors 20% Upper Circuit, Crude Oil Dropping Below $99]**
+
+लेकिन दोस्तों, कहानी सिर्फ इंडेक्स की तेजी तक सीमित नहीं है! आज स्टॉक-विशिष्ट (stock-specific) एक्शन इतना जबरदस्त था कि व्हर्लपूल ऑफ इंडिया (Whirlpool of India) का शेयर प्रोमोटर स्टेक सेल की खबरों के दम पर 20% के अपर सर्किट पर जाकर लॉक हो गया! लिस्टिंग के बाद हीरो मोटर्स (Hero Motors) ने भी 20% का अपर सर्किट लगाया! 
+
+दूसरी तरफ, टाटा ग्रुप की दो दिग्गज कंपनियों—टाटा कंज्यूमर (Tata Consumer) और टाटा एल्क्सी (Tata Elxsi) के Q4 के नतीजे सामने आए हैं, जहाँ मुनाफा घटता हुआ दिखा है। अडानी ग्रुप पर SEBI का नया सेटलमेंट ऑर्डर आया है, और UBS व Jefferies ने NBFC सेक्टर पर इतना बड़ा रिपोर्ट कार्ड जारी किया है जो आपके पोर्टफोलियो को पूरी तरह बदल सकता है!
+
+क्या यह तेजी टिकाऊ है? क्या आपको इस रैली में खरीदारी करनी चाहिए या Q4 नतीजों के बीच सतर्क रहना चाहिए? अगले 18 मिनट में हम आज के बाजार के हर आंकड़े, हर बड़ी खबर और ग्लोबल ट्रिगर्स का गहराई से विश्लेषण करेंगे। तो बिना किसी देरी के, चलिए शुरू करते हैं!
+
+---
+
+### **[01:30 - 03:15] 2. मार्केट ओवरव्यू (Market Overview)**
+
+**[ANCHOR ON CAMERA]**
+
+**एंकर:** सबसे पहले आज के बाजार की पूरी तस्वीर को समझ लेते हैं। हफ्ते के इस कारोबारी सत्र में भारतीय बाजारों ने सुबह से ही मजबूती का रुख बनाए रखा। वैश्विक बाजारों से मिले-जुले संकेतों के बावजूद, घरेलू निवेशकों का भरोसा मजबूत रहा। 
+
+**[GRAPHIC DISPLAY: Main Market Indicators]**
+- **Nifty 50 Close:** 23,446.80 (मजबूत बढ़त)
+- **Sensex Close:** 74,828.25 (+350 अंक)
+- **Crude Oil:** $99/बैरल के नीचे फिसलकर दो हफ्ते के निचले स्तर पर।
+
+**[ANCHOR ON CAMERA]**
+
+बाजार में आज की इस तेजी का सबसे मुख्य चालक (primary driver) रहा अंतर्राष्ट्रीय बाजार में कच्चे तेल की कीमतों में आई गिरावट। क्रूड ऑयल का $99 प्रति बैरल के नीचे आना भारत जैसी आयात-निर्भर (import-dependent) अर्थव्यवस्था के लिए सबसे बड़ी राहत की खबर होती है। इससे न केवल हमारी राजकोषीय स्थिति को सहारा मिलता है, बल्कि मुद्रास्फीति (inflation) का दबाव भी घटता है। 
+
+इसी वजह से आज ऑटो, कंज्यूमर ड्यूरेबल्स और फाइनेंशियल शेयर्स में अच्छी खरीदारी देखने को मिली। हालांकि, मिडकैप और स्मॉलकैप इंडेक्स में मिला-जुला कारोबार रहा, जहाँ कुछ चुनिंदा स्टॉक्स ने बहुवर्षीय (multi-year) रिकॉर्ड तोड़े, तो वहीं ब्लॉक डील और Q4 के कमजोर नतीजों के चलते कुछ शेयरों में तेज बिकवाली भी दर्ज की गई।
+
+---
+
+### **[03:15 - 05:30] 3. निफ्टी और सेंसेक्स विश्लेषण (Nifty & Sensex Analysis)**
+
+**[ANCHOR ON CAMERA - WITH CHART GRAPHICS]**
+
+**एंकर:** चलिए अब निफ्टी 50 और सेंसेक्स के आंकड़ों का बारीक विश्लेषण करते हैं।
+
+**[SCREEN SHOWING NIFTY & SENSEX TECHNICAL CHARTS]**
+
+निफ्टी 50 आज 23,446.80 के स्तर पर बंद हुआ है। तकनीकी चार्ट पर गौर करें तो 23,400 का स्तर पिछले कुछ सत्रों से एक कड़ा प्रतिरोध (resistance) बना हुआ था। आज बाजार ने न केवल इस स्तर को पार किया, बल्कि इसके ऊपर टिकाव (sustainability) भी दिखाया। 
+
+**[SLIDE: Technical Levels for Nifty & Sensex]**
+- **Nifty Immediate Support:** 23,300 - 23,350
+- **Nifty Resistance Zone:** 23,550 - 23,600
+- **Sensex Resistance Zone:** 75,000 - 75,200
+- **Sensex Immediate Support:** 74,400 - 74,500
+
+**[ANCHOR ON CAMERA]**
+
+सेंसेक्स की बात करें तो 74,828.25 का क्लोजिंग लेवल यह दर्शाता है कि 75,000 का ऐतिहासिक स्तर अब महज कुछ ही कदम दूर है। बाजार के जानकारों का मानना है कि यदि क्रूड ऑयल $99 के नीचे ही बना रहता है और विदेशी संस्थागत निवेशकों (FIIs) की बिकवाली थमती है, तो निफ्टी में अगला बड़ा लक्ष्य 23,600 का हो सकता है। 
+
+हालांकि, हमें यह नहीं भूलना चाहिए कि Q4 अर्निंग्स सीजन अपने चरम पर है, और कॉर्पोरेट आय के आंकड़े बाजार की इस तेजी की असली परीक्षा लेंगे।
+
+---
+
+### **[05:30 - 08:45] 4. टॉप 10 बड़ी खबरें (Top 10 Major News)**
+
+**[ANCHOR ON CAMERA - GRAPHIC CAROUSEL OF NEWS]**
+
+**एंकर:** चलिए अब रुख करते हैं आज की 10 सबसे बड़ी कॉर्पोरेट और आर्थिक खबरों की तरफ, जिन्होंने आज बाजार की चाल तय की और कल भी असर डालेंगी:
+
+**1. Whirlpool of India में 20% का अपर सर्किट:**
+प्रमोटर द्वारा हिस्सेदारी बेचने की खबरों (promoter stake sale buzz) के बाद व्हर्लपूल ऑफ इंडिया का शेयर 20% उछलकर अपर सर्किट पर पहुंच गया। निवेशकों में इस डील को लेकर जबरदस्त उत्साह देखा गया।
+
+**2. Tata Consumer Q4 Results:**
+टाटा कंज्यूमर प्रोडक्ट्स ने अपने चौथे तिमाही के नतीजे घोषित कर दिए हैं। कंपनी का समेकित शुद्ध लाभ (consolidated net profit) 19% घटकर ₹217 करोड़ रहा। हालांकि, कंपनी ने अपने शेयरधारकों के लिए ₹7.75 प्रति शेयर के लाभांश (dividend) की घोषणा की है।
+
+**3. Tata Elxsi के नतीजों में गिरावट:**
+टाटा समूह की टेक कंपनी Tata Elxsi का शुद्ध लाभ और रेवेन्यू तिमाही-दर-तिमाही (QoQ) आधार पर गिरा है। इसके बावजूद, कंपनी ने निवेशकों को राहत देते हुए ₹70 प्रति शेयर का भारी लाभांश घोषित किया है।
+
+**4. ICICI Prudential Life Q4 Profit Down 26%:**
+ICICI प्रूडेंशियल लाइफ इंश्योरेंस का Q4 नेट प्रॉफिट 26% घटकर ₹174 करोड़ रह गया। कंपनी ने डिविडेंड का ऐलान किया है और FY24 में VNB (Value of New Business) में आई सुस्ती के बाद अब एब्सोल्यूट VNB ग्रोथ पर फोकस करने की बात कही है।
+
+**5. Cyient DLM का शानदार प्रदर्शन:**
+ईएमएस (EMS) क्षेत्र की कंपनी Cyient DLM के लिए वित्त वर्ष 2024 शानदार रहा। FY24 में कंपनी का कर-पश्चात लाभ (PAT) 93% बढ़कर जबरदस्त स्तर पर पहुंच गया।
+
+**6. Hero Motors का धमाकेदार प्रदर्शन:**
+धीमी शुरुआत के बाद, हीरो मोटर्स के शेयरों में जबरदस्त लिवाली लौटी और शेयर 20% के अपर सर्किट को छू गया।
+
+**7. SEBI का Adani Group पर सेटलमेंट ऑर्डर:**
+पूंजी बाजार नियामक SEBI ने अडानी ग्रुप की कंपनियों से जुड़े मामले में सेटलमेंट ऑर्डर जारी कर दिया है, जिससे इस ग्रुप से जुड़ी अनिश्चितता के बादल छंटते नजर आ रहे हैं।
+
+**8. L&T को मेक्सिको से मिला बड़ा ऑर्डर:**
+इंजीनियरिंग दिग्गज Larsen & Toubro (L&T) ने मेक्सिको में एक रिफाइनरी के लिए हाइड्रोट्रीटिंग रिएक्टर का निर्माण सफलतापूर्वक पूरा कर लिया है, जो कंपनी के ग्लोबल फुटप्रिंट को और मजबूत करता है।
+
+**9. Air India और Japan की ANA का कोडशेयर समझौता:**
+एयर इंडिया ने जापान की ऑल निप्पॉन एयरवेज (All Nippon Airways - ANA) के साथ कोडशेयर पैक्ट पर हस्ताक्षर किए हैं, जिससे दोनों देशों के बीच हवाई यात्रा नेटवर्क मजबूत होगा।
+
+**10. Razorpay और Airtel Payments Bank का 'UPI Switch':**
+डिजिटल पेमेंट्स दिग्गज Razorpay ने एयरटेल पेमेंट्स बैंक के साथ साझेदारी में अपना नया 'UPI Switch' लॉन्च करने का ऐलान किया है, जिससे डिजिटल ट्रांजैक्शन की सफलता दर में बढ़ोतरी होगी।
+
+---
+
+### **[08:45 - 11:00] 5. सेक्टर विश्लेषण (Sectoral Analysis)**
+
+**[ANCHOR ON CAMERA - SECTORIAL HEATMAP GRAPHIC]**
+
+**एंकर:** आइए अब देखते हैं कि आज अलग-अलग सेक्टरों में कैसा प्रदर्शन रहा और ब्रोकरेज हाउस किन सेक्टर्स पर दांव लगा रहे हैं।
+
+**[GRAPHIC: Sector Highlights]**
+
+**A. NBFC व बैंकिंग सेक्टर (बड़ी खबरें व ब्रोकरेज अपग्रेड):**
+आज का सबसे बड़ा सेक्टरल मूवमेंट NBFC स्पेस में देखने को मिला। 
+- **UBS का बड़ा अपग्रेड:** दिग्गज ब्रोकरेज UBS ने Bajaj Finance और LT Finance के शेयरों को अपग्रेड किया है। UBS का मानना है कि मौजूदा मैक्रो माहौल में NBFCs बैंकों की तुलना में बेहतर स्थिति में हैं।
+- **Jefferies की रिपोर्ट:** Jefferies ने 11 NBFC शेयरों की लिस्ट जारी की है, जिनमें 48% तक की बढ़त (upside potential) देखी जा रही है। 
+
+**B. IT और टेक सेक्टर (Tata Elxsi & LTIMindtree Preview):**
+IT सेक्टर में आज मिला-जुला दबाव देखा गया। 
+- Tata Elxsi के कमजोर QoQ आंकड़ों ने सेंटिमेंट को प्रभावित किया।
+- **LTIMindtree Q4 Preview:** विश्लेषकों का अनुमान है कि लोअर पास-थ्रू रेवेन्यू (lower pass-through revenue) के कारण LTIMindtree की ग्रोथ मामूली रूप से प्रभावित हो सकती है।
+
+**C. FMCG सेक्टर (HUL Preview & Tobacco Stocks):**
+- **HUL Q4 Preview:** हिंदुस्तान यूनिलीवर के नतीजों से पहले प्रीव्यू बता रहा है कि कीमतों में कटौती (price cuts), सुस्त ग्रामीण मांग और क्षेत्रीय प्रतिस्पर्धा के कारण टॉपलाइन ग्रोथ पर दबाव रह सकता है।
+- दूसरी तरफ, ITC और Godfrey Phillips के शेयरों में 2% तक की तेजी दर्ज की गई।
+
+**D. डिफेंस सेक्टर (Defence Stocks Expansion Phase):**
+डिफेंस स्टॉक्स जैसे HAL, Bharat Dynamics (BDL), BEML और BEL में अगले विस्तार चरण (expansion phase) को लेकर निवेशकों की दिलचस्पी बनी हुई है। हालांकि, Raymond जैसे स्टॉक में 6 महीने में 214% की तूफानी रैली के बाद अपने 52-सप्ताह के उच्चतम स्तर से कुछ प्रॉफिट बुकिंग देखी गई।
+
+---
+
+### **[11:00 - 12:30] 6. टॉप गेनर्स (Top Gainers Today)**
+
+**[ANCHOR ON CAMERA - GREEN THEMED GRAPHIC]**
+
+**एंकर:** अब बात करते हैं आज के बाजार के उन सितारों की, जिन्होंने निवेशकों की जेब भरी और टॉप गेनर्स की सूची में जगह बनाई:
+
+**[GRAPHIC LIST OF TOP GAINERS]**
+
+1. **Whirlpool of India:** 20% का अपर सर्किट! प्रोमोटर द्वारा हिस्सा बेचने की अटकलों के बाद स्टॉक में तूफानी लिवाली आई।
+2. **Hero Motors:** कमजोर लिस्टिंग के बाद शेयर में 20% की जोरदार वापसी हुई और यह अपर सर्किट पर बंद हुआ।
+3. **Clean Max:** पिछले 3 दिनों में शेयर 13% उछल चुका है। वैश्विक ब्रोकरेज Macquarie ने शेयर पर 'Outperform' रेटिंग के साथ कवरेज शुरू की है।
+4. **SS Retail:** 51% के बंपर आईपीओ प्रीमियम पर लिस्टिंग के बाद आज शेयर में फिर से 6% की तेजी दर्ज की गई।
+5. **Stylam Industries:** ICICI Direct ने स्टॉक पर 'BUY' कॉल दिया है और ₹21% के अपसाइड टारगेट की संभावना जताई है।
+6. **Ethos:** Choice Broking की रिपोर्ट के बाद लग्जरी वॉच रिटेलर Ethos का शेयर 5% उछला। पिछले 6 महीनों में यह स्टॉक 27% चढ़ चुका है।
+
+---
+
+### **[12:30 - 14:00] 7. टॉप लूजर्स व दबाव वाले शेयर (Top Losers & Underperformers)**
+
+**[ANCHOR ON CAMERA - RED THEMED GRAPHIC]**
+
+**एंकर:** जहां एक तरफ बाजार में तेजी थी, वहीं कुछ शेयरों में आज भारी बिकवाली और दबाव देखने को मिला। आइए नजर डालते हैं आज के टॉप लूजर्स पर:
+
+**[GRAPHIC LIST OF TOP LOSERS]**
+
+1. **Meesho:** ₹900 करोड़ की बड़ी ब्लॉक डील (block deal) के सामने आने के बाद मीशो के शेयरों में 4% की गिरावट दर्ज की गई।
+2. **Tata Consumer Products:** Q4 में शुद्ध लाभ 19% घटने की वजह से शेयर में बिकवाली का दबाव देखा गया।
+3. **ICICI Prudential Life Insurance:** 26% प्रॉफिट फॉल के बाद स्टॉक में सुस्ती छाई रही।
+4. **Tata Elxsi:** तिमाही-दर-तिमाही आधार पर मार्जिन और रेवेन्यू में गिरावट के चलते शेयर ऊपरी स्तरों से फिसला।
+5. **Raymond:** 6 महीने में 214% के मल्टीबैगर रिटर्न देने के बाद स्टॉक में आज 52-वीक हाई से मुनाफावसूली (profit booking) देखने को मिली।
+
+---
+
+### **[14:00 - 15:30] 8. कॉर्पोरेट अपडेट्स (Corporate Updates & Deals)**
+
+**[ANCHOR ON CAMERA]**
+
+**एंकर:** चलिए अब नजर डालते हैं देश-दुनिया के कुछ सबसे महत्वपूर्ण कॉर्पोरेट अपडेट्स पर जो आपको जानना बेहद जरूरी हैं:
+
+- **WeWork India में स्टेक सेल:** WeWork Global भारत की इकाई WeWork India में अपनी पूरी 27% हिस्सेदारी बेचने के लिए बातचीत कर रहा है।
+- **Kotak Alternate Asset Managers:** कोटक के अल्टरनेट एसेट मैनेजर ने ₹5,000 करोड़ का 'यिल्ड एंड ग्रोथ फंड' सफलतापूर्वक बंद कर दिया है। सबसे खास बात यह है कि यह पूरा फंड घरेलू निवेशकों (domestic investors) से जुटाया गया है।
+- **Stellantis India Price Hike:** जीप और सिट्रॉन बनाने वाली वाहन निर्माता कंपनी स्टेलेंटिस इंडिया ने 30 अप्रैल से अपने वाहनों की कीमतों में ₹17,000 तक की बढ़ोतरी का ऐलान किया है।
+- **Juniper Green Energy & Tata Power:** जुनिपर ग्रीन एनर्जी और टाटा पावर ने महाराष्ट्र में 85 मेगावाट की हाइब्रिड परियोजना के लिए पावर परचेज एग्रीमेंट (PPA) पर हस्ताक्षर किए हैं।
+- **Airtel Africa Mobile Money IPO:** एयरटेल अफ्रीका अपनी मोबाइल मनी यूनिट को लंदन स्टॉक एक्सचेंज में लिस्ट कराने के लिए आईपीओ फाइल करने की तैयारी में है।
+- **Kellton Tech Rights Issue:** केल्टन टेक ने राइट्स इश्यू के जरिए फंड जुटाने की घोषणा की है।
+
+---
+
+### **[15:30 - 17:00] 9. ग्लोबल मार्केट प्रभाव (Global Markets & US Fed Signals)**
+
+**[ANCHOR ON CAMERA - GLOBAL MAP GRAPHIC]**
+
+**एंकर:** दोस्तों, भारतीय बाजार कभी भी अलग-थलग (in isolation) काम नहीं करते। वैश्विक मोर्चे पर आज क्या कुछ घटा, आइए समझते हैं:
+
+**1. Crude Oil Effect & European Markets:**
+अंतर्राष्ट्रीय बाजार में कच्चे तेल की कीमतें दो सप्ताह के निचले स्तर पर आ गई हैं। डीजल क्रैक स्प्रेड रिकॉर्ड स्तर पर पहुंचने के बावजूद क्रूड का $99 के नीचे आना यूरोपीय बाजारों और भारतीय इक्विटी के लिए बड़ा बूस्टर साबित हुआ।
+
+**2. US Federal Reserve से मिले-जुले संकेत:**
+अमेरिका से दो बड़े बयान आए हैं:
+- **Fed's Collins:** बोस्टन फेड प्रमुख कॉलिन्स ने चेतावनी दी है कि लगातार बनी हुई महंगाई के कारण दरों में और बढ़ोतरी (rate hike) का जोखिम बना हुआ है।
+- **Fed's Perli:** दूसरी ओर, पर्ली का कहना है कि फेड के पास पर्याप्त रिजर्व (sufficient reserves) हैं और उसका रेट कंट्रोल फ्रेमवर्क बेहद मजबूत है।
+
+**3. US Economic Data:**
+अमेरिका में जॉबलेस क्लेम्स (Jobless Claims) मई के मध्य के बाद से सबसे निचले स्तर पर बने हुए हैं, जो मजबूत लेबर मार्केट को दर्शाते हैं। हालांकि, चौथे तिमाही में अमेरिकी उत्पादकता (productivity) सुस्त पड़ी है और लेबर कॉस्ट में बढ़ोतरी हुई है।
+
+**4. International Trade & Geopolitics:**
+- **India-UK CETA:** भारत-यूके मुक्त व्यापार समझौते का असर दिखने लगा है। बिना किसी सीमा शुल्क (zero-duty) के भारतीय कॉफी और ज्वैलरी की पहली खेप यूके पहुंच चुकी है।
+- **India-Canada CEPA:** भारत और कनाडा ने वर्ष 2026 के अंत तक व्यापक आर्थिक भागीदारी समझौते (CEPA) को अंतिम रूप देने का लक्ष्य रखा है।
+- **Iran War Impact:** मध्य पूर्व में तनाव के कारण भारत अपना व्यापार नक्शा फिर से बना रहा है—ओमान से लेकर तंजानिया तक नए व्यापारिक रास्ते तलाशे जा रहे हैं।
+
+---
+
+### **[17:00 - 18:15] 10. FII और DII गतिविधि (FII & DII Activity & Liquidity)**
+
+**[ANCHOR ON CAMERA]**
+
+**एंकर:** अब बात करते हैं बाजार की रीढ़ यानी लिक्विडिटी और संस्थागत निवेशकों (FIIs/DIIs) के रुख की।
+
+**[GRAPHIC: Institutional Inflow Indicators]**
+
+बैंकिंग और करेंसी लिक्विडिटी के मोर्चे पर एक बेहद सकारात्मक रिपोर्ट आई है। भारतीय रिजर्व बैंक (RBI) की विशेष विंडो क्षमता (special windows) इतनी बड़ी देखी जा रही है कि वह भारतीय बाजार में **$100 बिलियन (100 अरब डॉलर)** तक का विदेशी प्रवाह आसानी से ला सकती है। 
+
+घरेलू संस्थागत निवेशक (DIIs) लगातार भारतीय बाजार में गिरावट पर खरीदारी कर रहे हैं। यही वजह है कि वैश्विक स्तर पर बॉन्ड यील्ड में उतार-चढ़ाव और अमेरिकी फेड की सख्त टिप्पणियों के बावजूद भारतीय बाजार हर निचले स्तर से एक शानदार रिकवरी दिखाने में सक्षम हो रहे हैं।
+
+---
+
+### **[18:15 - 19:15] 11. कल के ट्रिगर्स (Tomorrow's Key Triggers)**
+
+**[ANCHOR ON CAMERA - CHECKLIST GRAPHIC]**
+
+**एंकर:** कल जब आप सुबह 9:15 बजे ट्रेडिंग डेस्क पर बैठें, तो किन ट्रिगर्स पर आपकी नजर होनी चाहिए? नोट कर लीजिए:
+
+1. **Q4 Earnings Reaction:** Tata Consumer, Tata Elxsi और ICICI Pru Life के नतीजों पर कल बाजार की शुरुआती प्रतिक्रिया कैसी रहती है।
+2. **HUL & LTIMindtree Previews:** नतीजों से पहले FMCG और IT शेयरों में पोजीशनिंग पर ध्यान रखें।
+3. **Crude Oil Trajectory:** क्या ब्रांड क्रूड $99 के नीचे बना रहता है या कोई बाउंस बैक दिखाता है।
+4. **Global Inflation & US Futures:** अमेरिकी बाजारों में डाउ फ्यूचर्स और नैस्डैक की चाल, साथ ही टेक शेयर्स का प्रदर्शन।
+5. **NBFC Stocks:** UBS और Jefferies के बुलिश अपग्रेड के बाद बजाज फाइनेंस और एलएंडटी फाइनेंस पर वॉल्यूम मूवमेंट।
+
+---
+
+### **[19:15 - 20:00] 12. निवेशकों के लिए सीख (Key Takeaways for Investors)**
+
+**[ANCHOR ON CAMERA - THOUGHTFUL, ADVISORY TONE]**
+
+**एंकर:** आज के इस पूरे मार्केट एक्शन से एक रिटेल निवेशक को क्या सीख मिलती है?
+
+- **पहली सीख:** कंपनियों के Q4 नतीजों के दौरान सिर्फ हेडलाइन नंबर न देखें। जैसे Tata Elxsi या Tata Consumer में मुनाफा घटा है, लेकिन लाभांश (dividend) और लॉन्ग-टर्म गाइडेंस को भी समझें। पैनिक में आकर बेचने से बचें।
+- **दूसरी सीख:** कमोडिटी साइकल का ध्यान रखें। कच्चे तेल में आई गिरावट एफएमसीजी, ऑटो और पेंट कंपनियों के लिए मार्जिन विस्तार का जरिया बनती है।
+- **तीसरी सीख:** ब्लॉक डील या प्रोमोटर स्टेक सेल की खबरों (जैसे Meesho और Whirlpool) पर तुरंत कूदने के बजाय कंपनी के मौलिक आधार (fundamentals) को जांचें।
+
+---
+
+### **[20:00 - 20:30] 13. निष्कर्ष (Conclusion)**
+
+**[ANCHOR ON CAMERA - ENERGETIC CLOSING]**
+
+**एंकर:** तो दोस्तों, यह था आज के शेयर बाजार का पूरा लेखा-जोखा! निफ्टी का 23,400 के पार बंद होना और क्रूड की नरमी भारतीय बाजारों के लिए शुभ संकेत दे रही है। लेकिन Q4 अर्निंग्स का दौर जारी है, इसलिए अपनी रणनीति में स्टॉप-लॉस और सही एसेट एलोकेशन का पालन जरूर करें।
+
+अगर आपको यह विस्तृत विश्लेषण पसंद आया हो, तो वीडियो को **LIKE** करें, अपने ट्रेडर दोस्तों के साथ **SHARE** करें और हमारे चैनल को **SUBSCRIBE** करना बिल्कुल न भूलें। बेल आइकन दबाएं ताकि कोई भी मार्केट अपडेट आपसे मिस न हो!
+
+---
+
+### **[20:30 - 20:45] 14. डिस्क्लेमर (Mandatory SEBI Disclaimer)**
+
+**[GRAPHIC ON SCREEN WITH VOICE OVER]**
+
+**एंकर (वॉइसओवर):** *डिस्क्लेमर: यह वीडियो केवल शैक्षणिक और सूचनात्मक उद्देश्यों के लिए बनाया गया है। इसमें बताए गए कोई भी शेयर या वित्तीय आंकड़े खरीद या बिक्री की प्रत्यक्ष सलाह (Buy/Sell Recommendation) नहीं हैं। शेयर बाजार में निवेश बाजार के जोखिमों के अधीन है। कोई भी निवेश निर्णय लेने से पहले अपने पंजीकृत वित्तीय सलाहकार (SEBI Registered Financial Advisor) से परामर्श अवश्य लें।*
+
+**[ANCHOR ON CAMERA - SMILE & WAVE]**
+
+**एंकर:** कल फिर मिलेंगे शाम को ठीक इसी समय, बाजार के नए विश्लेषण के साथ। तब तक के लिए धन्यवाद, जय हिंद!
+
+--- **[SCRIPT ENDS]** ---
+</pre>
+    </div>
+    <div class="footer">
+        🚀 Stock Samvad AI | Daily Stock Market Reports | Powered by Gemini
+    </div>
+</div>
+<div id="toast" class="toast">Script Copied Successfully ✅</div>
+<script>
+function copyScript(){
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display="none"; }, 2500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+</script>
+</body>
+</html>
