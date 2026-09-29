@@ -1,4 +1,5 @@
 import os
+import time
 from datetime import datetime
 
 import feedparser
@@ -7,98 +8,219 @@ import yfinance as yf
 from google import genai
 
 
-# =========================
-# ENV VARIABLES
-# =========================
+# ============================================================
+# ENVIRONMENT VARIABLES
+# ============================================================
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video")
+
+# Default content type = video
+# GitHub Actions can override this with CONTENT_TYPE=short
+CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video").lower().strip()
 
 
-# =========================
-# HELPER FUNCTIONS
-# =========================
+# ============================================================
+# GEMINI SETTINGS
+# ============================================================
+
+GEMINI_MODEL = "gemini-3.6-flash"
+
+# Number of attempts for temporary Gemini errors
+MAX_GEMINI_RETRIES = 4
+
+# Initial retry delay
+INITIAL_RETRY_DELAY = 10
+
+
+# ============================================================
+# MARKET DATA
+# ============================================================
 
 def get_market_data():
-    """Fetches Nifty and Sensex close prices."""
+    """
+    Fetch latest Nifty and Sensex closing prices.
+    """
+
+    print("Fetching Nifty data...")
 
     try:
         nifty = yf.Ticker("^NSEI")
+
+        history = nifty.history(period="5d")
+
+        if history.empty:
+            raise RuntimeError("Nifty data unavailable")
+
         nifty_close = round(
-            float(nifty.history(period="5d")["Close"].iloc[-1]),
+            float(history["Close"].iloc[-1]),
             2
         )
-    except Exception:
+
+    except Exception as e:
+
+        print(f"Nifty error: {e}")
+
         nifty_close = "Unavailable"
+
+
+    print("Fetching Sensex data...")
 
     try:
         sensex = yf.Ticker("^BSESN")
+
+        history = sensex.history(period="5d")
+
+        if history.empty:
+            raise RuntimeError("Sensex data unavailable")
+
         sensex_close = round(
-            float(sensex.history(period="5d")["Close"].iloc[-1]),
+            float(history["Close"].iloc[-1]),
             2
         )
-    except Exception:
+
+    except Exception as e:
+
+        print(f"Sensex error: {e}")
+
         sensex_close = "Unavailable"
+
 
     return nifty_close, sensex_close
 
 
+# ============================================================
+# NEWS HEADLINES
+# ============================================================
+
 def fetch_news_headlines():
-    """Fetches top 100 unique headlines from various RSS feeds."""
+    """
+    Fetch top unique market/business headlines
+    from multiple RSS sources.
+    """
+
+    print("Fetching news headlines...")
 
     sources = [
+
         "https://www.moneycontrol.com/rss/business.xml",
-        "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
-        "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
-        "https://www.business-standard.com/rss/markets-106.rss",
+
+        "https://economictimes.indiatimes.com/"
+        "markets/rssfeeds/1977021501.cms",
+
+        "https://economictimes.indiatimes.com/"
+        "rssfeedsdefault.cms",
+
+        "https://www.business-standard.com/"
+        "rss/markets-106.rss",
+
         "https://www.livemint.com/rss/markets",
-        "https://www.financialexpress.com/market/feed/",
-        "https://www.cnbctv18.com/commonfeeds/v1/eng/rss/business.xml",
-        "https://www.zeebiz.com/india-markets/rss",
+
+        "https://www.financialexpress.com/"
+        "market/feed/",
+
+        "https://www.cnbctv18.com/"
+        "commonfeeds/v1/eng/rss/business.xml",
+
+        "https://www.zeebiz.com/"
+        "india-markets/rss",
+
         "https://finance.yahoo.com/rss/",
-        "https://feeds.content.dowjones.io/public/rss/mw_marketpulse",
+
+        "https://feeds.content.dowjones.io/"
+        "public/rss/mw_marketpulse",
+
         "https://www.investing.com/rss/news.rss",
-        "https://www.sebi.gov.in/sebirss.xml",
+
+        "https://www.sebi.gov.in/sebirss.xml"
     ]
+
 
     headlines = []
 
+
     for source in sources:
+
         try:
+
             feed = feedparser.parse(source)
 
             for item in feed.entries[:15]:
-                title = item.title.strip()
 
-                if title not in headlines:
+                title = getattr(
+                    item,
+                    "title",
+                    ""
+                ).strip()
+
+
+                if title and title not in headlines:
+
                     headlines.append(title)
 
+
         except Exception as e:
-            print(f"Error reading {source}: {e}")
 
-    return "\n".join(headlines[:100])
+            print(
+                f"Error reading {source}: {e}"
+            )
 
+
+    print(
+        f"Collected {len(headlines)} unique headlines."
+    )
+
+
+    return "\n".join(
+        headlines[:100]
+    )
+
+
+# ============================================================
+# GENERATE HOMEPAGE
+# ============================================================
 
 def generate_index():
-    """Generates the Indian Market AI homepage."""
+    """
+    Generates the Indian Market AI homepage.
+    """
 
-    os.makedirs("posts", exist_ok=True)
+    os.makedirs(
+        "posts",
+        exist_ok=True
+    )
+
 
     files = [
+
         f
+
         for f in os.listdir("posts")
-        if f.endswith(".html") and f != "index.html"
+
+        if (
+            f.endswith(".html")
+            and f != "index.html"
+        )
+
     ]
 
-    files.sort(reverse=True)
+
+    files.sort(
+        reverse=True
+    )
+
 
     cards = ""
 
+
     for file in files:
 
-        date_str = file.replace(".html", "")
+        date_str = file.replace(
+            ".html",
+            ""
+        )
+
 
         cards += f"""
 <article class="report-card">
@@ -120,6 +242,7 @@ def generate_index():
 
 </article>
 """
+
 
     html = f"""<!DOCTYPE html>
 
@@ -637,6 +760,7 @@ body {{
 </html>
 """
 
+
     with open(
         "posts/index.html",
         "w",
@@ -645,19 +769,44 @@ body {{
 
         f.write(html)
 
-    print("Updated posts/index.html")
 
+    print(
+        "Updated posts/index.html"
+    )
+
+
+# ============================================================
+# SAVE INDIVIDUAL REPORT
+# ============================================================
 
 def save_post(title, content):
-    """Generates a mobile-optimized HTML page for the individual script."""
+    """
+    Generates a mobile-optimized HTML page
+    for the individual market script.
+    """
 
-    os.makedirs("posts", exist_ok=True)
+    os.makedirs(
+        "posts",
+        exist_ok=True
+    )
 
-    filename = datetime.now().strftime("%Y-%m-%d") + ".html"
 
-    filepath = os.path.join("posts", filename)
+    filename = (
+        datetime.now().strftime(
+            "%Y-%m-%d"
+        )
+        + ".html"
+    )
+
+
+    filepath = os.path.join(
+        "posts",
+        filename
+    )
+
 
     html_content = f"""<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -686,11 +835,13 @@ def save_post(title, content):
     --muted:#94a3b8;
 }}
 
+
 * {{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }}
+
 
 body {{
 
@@ -717,6 +868,7 @@ body {{
 
 }}
 
+
 .container {{
 
     max-width:1200px;
@@ -726,6 +878,7 @@ body {{
     padding:30px;
 
 }}
+
 
 .header {{
 
@@ -737,15 +890,18 @@ body {{
 
     margin-bottom:25px;
 
-    background:rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.05);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:
+        blur(20px);
 
     border:
         1px solid
         rgba(255,255,255,.08);
 
 }}
+
 
 .badge {{
 
@@ -757,7 +913,9 @@ body {{
 
     background:#0ea5e920;
 
-    border:1px solid #38bdf830;
+    border:
+        1px solid
+        #38bdf830;
 
     color:#38bdf8;
 
@@ -766,6 +924,7 @@ body {{
     font-size:14px;
 
 }}
+
 
 .header h1 {{
 
@@ -789,6 +948,7 @@ body {{
 
 }}
 
+
 .header p {{
 
     margin-top:10px;
@@ -796,6 +956,7 @@ body {{
     color:#94a3b8;
 
 }}
+
 
 .tagline {{
 
@@ -807,6 +968,7 @@ body {{
 
 }}
 
+
 .toolbar {{
 
     display:flex;
@@ -816,6 +978,7 @@ body {{
     margin-bottom:20px;
 
 }}
+
 
 .copy-btn {{
 
@@ -838,13 +1001,16 @@ body {{
 
     font-weight:600;
 
-    transition:all 0.2s;
+    transition:
+        all 0.2s;
 
 }}
 
+
 .copy-btn:hover {{
 
-    transform:translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 0 20px
@@ -852,9 +1018,11 @@ body {{
 
 }}
 
+
 .card {{
 
-    background:rgba(15,23,42,.85);
+    background:
+        rgba(15,23,42,.85);
 
     border:
         1px solid
@@ -864,13 +1032,15 @@ body {{
 
     overflow:hidden;
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:
+        blur(20px);
 
     box-shadow:
         0 25px 60px
         rgba(0,0,0,.45);
 
 }}
+
 
 .card-top {{
 
@@ -886,6 +1056,7 @@ body {{
 
 }}
 
+
 .dots {{
 
     display:flex;
@@ -893,6 +1064,7 @@ body {{
     gap:8px;
 
 }}
+
 
 .dot {{
 
@@ -904,17 +1076,21 @@ body {{
 
 }}
 
+
 .red {{
     background:#ff5f57;
 }}
+
 
 .yellow {{
     background:#ffbd2e;
 }}
 
+
 .green {{
     background:#28c840;
 }}
+
 
 .file-name {{
 
@@ -925,6 +1101,7 @@ body {{
     font-size:14px;
 
 }}
+
 
 pre {{
 
@@ -944,6 +1121,7 @@ pre {{
 
 }}
 
+
 .footer {{
 
     text-align:center;
@@ -957,6 +1135,7 @@ pre {{
     padding-bottom:20px;
 
 }}
+
 
 .toast {{
 
@@ -985,9 +1164,7 @@ pre {{
 }}
 
 
-/* ========================================= */
-/* MOBILE OPTIMIZATION */
-/* ========================================= */
+/* MOBILE */
 
 @media (max-width:768px) {{
 
@@ -1052,9 +1229,12 @@ pre {{
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
     <div class="header">
 
@@ -1118,6 +1298,7 @@ pre {{
 
     </div>
 
+
 </div>
 
 
@@ -1134,20 +1315,28 @@ pre {{
 function copyScript() {{
 
     const text =
-        document.getElementById("script").innerText;
+        document
+            .getElementById("script")
+            .innerText;
 
-    navigator.clipboard.writeText(text)
+
+    navigator.clipboard
+        .writeText(text)
 
         .then(() => {{
 
             const toast =
-                document.getElementById("toast");
+                document
+                    .getElementById("toast");
 
-            toast.style.display = "block";
+            toast.style.display =
+                "block";
+
 
             setTimeout(() => {{
 
-                toast.style.display = "none";
+                toast.style.display =
+                    "none";
 
             }}, 2500);
 
@@ -1166,10 +1355,12 @@ function copyScript() {{
 
 </script>
 
+
 </body>
 
 </html>
 """
+
 
     with open(
         filepath,
@@ -1177,13 +1368,26 @@ function copyScript() {{
         encoding="utf-8"
     ) as f:
 
-        f.write(html_content)
+        f.write(
+            html_content
+        )
 
-    print("Saved:", filepath)
 
+    print(
+        "Saved:",
+        filepath
+    )
+
+
+# ============================================================
+# TELEGRAM
+# ============================================================
 
 def send_to_telegram(script):
-    """Sends the generated script to Telegram in chunks to avoid length limits."""
+    """
+    Sends the generated script to Telegram
+    in chunks to avoid Telegram message limits.
+    """
 
     if not BOT_TOKEN or not CHAT_ID:
 
@@ -1194,27 +1398,47 @@ def send_to_telegram(script):
 
         return
 
+
     telegram_url = (
-        f"https://api.telegram.org/bot"
-        f"{BOT_TOKEN}/sendMessage"
+        f"https://api.telegram.org/"
+        f"bot{BOT_TOKEN}/sendMessage"
     )
 
-    # Telegram max message length is 4096.
-    # Sending in chunks of 3500.
-    for i in range(0, len(script), 3500):
+
+    # Telegram message limit is 4096.
+    # Keep chunks below that limit.
+    chunk_size = 3500
+
+
+    for i in range(
+        0,
+        len(script),
+        chunk_size
+    ):
+
+        chunk = script[
+            i:i + chunk_size
+        ]
+
 
         try:
 
             response = requests.post(
+
                 telegram_url,
+
                 data={
                     "chat_id": CHAT_ID,
-                    "text": script[i:i + 3500]
+                    "text": chunk
                 },
+
                 timeout=30
+
             )
 
+
             response.raise_for_status()
+
 
         except Exception as e:
 
@@ -1222,47 +1446,296 @@ def send_to_telegram(script):
                 f"Error sending to Telegram: {e}"
             )
 
+
     print(
         "Market report processed for Telegram."
     )
 
 
-# =========================
-# MAIN EXECUTION
-# =========================
+# ============================================================
+# GEMINI GENERATION
+# ============================================================
+
+def generate_with_gemini(prompt):
+    """
+    Generates the market script using Gemini.
+
+    Handles temporary 503 server errors and 429
+    rate-limit errors using exponential backoff.
+    """
+
+    if not GEMINI_API_KEY:
+
+        raise RuntimeError(
+            "GEMINI_API_KEY is missing."
+        )
+
+
+    print(
+        "Connecting to Gemini..."
+    )
+
+
+    client = genai.Client(
+        api_key=GEMINI_API_KEY
+    )
+
+
+    for attempt in range(
+        1,
+        MAX_GEMINI_RETRIES + 1
+    ):
+
+        try:
+
+            print(
+                f"Gemini request "
+                f"{attempt}/{MAX_GEMINI_RETRIES}"
+            )
+
+
+            response = (
+                client.models.generate_content(
+
+                    model=GEMINI_MODEL,
+
+                    contents=prompt
+
+                )
+            )
+
+
+            if not response:
+
+                raise RuntimeError(
+                    "Gemini returned no response."
+                )
+
+
+            if not response.text:
+
+                raise RuntimeError(
+                    "Gemini returned an empty response."
+                )
+
+
+            print(
+                "Gemini generation successful."
+            )
+
+
+            return response.text
+
+
+        except Exception as e:
+
+            error_text = str(e)
+
+            print(
+                f"Gemini attempt {attempt} "
+                f"failed: {error_text}"
+            )
+
+
+            # ------------------------------------------------
+            # 503 = Gemini temporarily unavailable
+            # ------------------------------------------------
+
+            is_503 = (
+                "503" in error_text
+                or "UNAVAILABLE" in error_text
+                or "high demand" in error_text.lower()
+            )
+
+
+            # ------------------------------------------------
+            # 429 = quota/rate limit
+            # ------------------------------------------------
+
+            is_429 = (
+                "429" in error_text
+                or "RESOURCE_EXHAUSTED" in error_text
+                or "quota" in error_text.lower()
+                or "rate limit" in error_text.lower()
+            )
+
+
+            # ------------------------------------------------
+            # Retry temporary errors
+            # ------------------------------------------------
+
+            if is_503 or is_429:
+
+                if attempt < MAX_GEMINI_RETRIES:
+
+                    # Exponential backoff:
+                    #
+                    # 10 sec
+                    # 20 sec
+                    # 40 sec
+                    #
+                    wait_time = (
+                        INITIAL_RETRY_DELAY
+                        * (2 ** (attempt - 1))
+                    )
+
+
+                    if is_429:
+
+                        print(
+                            "Gemini quota/rate limit "
+                            "detected."
+                        )
+
+                    else:
+
+                        print(
+                            "Gemini server is "
+                            "temporarily unavailable."
+                        )
+
+
+                    print(
+                        f"Waiting {wait_time} seconds "
+                        f"before retry..."
+                    )
+
+
+                    time.sleep(
+                        wait_time
+                    )
+
+
+                    continue
+
+
+            # ------------------------------------------------
+            # Permanent errors
+            #
+            # Examples:
+            # invalid API key
+            # authentication failure
+            # invalid request
+            # ------------------------------------------------
+
+            print(
+                "Gemini error is not considered "
+                "temporarily retryable."
+            )
+
+            raise
+
+
+    raise RuntimeError(
+        "Gemini generation failed after "
+        f"{MAX_GEMINI_RETRIES} attempts."
+    )
+
+
+# ============================================================
+# MAIN
+# ============================================================
 
 def main():
 
-    print("Fetching market data...")
+    print(
+        "========================================"
+    )
 
-    nifty_close, sensex_close = get_market_data()
+    print(
+        "   STOCK SAMVAD AI - DAILY MARKET BOT"
+    )
+
+    print(
+        "========================================"
+    )
 
 
-    print("Fetching news headlines...")
+    # ========================================================
+    # CHECK API KEY
+    # ========================================================
 
-    news_text = fetch_news_headlines()
+    if not GEMINI_API_KEY:
+
+        error_msg = (
+            "❌ Gemini Error\n\n"
+            "GEMINI_API_KEY is missing."
+        )
 
 
-    # =========================
-    # DYNAMIC PROMPTS
-    # =========================
+        print(error_msg)
+
+        send_to_telegram(
+            error_msg
+        )
+
+
+        raise RuntimeError(
+            "GEMINI_API_KEY is missing."
+        )
+
+
+    # ========================================================
+    # MARKET DATA
+    # ========================================================
+
+    print(
+        "\nFetching market data..."
+    )
+
+
+    nifty_close, sensex_close = (
+        get_market_data()
+    )
+
+
+    print(
+        f"Nifty Close: {nifty_close}"
+    )
+
+    print(
+        f"Sensex Close: {sensex_close}"
+    )
+
+
+    # ========================================================
+    # NEWS
+    # ========================================================
+
+    news_text = (
+        fetch_news_headlines()
+    )
+
+
+    # ========================================================
+    # CONTENT TYPE
+    # ========================================================
+
+    print(
+        f"Content type: {CONTENT_TYPE}"
+    )
+
+
+    # ========================================================
+    # SHORT PROMPT
+    # ========================================================
 
     if CONTENT_TYPE == "short":
 
         master_prompt = """
-आप भारत के सबसे भरोसेमंद शेयर बाजार न्यूज़ एंकर हैं।
+आप भारत के भरोसेमंद शेयर बाजार न्यूज़ एंकर हैं।
 
-आज की खबरों और बाजार डेटा के आधार पर 45-60 सेकंड का
-YouTube Short बनाइए।
+आज की उपलब्ध खबरों और बाजार डेटा के आधार पर
+45-60 सेकंड का YouTube Short तैयार करें।
 
 Format:
 
 1. दमदार Hook
 2. मुख्य खबर
-3. निवेशकों पर प्रभाव
+3. निवेशकों पर संभावित प्रभाव
 4. Conclusion
 
-साथ में Generate करें:
+इसके साथ Generate करें:
 
 - Shorts Title
 - Thumbnail Text
@@ -1270,18 +1743,26 @@ Format:
 - 10 Hashtags
 
 पूरी स्क्रिप्ट हिंदी में हो।
+
+केवल उपलब्ध डेटा और दी गई खबरों का उपयोग करें।
+कोई तथ्य या आंकड़ा स्वयं से न बनाएं।
 """
+
+
+    # ========================================================
+    # LONG VIDEO PROMPT
+    # ========================================================
 
     else:
 
         master_prompt = """
-आप भारत के सबसे भरोसेमंद शेयर बाजार विश्लेषक और
-यूट्यूब न्यूज एंकर हैं।
+आप भारत के एक भरोसेमंद शेयर बाजार विश्लेषक
+और YouTube news anchor हैं।
 
-आज के बाजार डेटा और खबरों के आधार पर 18-20 मिनट की
-विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार करें।
+आज के बाजार डेटा और उपलब्ध खबरों के आधार पर
+18-20 मिनट की विस्तृत हिंदी वीडियो स्क्रिप्ट तैयार करें।
 
-शामिल करें:
+निम्नलिखित sections शामिल करें:
 
 1. दमदार ओपनिंग हुक
 2. मार्केट ओवरव्यू
@@ -1293,8 +1774,8 @@ Format:
 8. कॉर्पोरेट अपडेट
 9. ग्लोबल मार्केट प्रभाव
 10. FII और DII गतिविधि
-11. कल के ट्रिगर्स
-12. निवेशकों के लिए सीख
+11. अगले कारोबारी दिन के संभावित ट्रिगर्स
+12. निवेशकों के लिए सामान्य सीख
 13. निष्कर्ष
 14. डिस्क्लेमर
 
@@ -1309,22 +1790,35 @@ Format:
 
 पूरी स्क्रिप्ट हिंदी में लिखें।
 
-लंबाई:
-3000-3500 शब्द।
+लंबाई लगभग 3000-3500 शब्द रखें।
 
-केवल उपलब्ध बाजार डेटा और हेडलाइंस का उपयोग करें।
-कोई झूठी जानकारी न दें।
+महत्वपूर्ण:
+
+केवल उपलब्ध बाजार डेटा और दी गई headlines
+का उपयोग करें।
+
+ऐसे आंकड़े, कंपनियां, घटनाएं या तथ्य न बनाएं
+जो दिए गए डेटा में उपलब्ध नहीं हैं।
+
+जहां जानकारी उपलब्ध नहीं है वहां साफ लिखें:
+"उपलब्ध डेटा में जानकारी नहीं मिली।"
+
+यह निवेश सलाह नहीं है।
+अंत में उपयुक्त disclaimer शामिल करें।
 """
 
 
-    # =========================
+    # ========================================================
     # FINAL PROMPT
-    # =========================
+    # ========================================================
 
     prompt = f"""
 {master_prompt}
 
+
+========================
 आज का बाजार डेटा
+========================
 
 Nifty Close:
 {nifty_close}
@@ -1333,76 +1827,78 @@ Sensex Close:
 {sensex_close}
 
 
-आज की प्रमुख खबरें:
+========================
+आज की प्रमुख खबरें
+========================
 
 {news_text}
+
+
+========================
+OUTPUT REQUIREMENTS
+========================
+
+भाषा: हिंदी
+
+Content Type:
+{CONTENT_TYPE}
+
+आज की तारीख:
+{datetime.now().strftime("%d-%m-%Y")}
+
+महत्वपूर्ण:
+केवल उपलब्ध जानकारी का उपयोग करें।
+कोई fabricated data न दें।
 """
 
 
-    today = datetime.now().strftime("%d-%m-%Y")
+    today = datetime.now().strftime(
+        "%d-%m-%Y"
+    )
 
 
-    # =========================
-    # GEMINI API KEY CHECK
-    # =========================
-
-    if not GEMINI_API_KEY:
-
-        error_msg = (
-            "❌ Gemini Error\n"
-            "GEMINI_API_KEY is missing."
-        )
-
-        print(error_msg)
-
-        send_to_telegram(error_msg)
-
-        raise RuntimeError(
-            "GEMINI_API_KEY is missing."
-        )
-
-
-    # =========================
-    # GEMINI GENERATION
-    # =========================
+    # ========================================================
+    # GEMINI
+    # ========================================================
 
     print(
-        "Generating AI Script with Gemini..."
+        "\nGenerating AI Script with Gemini..."
     )
+
 
     try:
 
-        client = genai.Client(
-            api_key=GEMINI_API_KEY
+        script_text = generate_with_gemini(
+            prompt
         )
 
-        response = client.models.generate_content(
-            model="gemini-3.6-flash",
-            contents=prompt
-        )
 
-        if not response or not response.text:
-
-            raise RuntimeError(
-                "Gemini returned an empty response."
-            )
-
+        # ====================================================
+        # FORMAT FINAL SCRIPT
+        # ====================================================
 
         script = (
             f"\n📅 दिनांक: {today}\n"
             f"📊 Content Type: "
             f"{CONTENT_TYPE.upper()}\n\n"
-            f"{response.text}\n"
+            f"{script_text}\n"
         )
+
 
         title = (
-            f"Daily Stock Market Script - {today}"
+            f"Daily Stock Market Script - "
+            f"{today}"
         )
 
 
-        # =========================
-        # SAVE REPORT
-        # =========================
+        # ====================================================
+        # SAVE HTML REPORT
+        # ====================================================
+
+        print(
+            "\nSaving market report..."
+        )
+
 
         save_post(
             title,
@@ -1410,43 +1906,78 @@ Sensex Close:
         )
 
 
-        # =========================
-        # UPDATE HOMEPAGE
-        # =========================
+        # ====================================================
+        # UPDATE INDEX
+        # ====================================================
+
+        print(
+            "Updating homepage..."
+        )
+
 
         generate_index()
 
 
-        # =========================
-        # SEND TELEGRAM
-        # =========================
-
-        send_to_telegram(script)
-
+        # ====================================================
+        # TELEGRAM
+        # ====================================================
 
         print(
-            "✅ Market script generated successfully."
+            "Sending report to Telegram..."
+        )
+
+
+        send_to_telegram(
+            script
+        )
+
+
+        # ====================================================
+        # SUCCESS
+        # ====================================================
+
+        print(
+            "\n========================================"
+        )
+
+        print(
+            "✅ MARKET SCRIPT GENERATED SUCCESSFULLY"
+        )
+
+        print(
+            "========================================"
         )
 
 
     except Exception as e:
 
         error_msg = (
-            f"❌ Gemini Error\n{e}"
+            "❌ Gemini Error\n\n"
+            f"{e}"
         )
 
-        print(error_msg)
 
-        send_to_telegram(error_msg)
+        print(
+            "\n" + error_msg
+        )
 
-        # Important:
-        # Make GitHub Actions correctly report failure.
+
+        # Send failure notification
+        # to Telegram
+        send_to_telegram(
+            error_msg
+        )
+
+
+        # IMPORTANT:
+        # Make GitHub Actions report failure.
         raise
 
 
-# =========================
-# START
-# =========================
+# ============================================================
+# ENTRY POINT
+# ============================================================
 
 if __name__ == "__main__":
+
     main()
