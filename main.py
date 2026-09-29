@@ -14,7 +14,12 @@ from google import genai
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEYS = [
+    os.getenv("GEMINI_API_KEY_1"),
+    os.getenv("GEMINI_API_KEY_2"),
+    os.getenv("GEMINI_API_KEY_3"),
+]
+GEMINI_API_KEYS = [key.strip() for key in GEMINI_API_KEYS if key and key.strip()]
 
 CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video").lower().strip()
 
@@ -174,45 +179,27 @@ def fetch_news_headlines():
 # ============================================================
 
 def generate_with_gemini(prompt):
-    """
-    Generate the market script with Gemini.
+    """Generate using up to 3 Gemini API keys with model fallback."""
 
-    Free-tier-safe behavior:
-    - Try the configured models in order.
-    - Do NOT repeatedly retry an exhausted daily quota.
-    - Retry a temporary 503 once.
-    - Retry a temporary non-daily 429 once.
-    - Raise the final error so GitHub Actions correctly reports failure.
-    """
-
-    if not GEMINI_API_KEY:
+    if not GEMINI_API_KEYS:
         raise RuntimeError(
-            "GEMINI_API_KEY is missing from GitHub Secrets."
+            "No Gemini API keys configured. Add "
+            "GEMINI_API_KEY_1, GEMINI_API_KEY_2 and/or "
+            "GEMINI_API_KEY_3 to GitHub Actions Secrets."
         )
-
-    print("Connecting to Gemini...")
-
-    client = genai.Client(
-        api_key=GEMINI_API_KEY
-    )
 
     last_error = None
 
-    for model_index, model_name in enumerate(GEMINI_MODELS):
-
+    for key_index, api_key in enumerate(GEMINI_API_KEYS, start=1):
         print("=" * 60)
-        print(f"Trying Gemini model: {model_name}")
+        print(f"Trying Gemini API key {key_index}/{len(GEMINI_API_KEYS)}")
         print("=" * 60)
 
-        # At most two requests per model:
-        # 1) normal request
-        # 2) one retry only for a temporary error
-        for attempt in range(1, 3):
+        client = genai.Client(api_key=api_key)
 
-            print(
-                f"Gemini request {attempt}/2 "
-                f"using {model_name}"
-            )
+        for model_name in GEMINI_MODELS:
+            print("-" * 60)
+            print(f"Trying model: {model_name}")
 
             try:
                 response = client.models.generate_content(
@@ -220,39 +207,24 @@ def generate_with_gemini(prompt):
                     contents=prompt
                 )
 
-                if response is None:
-                    raise RuntimeError(
-                        "Gemini returned no response."
-                    )
-
-                if not response.text:
-                    raise RuntimeError(
-                        "Gemini returned an empty response."
-                    )
+                if response is None or not response.text:
+                    raise RuntimeError("Gemini returned an empty response.")
 
                 print(
-                    f"OK - Gemini generation successful using "
-                    f"{model_name}."
+                    f"✅ Gemini success: key {key_index} / {model_name}"
                 )
-
                 return response.text
 
             except Exception as e:
-
                 last_error = e
                 error_text = str(e)
 
                 print(
-                    f"Gemini attempt {attempt} failed on "
-                    f"{model_name}: {error_text}"
+                    f"❌ Key {key_index} / {model_name} failed: "
+                    f"{error_text}"
                 )
 
-                # ------------------------------------------------
-                # DAILY FREE-TIER QUOTA
-                # ------------------------------------------------
-                # These errors will not be fixed by waiting 30/60/
-                # 120/240 seconds, so do not burn requests.
-                daily_quota_exhausted = (
+                daily_quota = (
                     "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
                     in error_text
                     or
@@ -260,100 +232,53 @@ def generate_with_gemini(prompt):
                     in error_text
                 )
 
-                if daily_quota_exhausted:
-                    print(
-                        f"🚫 Daily free-tier quota is exhausted "
-                        f"for {model_name}."
-                    )
-                    print(
-                        "Not retrying this model."
-                    )
-                    break
+                if daily_quota:
+                    print("🚫 Daily quota exhausted. Trying next model/key.")
+                    continue
 
-                # ------------------------------------------------
-                # TEMPORARY 503
-                # ------------------------------------------------
-                is_503 = (
+                if (
                     "503" in error_text
                     or "UNAVAILABLE" in error_text
                     or "high demand" in error_text.lower()
-                )
+                ):
+                    print("⚠️ Temporary Gemini unavailable. Trying next model/key.")
+                    continue
 
-                if is_503:
-                    if attempt < 2:
-                        print(
-                            f"⏳ {model_name} is temporarily "
-                            f"unavailable."
-                        )
-                        print(
-                            "Waiting 60 seconds before one retry..."
-                        )
-                        time.sleep(60)
-                        continue
-
-                    print(
-                        f"{model_name} still unavailable "
-                        f"after one retry."
-                    )
-                    break
-
-                # ------------------------------------------------
-                # TEMPORARY 429 / RATE LIMIT
-                # ------------------------------------------------
-                is_429 = (
+                if (
                     "429" in error_text
                     or "RESOURCE_EXHAUSTED" in error_text
                     or "rate limit" in error_text.lower()
-                )
+                ):
+                    print("⚠️ Gemini rate limit/quota error. Trying next model/key.")
+                    continue
 
-                if is_429:
-                    if attempt < 2:
-                        print(
-                            f"⏳ {model_name} hit a temporary "
-                            f"rate limit."
-                        )
-                        print(
-                            "Waiting 60 seconds before one retry..."
-                        )
-                        time.sleep(60)
-                        continue
-
-                    print(
-                        f"{model_name} still rate-limited "
-                        f"after one retry."
-                    )
+                if (
+                    "401" in error_text
+                    or "403" in error_text
+                    or "PERMISSION_DENIED" in error_text
+                    or "UNAUTHENTICATED" in error_text
+                ):
+                    print(f"⚠️ API key {key_index} was rejected. Trying next key.")
                     break
 
-                # ------------------------------------------------
-                # OTHER ERROR
-                # ------------------------------------------------
-                print(
-                    f"{model_name} returned a non-retryable error."
-                )
-                break
+                print("⚠️ Gemini error. Trying next model/key.")
 
-        # Move to the next configured model after this model fails.
-        if model_index < len(GEMINI_MODELS) - 1:
-
-            next_model = GEMINI_MODELS[model_index + 1]
-
+        if key_index < len(GEMINI_API_KEYS):
             print("=" * 60)
             print(
-                f"Switching automatically from {model_name} "
-                f"to {next_model}"
+                f"Switching from API key {key_index} "
+                f"to API key {key_index + 1}"
             )
             print("=" * 60)
 
     print("=" * 60)
-    print("ALL GEMINI MODELS FAILED")
+    print("❌ ALL GEMINI API KEYS AND MODELS FAILED")
     print("=" * 60)
 
     if last_error is not None:
         raise last_error
 
-    raise RuntimeError(
-        "Gemini generation failed without a specific error."
-    )
+    raise RuntimeError("Gemini generation failed without a specific error.")
 
 
 # ============================================================
@@ -1239,11 +1164,12 @@ def main():
     # Validate Gemini
     # --------------------------------------------------------
 
-    if not GEMINI_API_KEY:
+    if not GEMINI_API_KEYS:
 
         error = (
-            "GEMINI_API_KEY is missing. "
-            "Add it to GitHub Actions Secrets."
+            "No Gemini API keys are configured. "
+            "Add GEMINI_API_KEY_1, GEMINI_API_KEY_2 and/or "
+            "GEMINI_API_KEY_3 to GitHub Actions Secrets."
         )
 
         print(f"❌ {error}")
