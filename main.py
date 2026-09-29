@@ -19,7 +19,10 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video").lower().strip()
 
 # Gemini model
-GEMINI_MODEL = "gemini-3.6-flash"
+GEMINI_MODELS = [
+    "gemini-3.6-flash",
+    "gemini-3.1-pro-preview",
+]
 
 # Retry configuration
 MAX_GEMINI_RETRIES = 4
@@ -183,119 +186,111 @@ def generate_with_gemini(prompt):
         api_key=GEMINI_API_KEY
     )
 
-    for attempt in range(
-        1,
-        MAX_GEMINI_RETRIES + 1
-    ):
+    retry_delays = [30, 60, 120, 240]
+    last_error = None
 
-        print(
-            f"Gemini request "
-            f"{attempt}/{MAX_GEMINI_RETRIES}"
-        )
+    # Try Flash first, then Pro if Flash remains unavailable.
+    for model_index, model_name in enumerate(GEMINI_MODELS):
 
-        try:
+        print("=" * 60)
+        print(f"Trying Gemini model: {model_name}")
+        print("=" * 60)
 
-            response = client.models.generate_content(
-                model=GEMINI_MODEL,
-                contents=prompt
-            )
-
-            if response is None:
-                raise RuntimeError(
-                    "Gemini returned no response."
-                )
-
-            if not response.text:
-                raise RuntimeError(
-                    "Gemini returned an empty response."
-                )
+        for attempt in range(1, 5):
 
             print(
-                "✅ Gemini generation successful."
+                f"Gemini request {attempt}/4 "
+                f"using {model_name}"
             )
 
-            return response.text
+            try:
 
-        except Exception as e:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt
+                )
 
-            error_text = str(e)
-
-            print(
-                f"Gemini attempt {attempt} failed: "
-                f"{error_text}"
-            )
-
-            # ------------------------------------------------
-            # 503 SERVER UNAVAILABLE
-            # ------------------------------------------------
-
-            is_503 = (
-                "503" in error_text
-                or "UNAVAILABLE" in error_text
-                or "high demand"
-                in error_text.lower()
-            )
-
-            # ------------------------------------------------
-            # 429 QUOTA / RATE LIMIT
-            # ------------------------------------------------
-
-            is_429 = (
-                "429" in error_text
-                or "RESOURCE_EXHAUSTED"
-                in error_text
-                or "quota"
-                in error_text.lower()
-                or "rate limit"
-                in error_text.lower()
-            )
-
-            # ------------------------------------------------
-            # RETRY
-            # ------------------------------------------------
-
-            if (
-                (is_503 or is_429)
-                and attempt < MAX_GEMINI_RETRIES
-            ):
-
-                if is_503:
-
-                    print(
-                        "Gemini server is "
-                        "temporarily unavailable."
+                if response is None:
+                    raise RuntimeError(
+                        "Gemini returned no response."
                     )
 
-                elif is_429:
-
-                    print(
-                        "Gemini quota/rate "
-                        "limit detected."
+                if not response.text:
+                    raise RuntimeError(
+                        "Gemini returned an empty response."
                     )
-
-                wait_time = RETRY_DELAYS[
-                    attempt - 1
-                ]
 
                 print(
-                    f"Waiting {wait_time} "
-                    f"seconds before retry..."
+                    f"OK - Gemini generation successful using {model_name}."
                 )
 
-                time.sleep(wait_time)
+                return response.text
 
-                continue
+            except Exception as e:
 
-            # ------------------------------------------------
-            # FINAL FAILURE
-            # ------------------------------------------------
+                last_error = e
+                error_text = str(e)
 
+                print(
+                    f"Gemini attempt {attempt} failed on "
+                    f"{model_name}: {error_text}"
+                )
+
+                is_503 = (
+                    "503" in error_text
+                    or "UNAVAILABLE" in error_text
+                    or "high demand" in error_text.lower()
+                )
+
+                is_429 = (
+                    "429" in error_text
+                    or "RESOURCE_EXHAUSTED" in error_text
+                    or "quota" in error_text.lower()
+                    or "rate limit" in error_text.lower()
+                )
+
+                if (is_503 or is_429) and attempt < 4:
+
+                    if is_503:
+                        print(
+                            f"{model_name} is temporarily unavailable."
+                        )
+                    else:
+                        print(
+                            f"{model_name} hit a quota/rate limit."
+                        )
+
+                    wait_time = retry_delays[attempt - 1]
+
+                    print(
+                        f"Waiting {wait_time} seconds before retry..."
+                    )
+
+                    time.sleep(wait_time)
+                    continue
+
+                print(
+                    f"{model_name} failed after {attempt} attempt(s)."
+                )
+                break
+
+        # Move to the next model only after the current model fails.
+        if model_index < len(GEMINI_MODELS) - 1:
+
+            next_model = GEMINI_MODELS[model_index + 1]
+
+            print("=" * 60)
             print(
-                "Gemini error is not "
-                "temporarily retryable."
+                f"Switching automatically from {model_name} "
+                f"to {next_model}"
             )
+            print("=" * 60)
 
-            raise
+    print("=" * 60)
+    print("ALL GEMINI MODELS FAILED")
+    print("=" * 60)
+
+    raise last_error
 
 
 # ============================================================
