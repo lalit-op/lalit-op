@@ -1,12 +1,8 @@
-google-generativeai
+google-genai
 requests
 yfinance
 feedparser
-google-generativeai
 google-auth
-yfinance
-feedparser
-requests
 pandas
 numpy
 beautifulsoup4
@@ -19,12 +15,3 @@ tqdm
 aiohttp
 fake-useragent
 python-telegram-bot==21.6
-google-generativeai
-requests
-yfinance
-feedparser
-requests
-yfinance
-feedparser
-google-generativeai
-pandas
