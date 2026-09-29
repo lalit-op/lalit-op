@@ -174,6 +174,16 @@ def fetch_news_headlines():
 # ============================================================
 
 def generate_with_gemini(prompt):
+    """
+    Generate the market script with Gemini.
+
+    Free-tier-safe behavior:
+    - Try the configured models in order.
+    - Do NOT repeatedly retry an exhausted daily quota.
+    - Retry a temporary 503 once.
+    - Retry a temporary non-daily 429 once.
+    - Raise the final error so GitHub Actions correctly reports failure.
+    """
 
     if not GEMINI_API_KEY:
         raise RuntimeError(
@@ -186,25 +196,25 @@ def generate_with_gemini(prompt):
         api_key=GEMINI_API_KEY
     )
 
-    retry_delays = [30, 60, 120, 240]
     last_error = None
 
-    # Try Flash first, then Pro if Flash remains unavailable.
     for model_index, model_name in enumerate(GEMINI_MODELS):
 
         print("=" * 60)
         print(f"Trying Gemini model: {model_name}")
         print("=" * 60)
 
-        for attempt in range(1, 5):
+        # At most two requests per model:
+        # 1) normal request
+        # 2) one retry only for a temporary error
+        for attempt in range(1, 3):
 
             print(
-                f"Gemini request {attempt}/4 "
+                f"Gemini request {attempt}/2 "
                 f"using {model_name}"
             )
 
             try:
-
                 response = client.models.generate_content(
                     model=model_name,
                     contents=prompt
@@ -221,7 +231,8 @@ def generate_with_gemini(prompt):
                     )
 
                 print(
-                    f"OK - Gemini generation successful using {model_name}."
+                    f"OK - Gemini generation successful using "
+                    f"{model_name}."
                 )
 
                 return response.text
@@ -236,45 +247,92 @@ def generate_with_gemini(prompt):
                     f"{model_name}: {error_text}"
                 )
 
+                # ------------------------------------------------
+                # DAILY FREE-TIER QUOTA
+                # ------------------------------------------------
+                # These errors will not be fixed by waiting 30/60/
+                # 120/240 seconds, so do not burn requests.
+                daily_quota_exhausted = (
+                    "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+                    in error_text
+                    or
+                    "GenerateContentInputTokensPerModelPerDay-FreeTier"
+                    in error_text
+                )
+
+                if daily_quota_exhausted:
+                    print(
+                        f"🚫 Daily free-tier quota is exhausted "
+                        f"for {model_name}."
+                    )
+                    print(
+                        "Not retrying this model."
+                    )
+                    break
+
+                # ------------------------------------------------
+                # TEMPORARY 503
+                # ------------------------------------------------
                 is_503 = (
                     "503" in error_text
                     or "UNAVAILABLE" in error_text
                     or "high demand" in error_text.lower()
                 )
 
+                if is_503:
+                    if attempt < 2:
+                        print(
+                            f"⏳ {model_name} is temporarily "
+                            f"unavailable."
+                        )
+                        print(
+                            "Waiting 60 seconds before one retry..."
+                        )
+                        time.sleep(60)
+                        continue
+
+                    print(
+                        f"{model_name} still unavailable "
+                        f"after one retry."
+                    )
+                    break
+
+                # ------------------------------------------------
+                # TEMPORARY 429 / RATE LIMIT
+                # ------------------------------------------------
                 is_429 = (
                     "429" in error_text
                     or "RESOURCE_EXHAUSTED" in error_text
-                    or "quota" in error_text.lower()
                     or "rate limit" in error_text.lower()
                 )
 
-                if (is_503 or is_429) and attempt < 4:
-
-                    if is_503:
+                if is_429:
+                    if attempt < 2:
                         print(
-                            f"{model_name} is temporarily unavailable."
+                            f"⏳ {model_name} hit a temporary "
+                            f"rate limit."
                         )
-                    else:
                         print(
-                            f"{model_name} hit a quota/rate limit."
+                            "Waiting 60 seconds before one retry..."
                         )
-
-                    wait_time = retry_delays[attempt - 1]
+                        time.sleep(60)
+                        continue
 
                     print(
-                        f"Waiting {wait_time} seconds before retry..."
+                        f"{model_name} still rate-limited "
+                        f"after one retry."
                     )
+                    break
 
-                    time.sleep(wait_time)
-                    continue
-
+                # ------------------------------------------------
+                # OTHER ERROR
+                # ------------------------------------------------
                 print(
-                    f"{model_name} failed after {attempt} attempt(s)."
+                    f"{model_name} returned a non-retryable error."
                 )
                 break
 
-        # Move to the next model only after the current model fails.
+        # Move to the next configured model after this model fails.
         if model_index < len(GEMINI_MODELS) - 1:
 
             next_model = GEMINI_MODELS[model_index + 1]
@@ -290,7 +348,12 @@ def generate_with_gemini(prompt):
     print("ALL GEMINI MODELS FAILED")
     print("=" * 60)
 
-    raise last_error
+    if last_error is not None:
+        raise last_error
+
+    raise RuntimeError(
+        "Gemini generation failed without a specific error."
+    )
 
 
 # ============================================================
