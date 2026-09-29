@@ -30,8 +30,8 @@ GEMINI_MODELS = [
 ]
 
 # Retry configuration
-MAX_GEMINI_RETRIES = 4
-RETRY_DELAYS = [30, 60, 120, 240]
+# MAX_GEMINI_RETRIES = 4
+# RETRY_DELAYS = [30, 60, 120, 240]
 
 # Output folders
 POSTS_DIR = "posts"
