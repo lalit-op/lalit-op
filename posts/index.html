@@ -8,18 +8,13 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<meta
-    name="theme-color"
-    content="#020617"
+    content="width=device-width,
+             initial-scale=1.0"
 >
 
 <title>
-    Stock Samvad AI | Daily Market Reports
+Stock Samvad AI
 </title>
-
 
 <style>
 
@@ -27,1970 +22,1356 @@
     box-sizing: border-box;
 }
 
-
-html,
 body {
-
     margin: 0;
-
-    padding: 0;
-
-    width: 100%;
-
-    min-height: 100%;
-
-}
-
-
-body {
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top left,
-            #1e3a8a55,
-            transparent 40%
-        ),
-
-        radial-gradient(
-            circle at top right,
-            #06b6d455,
-            transparent 40%
-        ),
-
-        #020617;
-
-    color: #e2e8f0;
-
-    min-height: 100vh;
-
-}
-
-
-.container {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 25px;
-
-}
-
-
-/* ==============================
-   HEADER
-============================== */
-
-.header {
-
-    text-align: center;
-
-    padding: 45px 25px;
-
-    margin-bottom: 25px;
-
-    border-radius: 24px;
-
-    background:
-        rgba(255,255,255,0.05);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
-
-    backdrop-filter:
-        blur(20px);
-
-}
-
-
-.badge {
-
-    display: inline-block;
-
-    padding: 9px 17px;
-
-    border-radius: 999px;
-
-    color: #38bdf8;
-
-    background:
-        rgba(14,165,233,0.10);
-
-    border:
-        1px solid
-        rgba(56,189,248,0.25);
-
-    font-size: 14px;
-
-    margin-bottom: 15px;
-
-}
-
-
-.header h1 {
-
-    margin: 10px 0;
-
-    font-size:
-        clamp(38px, 7vw, 64px);
-
-    line-height: 1.1;
 
     background:
         linear-gradient(
-            90deg,
-            #38bdf8,
-            #22c55e,
-            #facc15
+            135deg,
+            #050505,
+            #111111
         );
-
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-}
-
-
-.subtitle {
-
-    color: #94a3b8;
-
-    font-size:
-        clamp(15px, 3vw, 19px);
-
-}
-
-
-/* ==============================
-   AUTOMATION
-============================== */
-
-.automation-box {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 18px;
-
-    margin-bottom: 25px;
-
-    padding: 18px 20px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(15,23,42,0.85);
-
-    border:
-        1px solid
-        rgba(56,189,248,0.18);
-
-}
-
-
-.automation-title {
-
-    color: #f8fafc;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-}
-
-
-.automation-text {
-
-    margin-top: 4px;
-
-    color: #64748b;
-
-    font-size: 12px;
-
-}
-
-
-.run-button {
-
-    flex-shrink: 0;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 10px 16px;
-
-    border-radius: 10px;
 
     color: white;
 
-    background: #238636;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
 
-    border: 1px solid #2ea043;
+.container {
+    width:
+        min(
+            1000px,
+            calc(100% - 30px)
+        );
+
+    margin:
+        50px auto;
+}
+
+.hero {
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #161616,
+            #242424
+        );
+
+    border:
+        1px solid #333;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: 38px;
+}
+
+.hero p {
+    color: #aaa;
+}
+
+.automation {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 12px 18px;
+
+    border-radius: 25px;
+
+    background: white;
+
+    color: black;
 
     text-decoration: none;
 
-    font-size: 13px;
-
-    font-weight: 700;
-
-    transition: 0.2s ease;
-
+    font-weight: bold;
 }
 
+.archive {
+    display: grid;
 
-.run-button:hover {
-
-    background: #2ea043;
-
-}
-
-
-/* ==============================
-   ARCHIVE
-============================== */
-
-.section-label {
-
-    color: #38bdf8;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.15em;
-
-    margin-bottom: 8px;
-
-}
-
-
-.section-title {
-
-    margin: 0 0 20px;
-
-    font-size:
-        clamp(30px, 5vw, 44px);
-
-    color: #f8fafc;
-
-}
-
-
-/* ==============================
-   REPORT CARD
-============================== */
-
-.report-card {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                230px,
+                1fr
+            )
+        );
 
     gap: 15px;
+}
 
-    margin-bottom: 15px;
+.card {
+    display: block;
 
     padding: 22px;
 
-    border-radius: 20px;
+    border-radius: 18px;
 
-    background:
-        rgba(15,23,42,0.85);
+    background: #181818;
 
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
+    border: 1px solid #303030;
 
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-
-}
-
-
-.report-card:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(56,189,248,0.35);
-
-}
-
-
-.report-info {
-
-    min-width: 0;
-
-}
-
-
-.report-title {
-
-    color: #38bdf8;
+    color: white;
 
     text-decoration: none;
 
-    font-size:
-        clamp(18px, 3vw, 25px);
-
-    font-weight: 700;
-
+    transition:
+        transform .2s;
 }
 
-
-.report-date {
-
-    margin-top: 8px;
-
-    color: #94a3b8;
-
-    font-size: 14px;
-
+.card:hover {
+    transform:
+        translateY(-3px);
 }
 
+.card-title {
+    font-size: 18px;
 
-/* ==============================
-   MOBILE
-============================== */
+    font-weight: bold;
+}
 
-@media (max-width: 600px) {
+.card-date {
+    margin-top: 7px;
 
-    .container {
-
-        padding: 15px;
-
-    }
-
-
-    .header {
-
-        padding: 30px 15px;
-
-    }
-
-
-    .automation-box {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 16px;
-
-    }
-
-
-    .run-button {
-
-        width: 100%;
-
-    }
-
-
-    .report-card {
-
-        padding: 17px;
-
-    }
-
-
+    color: #999;
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+<div class="hero">
 
-    <!-- HEADER -->
+<h1>
+STOCK SAMVAD AI
+</h1>
 
-    <div class="header">
+<p>
+Daily AI-generated Indian stock market reports.
+</p>
 
-        <div class="badge">
+<a
+    class="automation"
+    href="https://github.com/lalit-op/lalit-op/actions/workflows/market_news.yml"
+>
+Run Daily Market Bot
+</a>
 
-            🇮🇳 AI-Powered Indian Market Intelligence
+</div>
 
-        </div>
 
-        <h1>
+<h2>
+Report Archive
+</h2>
 
-            Stock Samvad AI
+<div class="archive">
 
-        </h1>
 
-        <div class="subtitle">
+<a
+    href="2026-09-30.html"
+    class="card"
+>
 
-            Daily Nifty, Sensex & Indian Stock Market Reports
+<div class="card-title">
+Daily Market Report
+</div>
 
-        </div>
+<div class="card-date">
+2026-09-30
+</div>
 
-    </div>
+</a>
 
+<a
+    href="2026-09-28.html"
+    class="card"
+>
 
-    <!-- AUTOMATION -->
+<div class="card-title">
+Daily Market Report
+</div>
 
-    <div class="automation-box">
+<div class="card-date">
+2026-09-28
+</div>
 
-        <div>
+</a>
 
-            <div class="automation-title">
+<a
+    href="2026-09-25.html"
+    class="card"
+>
 
-                ⚙️ Indian Market Automation
+<div class="card-title">
+Daily Market Report
+</div>
 
-            </div>
+<div class="card-date">
+2026-09-25
+</div>
 
-            <div class="automation-text">
+</a>
 
-                Generate the latest Indian market script
+<a
+    href="2026-09-24.html"
+    class="card"
+>
 
-            </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-        </div>
+<div class="card-date">
+2026-09-24
+</div>
 
+</a>
 
-        <a
-            href="https://github.com/lalit-op/lalit-op/actions/workflows/market_news.yml"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="run-button"
-        >
+<a
+    href="2026-09-23.html"
+    class="card"
+>
 
-            ▶ Run Workflow
+<div class="card-title">
+Daily Market Report
+</div>
 
-        </a>
+<div class="card-date">
+2026-09-23
+</div>
 
-    </div>
+</a>
 
+<a
+    href="2026-09-22.html"
+    class="card"
+>
 
-    <!-- ARCHIVE -->
+<div class="card-title">
+Daily Market Report
+</div>
 
-    <div class="section-label">
+<div class="card-date">
+2026-09-22
+</div>
 
-        ARCHIVE
+</a>
 
-    </div>
+<a
+    href="2026-09-18.html"
+    class="card"
+>
 
+<div class="card-title">
+Daily Market Report
+</div>
 
-    <h2 class="section-title">
+<div class="card-date">
+2026-09-18
+</div>
 
-        Daily Indian Market Reports
+</a>
 
-    </h2>
+<a
+    href="2026-09-17.html"
+    class="card"
+>
 
+<div class="card-title">
+Daily Market Report
+</div>
 
-    
-<article class="report-card">
+<div class="card-date">
+2026-09-17
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-28.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-28
-        </a>
+<a
+    href="2026-09-16.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-28
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-09-16
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-09-15.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-25.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-25
-        </a>
+<div class="card-date">
+2026-09-15
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-25
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-09-11.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-09-11
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-24.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-24
-        </a>
+<a
+    href="2026-09-10.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-24
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-09-10
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-09-09.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-23.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-23
-        </a>
+<div class="card-date">
+2026-09-09
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-23
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-09-08.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-09-08
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-22.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-22
-        </a>
+<a
+    href="2026-09-07.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-22
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-09-07
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-09-04.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-18.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-18
-        </a>
+<div class="card-date">
+2026-09-04
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-18
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-09-03.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-09-03
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-17.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-17
-        </a>
+<a
+    href="2026-09-02.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-17
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-09-02
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-09-01.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-16.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-16
-        </a>
+<div class="card-date">
+2026-09-01
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-16
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-31.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-31
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-15.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-15
-        </a>
+<a
+    href="2026-08-28.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-15
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-28
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-27.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-11.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-11
-        </a>
+<div class="card-date">
+2026-08-27
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-11
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-26.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-26
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-10.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-10
-        </a>
+<a
+    href="2026-08-25.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-10
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-25
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-24.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-09.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-09
-        </a>
+<div class="card-date">
+2026-08-24
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-09
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-22.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-22
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-08.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-08
-        </a>
+<a
+    href="2026-08-21.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-08
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-21
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-20.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-07.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-07
-        </a>
+<div class="card-date">
+2026-08-20
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-07
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-19.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-19
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-04.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-04
-        </a>
+<a
+    href="2026-08-18.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-04
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-18
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-17.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-03.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-03
-        </a>
+<div class="card-date">
+2026-08-17
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-03
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-14.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-14
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-09-02.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-02
-        </a>
+<a
+    href="2026-08-13.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-09-02
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-13
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-12.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-09-01.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-09-01
-        </a>
+<div class="card-date">
+2026-08-12
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-09-01
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-11.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-11
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-31.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-31
-        </a>
+<a
+    href="2026-08-10.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-31
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-10
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-08.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-28.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-28
-        </a>
+<div class="card-date">
+2026-08-08
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-28
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-07.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-07
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-27.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-27
-        </a>
+<a
+    href="2026-08-06.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-27
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-06
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-05.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-26.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-26
-        </a>
+<div class="card-date">
+2026-08-05
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-26
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-08-04.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-08-04
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-25.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-25
-        </a>
+<a
+    href="2026-08-03.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-25
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-08-03
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-08-02.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-24.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-24
-        </a>
+<div class="card-date">
+2026-08-02
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-24
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-31.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-31
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-22.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-22
-        </a>
+<a
+    href="2026-07-30.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-22
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-30
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-29.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-21.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-21
-        </a>
+<div class="card-date">
+2026-07-29
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-21
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-28.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-28
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-20.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-20
-        </a>
+<a
+    href="2026-07-27.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-20
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-27
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-24.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-19.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-19
-        </a>
+<div class="card-date">
+2026-07-24
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-19
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-23.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-23
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-18.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-18
-        </a>
+<a
+    href="2026-07-22.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-18
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-22
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-21.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-17.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-17
-        </a>
+<div class="card-date">
+2026-07-21
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-17
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-20.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-20
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-14.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-14
-        </a>
+<a
+    href="2026-07-17.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-14
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-17
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-16.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-13.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-13
-        </a>
+<div class="card-date">
+2026-07-16
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-13
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-15.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-15
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-12.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-12
-        </a>
+<a
+    href="2026-07-14.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-12
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-14
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-13.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-11.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-11
-        </a>
+<div class="card-date">
+2026-07-13
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-11
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-12.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-12
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-10.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-10
-        </a>
+<a
+    href="2026-07-10.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-10
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-10
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-09.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-08.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-08
-        </a>
+<div class="card-date">
+2026-07-09
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-08
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-08.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-08
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-07.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-07
-        </a>
+<a
+    href="2026-07-07.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-07
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-07
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-06.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-06.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-06
-        </a>
+<div class="card-date">
+2026-07-06
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-06
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-07-03.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-07-03
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-05.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-05
-        </a>
+<a
+    href="2026-07-02.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-05
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-07-02
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-07-01.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-04.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-04
-        </a>
+<div class="card-date">
+2026-07-01
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-04
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-06-30.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-06-30
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-08-03.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-03
-        </a>
+<a
+    href="2026-06-29.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-08-03
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-06-29
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-06-26.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-08-02.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-08-02
-        </a>
+<div class="card-date">
+2026-06-26
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-08-02
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-06-25.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-06-25
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-07-31.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-31
-        </a>
+<a
+    href="2026-06-24.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-07-31
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-06-24
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-06-23.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-07-30.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-30
-        </a>
+<div class="card-date">
+2026-06-23
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-07-30
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-06-22.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-06-22
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-07-29.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-29
-        </a>
+<a
+    href="2026-06-21.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-07-29
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-06-21
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-06-20.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-07-28.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-28
-        </a>
+<div class="card-date">
+2026-06-20
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-07-28
-        </div>
+</a>
 
-    </div>
+<a
+    href="2026-06-19.html"
+    class="card"
+>
 
-</article>
+<div class="card-title">
+Daily Market Report
+</div>
 
-<article class="report-card">
+<div class="card-date">
+2026-06-19
+</div>
 
-    <div class="report-info">
+</a>
 
-        <a
-            href="2026-07-27.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-27
-        </a>
+<a
+    href="2026-06-18.html"
+    class="card"
+>
 
-        <div class="report-date">
-            📅 Published on 2026-07-27
-        </div>
+<div class="card-title">
+Daily Market Report
+</div>
 
-    </div>
+<div class="card-date">
+2026-06-18
+</div>
 
-</article>
+</a>
 
-<article class="report-card">
+<a
+    href="2026-06-17.html"
+    class="card"
+>
 
-    <div class="report-info">
+<div class="card-title">
+Daily Market Report
+</div>
 
-        <a
-            href="2026-07-24.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-24
-        </a>
+<div class="card-date">
+2026-06-17
+</div>
 
-        <div class="report-date">
-            📅 Published on 2026-07-24
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-23.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-23
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-23
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-22.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-22
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-22
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-21.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-21
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-21
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-20.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-20
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-20
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-17.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-17
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-17
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-16.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-16
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-16
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-15.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-15
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-15
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-14.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-14
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-14
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-13.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-13
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-13
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-12.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-12
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-12
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-10.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-10
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-10
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-09.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-09
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-09
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-08.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-08
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-08
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-07.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-07
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-07
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-06.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-06
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-06
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-03.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-03
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-03
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-02.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-02
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-02
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-07-01.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-07-01
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-07-01
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-30.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-30
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-30
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-29.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-29
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-29
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-26.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-26
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-26
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-25.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-25
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-25
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-24.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-24
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-24
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-23.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-23
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-23
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-22.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-22
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-22
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-21.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-21
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-21
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-20.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-20
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-20
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-19.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-19
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-19
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-18.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-18
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-18
-        </div>
-
-    </div>
-
-</article>
-
-<article class="report-card">
-
-    <div class="report-info">
-
-        <a
-            href="2026-06-17.html"
-            class="report-title"
-        >
-            📄 Daily Market Script - 2026-06-17
-        </a>
-
-        <div class="report-date">
-            📅 Published on 2026-06-17
-        </div>
-
-    </div>
-
-</article>
-
+</a>
 
 
 </div>
 
+</div>
 
 </body>
 
