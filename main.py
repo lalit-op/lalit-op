@@ -6,6 +6,7 @@ import feedparser
 import requests
 import yfinance as yf
 from google import genai
+from groq import Groq
 
 
 # ============================================================
@@ -20,6 +21,14 @@ GEMINI_API_KEYS = [
     os.getenv("GEMINI_API_KEY_3"),
 ]
 GEMINI_API_KEYS = [key.strip() for key in GEMINI_API_KEYS if key and key.strip()]
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Groq production fallback models.
+GROQ_MODELS = [
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+]
 
 CONTENT_TYPE = os.getenv("CONTENT_TYPE", "video").lower().strip()
 
@@ -175,31 +184,38 @@ def fetch_news_headlines():
 
 
 # ============================================================
-# GEMINI GENERATION
+# AI GENERATION - GEMINI + GROQ FALLBACK
 # ============================================================
 
 def generate_with_gemini(prompt):
-    """Generate using up to 3 Gemini API keys with model fallback."""
+    """Try all configured Gemini API keys/models."""
 
     if not GEMINI_API_KEYS:
-        raise RuntimeError(
-            "No Gemini API keys configured. Add "
-            "GEMINI_API_KEY_1, GEMINI_API_KEY_2 and/or "
-            "GEMINI_API_KEY_3 to GitHub Actions Secrets."
-        )
+        print("⚠️ No Gemini API keys configured.")
+        return None
 
     last_error = None
 
     for key_index, api_key in enumerate(GEMINI_API_KEYS, start=1):
+
         print("=" * 60)
-        print(f"Trying Gemini API key {key_index}/{len(GEMINI_API_KEYS)}")
+        print(
+            f"Trying Gemini API key "
+            f"{key_index}/{len(GEMINI_API_KEYS)}"
+        )
         print("=" * 60)
 
-        client = genai.Client(api_key=api_key)
+        try:
+            client = genai.Client(api_key=api_key)
+        except Exception as e:
+            last_error = e
+            print(f"❌ Could not initialize Gemini client: {e}")
+            continue
 
         for model_name in GEMINI_MODELS:
+
             print("-" * 60)
-            print(f"Trying model: {model_name}")
+            print(f"Trying Gemini model: {model_name}")
 
             try:
                 response = client.models.generate_content(
@@ -208,14 +224,19 @@ def generate_with_gemini(prompt):
                 )
 
                 if response is None or not response.text:
-                    raise RuntimeError("Gemini returned an empty response.")
+                    raise RuntimeError(
+                        "Gemini returned an empty response."
+                    )
 
                 print(
-                    f"✅ Gemini success: key {key_index} / {model_name}"
+                    f"✅ Gemini success: "
+                    f"key {key_index} / {model_name}"
                 )
+
                 return response.text
 
             except Exception as e:
+
                 last_error = e
                 error_text = str(e)
 
@@ -224,16 +245,16 @@ def generate_with_gemini(prompt):
                     f"{error_text}"
                 )
 
-                daily_quota = (
-                    "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-                    in error_text
-                    or
-                    "GenerateContentInputTokensPerModelPerDay-FreeTier"
-                    in error_text
-                )
-
-                if daily_quota:
-                    print("🚫 Daily quota exhausted. Trying next model/key.")
+                if (
+                    "429" in error_text
+                    or "RESOURCE_EXHAUSTED" in error_text
+                    or "quota" in error_text.lower()
+                    or "rate limit" in error_text.lower()
+                ):
+                    print(
+                        "⚠️ Gemini quota/rate limit. "
+                        "Trying next model/key."
+                    )
                     continue
 
                 if (
@@ -241,15 +262,10 @@ def generate_with_gemini(prompt):
                     or "UNAVAILABLE" in error_text
                     or "high demand" in error_text.lower()
                 ):
-                    print("⚠️ Temporary Gemini unavailable. Trying next model/key.")
-                    continue
-
-                if (
-                    "429" in error_text
-                    or "RESOURCE_EXHAUSTED" in error_text
-                    or "rate limit" in error_text.lower()
-                ):
-                    print("⚠️ Gemini rate limit/quota error. Trying next model/key.")
+                    print(
+                        "⚠️ Gemini temporarily unavailable. "
+                        "Trying next model/key."
+                    )
                     continue
 
                 if (
@@ -258,27 +274,206 @@ def generate_with_gemini(prompt):
                     or "PERMISSION_DENIED" in error_text
                     or "UNAUTHENTICATED" in error_text
                 ):
-                    print(f"⚠️ API key {key_index} was rejected. Trying next key.")
+                    print(
+                        f"⚠️ Gemini key {key_index} was rejected. "
+                        "Trying next key."
+                    )
                     break
 
-                print("⚠️ Gemini error. Trying next model/key.")
+                print(
+                    "⚠️ Unknown Gemini error. "
+                    "Trying next model/key."
+                )
 
         if key_index < len(GEMINI_API_KEYS):
             print("=" * 60)
             print(
-                f"Switching from API key {key_index} "
-                f"to API key {key_index + 1}"
+                f"Switching from Gemini key {key_index} "
+                f"to key {key_index + 1}"
             )
             print("=" * 60)
 
     print("=" * 60)
-    print("❌ ALL GEMINI API KEYS AND MODELS FAILED")
+    print("⚠️ ALL GEMINI ATTEMPTS FAILED")
     print("=" * 60)
 
     if last_error is not None:
-        raise last_error
+        print(f"Last Gemini error: {last_error}")
 
-    raise RuntimeError("Gemini generation failed without a specific error.")
+    return None
+
+
+def generate_with_groq(prompt):
+    """Try configured Groq production models."""
+
+    if not GROQ_API_KEY:
+        print("⚠️ GROQ_API_KEY is not configured.")
+        return None
+
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+    except Exception as e:
+        print(f"❌ Could not initialize Groq client: {e}")
+        return None
+
+    last_error = None
+
+    for model_name in GROQ_MODELS:
+
+        print("-" * 60)
+        print(f"Trying Groq model: {model_name}")
+
+        try:
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            "You are an expert Indian stock market "
+                            "researcher and Hindi YouTube financial "
+                            "content writer. Follow the user's instructions "
+                            "strictly. Use only supplied factual inputs "
+                            "and never invent financial facts."
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    },
+                ],
+                temperature=0.4,
+                max_tokens=8192,
+            )
+
+            if (
+                response is None
+                or not response.choices
+                or not response.choices[0].message
+                or not response.choices[0].message.content
+            ):
+                raise RuntimeError(
+                    "Groq returned an empty response."
+                )
+
+            result = response.choices[0].message.content.strip()
+
+            if not result:
+                raise RuntimeError(
+                    "Groq returned an empty text response."
+                )
+
+            print(
+                f"✅ Groq success: {model_name}"
+            )
+
+            return result
+
+        except Exception as e:
+
+            last_error = e
+            error_text = str(e)
+
+            print(
+                f"❌ Groq model {model_name} failed: "
+                f"{error_text}"
+            )
+
+            if (
+                "429" in error_text
+                or "rate limit" in error_text.lower()
+                or "quota" in error_text.lower()
+            ):
+                print(
+                    "⚠️ Groq rate limit/quota. "
+                    "Trying next Groq model."
+                )
+                continue
+
+            if (
+                "401" in error_text
+                or "403" in error_text
+                or "authentication" in error_text.lower()
+                or "invalid api key" in error_text.lower()
+            ):
+                print("❌ Groq API key appears invalid.")
+                break
+
+            if (
+                "503" in error_text
+                or "502" in error_text
+                or "504" in error_text
+                or "unavailable" in error_text.lower()
+                or "timeout" in error_text.lower()
+            ):
+                print(
+                    "⚠️ Temporary Groq service error. "
+                    "Trying next Groq model."
+                )
+                continue
+
+            print(
+                "⚠️ Unknown Groq error. "
+                "Trying next Groq model."
+            )
+
+    print("=" * 60)
+    print("❌ ALL GROQ MODELS FAILED")
+    print("=" * 60)
+
+    if last_error is not None:
+        print(f"Last Groq error: {last_error}")
+
+    return None
+
+
+def generate_ai_script(prompt):
+    """
+    Generate the script with provider failover.
+
+    Order:
+        1. Gemini keys/models
+        2. Groq production models
+    """
+
+    print("=" * 60)
+    print("GENERATING AI SCRIPT")
+    print("=" * 60)
+
+    # --------------------------------------------------------
+    # 1. Gemini
+    # --------------------------------------------------------
+
+    print("🤖 Primary provider: Gemini")
+
+    gemini_result = generate_with_gemini(prompt)
+
+    if gemini_result:
+        print("✅ Script generated using Gemini.")
+        return gemini_result
+
+    # --------------------------------------------------------
+    # 2. Groq
+    # --------------------------------------------------------
+
+    print("=" * 60)
+    print("🔄 Switching to Groq fallback...")
+    print("=" * 60)
+
+    groq_result = generate_with_groq(prompt)
+
+    if groq_result:
+        print("✅ Script generated using Groq.")
+        return groq_result
+
+    # --------------------------------------------------------
+    # 3. All providers failed
+    # --------------------------------------------------------
+
+    raise RuntimeError(
+        "ALL AI PROVIDERS FAILED: "
+        "Gemini and Groq were both unavailable."
+    )
 
 
 # ============================================================
@@ -1161,22 +1356,6 @@ def main():
     print("=" * 60)
 
     # --------------------------------------------------------
-    # Validate Gemini
-    # --------------------------------------------------------
-
-    if not GEMINI_API_KEYS:
-
-        error = (
-            "No Gemini API keys are configured. "
-            "Add GEMINI_API_KEY_1, GEMINI_API_KEY_2 and/or "
-            "GEMINI_API_KEY_3 to GitHub Actions Secrets."
-        )
-
-        print(f"❌ {error}")
-
-        raise RuntimeError(error)
-
-    # --------------------------------------------------------
     # Market data
     # --------------------------------------------------------
 
@@ -1213,16 +1392,16 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Gemini
+    # AI generation with Gemini + Groq fallback
     # --------------------------------------------------------
 
     print(
-        "Generating AI Script with Gemini..."
+        "Generating AI Script with Gemini + Groq fallback..."
     )
 
     try:
 
-        script_text = generate_with_gemini(
+        script_text = generate_ai_script(
             prompt
         )
 
@@ -1233,7 +1412,7 @@ def main():
     except Exception as e:
 
         error_msg = (
-            f"❌ Gemini Error\n\n"
+            f"❌ AI Generation Error\n\n"
             f"{e}"
         )
 
@@ -1243,8 +1422,7 @@ def main():
             error_msg
         )
 
-        # IMPORTANT:
-        # Make GitHub Actions fail properly.
+        # Keep GitHub Actions failed if every provider fails.
         raise
 
     # --------------------------------------------------------
