@@ -2,8 +2,7 @@ name: Daily Market Script
 
 on:
   schedule:
-    - cron: '16 16 * * 1-5'
-      timezone: "Asia/Kolkata"
+    - cron: '46 10 * * 1-6'
 
   workflow_dispatch:
     inputs:
