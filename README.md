@@ -1,14 +1,23 @@
-# 📈 Read Daily Stock News
+# Vistaar for Samsung Tizen — enhanced prototype
 
-**Read Daily Stock News** is a GitHub Pages website for following Indian stock-market updates and financial news in one place.
+TV-first TizenBrew application module. This is web content, not an Android APK or signed Samsung WGT.
 
-🌐 **Website:** https://lalit-op.github.io/lalit-op
+## Features
+- Remote-friendly TV interface
+- Live TV and Free TV browsing
+- M3U playlist parsing using the India playlist by default
+- Search, category filtering, favourites and recently watched
+- HTML video player with retry
+- Configurable playlist URL and autoplay
+- Local persistence for settings and favourites
 
-The project brings together market information and financial headlines, then uses AI to prepare easy-to-read market updates. New posts are published to the website automatically through GitHub Actions.
+## Install
+Use this branch-specific TizenBrew module identifier:
+`lalit-op/lalit-op@vistaar-tizen`
 
----
-
-## ⚠️ Disclaimer
-
-This project is intended for **news, learning, and informational purposes only**. AI-generated content may contain errors or omit context. Market data and news feeds may be delayed or unavailable.
-Nothing on this website is investment, financial, or trading advice, and nothing should be interpreted as a recommendation to buy or sell a security. Verify important information with reliable sources and consult a qualified financial adviser before making investment decisions.
+## Compatibility limits
+- Uses standard HTML video and does not assume Samsung AVPlay/Tizen APIs are exposed by TizenBrew.
+- HLS playback depends on TV browser codecs, CORS and provider availability; some streams will fail.
+- Jio sign-in, subscriber entitlements, private stream retrieval and DRM/Widevine are not implemented. They require authorized API/source access.
+- Not yet tested on the Samsung T5500; exact model code and firmware are unconfirmed.
+- Use only playlists and streams you are authorized to access.
