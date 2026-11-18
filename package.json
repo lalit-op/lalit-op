@@ -1,0 +1,9 @@
+{
+  "name": "vistaar-tizen",
+  "appName": "Vistaar",
+  "version": "0.2.0",
+  "description": "TV-first Vistaar interface for Samsung Tizen through TizenBrew",
+  "packageType": "app",
+  "appPath": "app/index.html",
+  "keys": ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Enter","Return","Escape","Back","MediaPlayPause","MediaPlay","MediaPause","MediaStop","MediaFastForward","MediaRewind"]
+}
